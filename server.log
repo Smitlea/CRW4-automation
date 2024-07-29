@@ -1,56 +1,33 @@
-2024-07-26 12:14:36,486 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\Systex\CRW4\CRW4.exe[0m[0m
-2024-07-26 12:14:54,060 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\Systex\CRW4\CRW4.exe[0m[0m
-2024-07-26 12:14:58,761 - ServerLogger - DEBUG - [36m[36mCRW4 application started successfully[0m[0m
-2024-07-26 12:14:59,355 - ServerLogger - INFO - [32m[32mEdit field found![0m[0m
-2024-07-26 12:16:09,701 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\Systex\CRW4\CRW4.exe[0m[0m
-2024-07-26 12:16:14,422 - ServerLogger - DEBUG - [36m[36mCRW4 application started successfully[0m[0m
-2024-07-26 12:16:15,003 - ServerLogger - INFO - [32m[32m<pywinauto.application.WindowSpecification object at 0x000002427FD2CC40> field found![0m[0m
-2024-07-26 12:17:02,357 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\Systex\CRW4\CRW4.exe[0m[0m
-2024-07-26 12:17:14,256 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\Systex\CRW4\CRW4.exe[0m[0m
-2024-07-26 12:17:19,092 - ServerLogger - DEBUG - [36m[36mCRW4 application started successfully[0m[0m
-2024-07-26 12:17:19,687 - ServerLogger - INFO - [32m[32m<bound method WindowSpecification.print_control_identifiers of <pywinauto.application.WindowSpecification object at 0x0000020AD6EECC10>> field found![0m[0m
-2024-07-26 13:35:04,982 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\Systex\CRW4\CRW4.exe[0m[0m
-2024-07-26 13:35:10,593 - ServerLogger - DEBUG - [36m[36mCRW4 application started successfully[0m[0m
-2024-07-26 13:35:11,168 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-26 13:35:13,691 - ServerLogger - DEBUG - [36m[36mText 'sodium' set successfully in Field: Chemicals::y_gSearchName![0m[0m
-2024-07-26 13:38:44,951 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\Systex\CRW4\CRW4.exe[0m[0m
-2024-07-26 13:38:54,333 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\Systex\CRW4\CRW4.exe[0m[0m
-2024-07-26 13:38:59,084 - ServerLogger - DEBUG - [36m[36mCRW4 application started successfully[0m[0m
-2024-07-26 13:38:59,623 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-26 13:39:02,158 - ServerLogger - DEBUG - [36m[36mText 'sodium' set successfully in Field: Chemicals::y_gSearchName![0m[0m
-2024-07-26 13:49:43,157 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\Systex\CRW4\CRW4.exe[0m[0m
-2024-07-26 13:49:48,114 - ServerLogger - DEBUG - [36m[36mCRW4 application started successfully[0m[0m
-2024-07-26 13:49:48,657 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-26 13:49:51,222 - ServerLogger - DEBUG - [36m[36mText 'sodium' set successfully in Field: Chemicals::y_gSearchName![0m[0m
-2024-07-26 13:49:51,636 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-26 13:49:54,103 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchUN![0m[0m
-2024-07-26 13:49:54,511 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-26 13:49:56,966 - ServerLogger - DEBUG - [36m[36mText '1428' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-07-26 14:11:30,237 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\Systex\CRW4\CRW4.exe[0m[0m
-2024-07-26 14:11:34,957 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
-2024-07-26 14:11:35,530 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-26 14:11:38,085 - ServerLogger - DEBUG - [36m[36mText 'sodium' set successfully in Field: Chemicals::y_gSearchName![0m[0m
-2024-07-26 14:11:38,496 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-26 14:11:40,937 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-07-26 14:11:41,344 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-26 14:11:43,806 - ServerLogger - DEBUG - [36m[36mText '1428' set successfully in Field: Chemicals::y_gSearchUN![0m[0m
-2024-07-26 14:11:44,247 - ServerLogger - DEBUG - [36m[36mSearch button clicked![0m[0m
-2024-07-26 14:12:40,804 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-07-26 14:12:59,442 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-07-26 14:13:03,143 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
-2024-07-26 14:13:03,418 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-26 14:13:04,868 - ServerLogger - DEBUG - [36m[36mText 'sodium' set successfully in Field: Chemicals::y_gSearchName![0m[0m
-2024-07-26 14:13:04,945 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-26 14:13:06,644 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-07-26 14:13:06,714 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-26 14:13:08,428 - ServerLogger - DEBUG - [36m[36mText '1428' set successfully in Field: Chemicals::y_gSearchUN![0m[0m
-2024-07-26 14:13:08,503 - ServerLogger - DEBUG - [36m[36mSearch button clicked![0m[0m
-2024-07-26 14:14:20,426 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-07-26 14:14:24,118 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
-2024-07-26 14:14:24,357 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-26 14:14:24,806 - ServerLogger - DEBUG - [36m[36mText 'sodium' set successfully in Field: Chemicals::y_gSearchName![0m[0m
-2024-07-26 14:14:24,909 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-26 14:14:25,618 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-07-26 14:14:25,713 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-26 14:14:26,437 - ServerLogger - DEBUG - [36m[36mText '1428' set successfully in Field: Chemicals::y_gSearchUN![0m[0m
-2024-07-26 14:14:26,516 - ServerLogger - DEBUG - [36m[36mSearch button clicked![0m[0m
+2024-07-29 12:02:34,997 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-29 12:02:37,624 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-29 12:02:43,678 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-29 12:02:44,182 - ServerLogger - DEBUG - [36m[36mText 'sodium' set successfully in Field: Chemicals::y_gSearchName![0m[0m
+2024-07-29 12:02:44,263 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-29 12:02:44,988 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-29 12:02:45,070 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-29 12:02:46,287 - ServerLogger - DEBUG - [36m[36mText '1428' set successfully in Field: Chemicals::y_gSearchUN![0m[0m
+2024-07-29 12:02:46,289 - ServerLogger - INFO - [32m[32mInserting chemical: sodium, CAS: 7440-23-5, UN: 1428 successfully[0m[0m
+2024-07-29 12:03:44,621 - ServerLogger - INFO - [32m[32mresult message: None[0m[0m
+2024-07-29 12:04:02,821 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-29 12:16:03,165 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-29 12:16:20,618 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-29 12:16:25,447 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-29 12:16:38,693 - ServerLogger - INFO - [32m[32mresult message: None[0m[0m
+2024-07-29 12:25:37,626 - ServerLogger - WARNING - [33m[33m找到複數筆資料: [0m[0m
+2024-07-29 12:25:37,627 - ServerLogger - INFO - [32m[32mSearch result: None[0m[0m
+2024-07-29 12:25:48,857 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-29 12:25:49,651 - ServerLogger - DEBUG - [36m[36mText 'sodium' set successfully in Field: Chemicals::y_gSearchName![0m[0m
+2024-07-29 12:25:49,734 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-29 12:25:50,479 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-29 12:25:50,564 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-29 12:25:51,291 - ServerLogger - DEBUG - [36m[36mText '1428' set successfully in Field: Chemicals::y_gSearchUN![0m[0m
+2024-07-29 12:25:51,292 - ServerLogger - INFO - [32m[32mInserting chemical: sodium, CAS: 7440-23-5, UN: 1428 successfully[0m[0m
+2024-07-29 12:25:56,962 - ServerLogger - INFO - [32m[32m找到一筆準確資料: sodiumCAS # ->7440-23-5UN # -> 1428[0m[0m
+2024-07-29 12:25:56,963 - ServerLogger - INFO - [32m[32mSearch result: 找到一筆準確資料: sodiumCAS # ->7440-23-5UN # -> 1428[0m[0m
+2024-07-29 12:26:12,220 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-29 12:26:12,989 - ServerLogger - DEBUG - [36m[36mText 'sodium' set successfully in Field: Chemicals::y_gSearchName![0m[0m
+2024-07-29 12:26:13,073 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-29 12:26:13,813 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-29 12:26:13,901 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-29 12:26:14,628 - ServerLogger - DEBUG - [36m[36mText '1428' set successfully in Field: Chemicals::y_gSearchUN![0m[0m
+2024-07-29 12:26:14,629 - ServerLogger - INFO - [32m[32mInserting chemical: sodium, CAS: 7440-23-5, UN: 1428 successfully[0m[0m
