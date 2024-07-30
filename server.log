@@ -1,33 +1,123 @@
-2024-07-29 12:02:34,997 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-07-29 12:02:37,624 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
-2024-07-29 12:02:43,678 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-29 12:02:44,182 - ServerLogger - DEBUG - [36m[36mText 'sodium' set successfully in Field: Chemicals::y_gSearchName![0m[0m
-2024-07-29 12:02:44,263 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-29 12:02:44,988 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-07-29 12:02:45,070 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-29 12:02:46,287 - ServerLogger - DEBUG - [36m[36mText '1428' set successfully in Field: Chemicals::y_gSearchUN![0m[0m
-2024-07-29 12:02:46,289 - ServerLogger - INFO - [32m[32mInserting chemical: sodium, CAS: 7440-23-5, UN: 1428 successfully[0m[0m
-2024-07-29 12:03:44,621 - ServerLogger - INFO - [32m[32mresult message: None[0m[0m
-2024-07-29 12:04:02,821 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-07-29 12:16:03,165 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-07-29 12:16:20,618 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-07-29 12:16:25,447 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
-2024-07-29 12:16:38,693 - ServerLogger - INFO - [32m[32mresult message: None[0m[0m
-2024-07-29 12:25:37,626 - ServerLogger - WARNING - [33m[33m找到複數筆資料: [0m[0m
-2024-07-29 12:25:37,627 - ServerLogger - INFO - [32m[32mSearch result: None[0m[0m
-2024-07-29 12:25:48,857 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-29 12:25:49,651 - ServerLogger - DEBUG - [36m[36mText 'sodium' set successfully in Field: Chemicals::y_gSearchName![0m[0m
-2024-07-29 12:25:49,734 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-29 12:25:50,479 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-07-29 12:25:50,564 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-29 12:25:51,291 - ServerLogger - DEBUG - [36m[36mText '1428' set successfully in Field: Chemicals::y_gSearchUN![0m[0m
-2024-07-29 12:25:51,292 - ServerLogger - INFO - [32m[32mInserting chemical: sodium, CAS: 7440-23-5, UN: 1428 successfully[0m[0m
-2024-07-29 12:25:56,962 - ServerLogger - INFO - [32m[32m找到一筆準確資料: sodiumCAS # ->7440-23-5UN # -> 1428[0m[0m
-2024-07-29 12:25:56,963 - ServerLogger - INFO - [32m[32mSearch result: 找到一筆準確資料: sodiumCAS # ->7440-23-5UN # -> 1428[0m[0m
-2024-07-29 12:26:12,220 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-29 12:26:12,989 - ServerLogger - DEBUG - [36m[36mText 'sodium' set successfully in Field: Chemicals::y_gSearchName![0m[0m
-2024-07-29 12:26:13,073 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-29 12:26:13,813 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-07-29 12:26:13,901 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
-2024-07-29 12:26:14,628 - ServerLogger - DEBUG - [36m[36mText '1428' set successfully in Field: Chemicals::y_gSearchUN![0m[0m
-2024-07-29 12:26:14,629 - ServerLogger - INFO - [32m[32mInserting chemical: sodium, CAS: 7440-23-5, UN: 1428 successfully[0m[0m
+2024-07-30 15:32:20,286 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 15:32:22,878 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-30 15:32:39,197 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 15:32:41,903 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-30 15:32:53,684 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 15:32:56,292 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-30 15:33:05,036 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-30 15:33:06,199 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-30 15:33:06,454 - ServerLogger - INFO - [32m[32m找到一筆準確資料:7440-23-5[0m[0m
+2024-07-30 15:33:13,332 - ServerLogger - INFO - [32m[32mSelected item 1 successfully[0m[0m
+2024-07-30 15:33:13,344 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
+2024-07-30 15:33:36,287 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 15:34:15,805 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 15:34:18,412 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-30 15:34:22,598 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-30 15:34:23,074 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-30 15:34:23,260 - ServerLogger - INFO - [32m[32m找到一筆準確資料:7440-23-5[0m[0m
+2024-07-30 15:34:24,739 - ServerLogger - WARNING - [33m[33mNo mixture selected[0m[0m
+2024-07-30 15:34:24,740 - ServerLogger - INFO - [32m[32mSearch result: {'status': 1, 'message': '使用者尚選取化合物，請創建化合物後再選取化學品'}[0m[0m
+2024-07-30 15:35:07,675 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 16:11:18,789 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 16:11:22,244 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-30 16:17:27,191 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 16:17:29,930 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-30 16:18:58,483 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 16:19:07,977 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 16:19:10,768 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-30 16:19:15,150 - ServerLogger - INFO - [32m[32mMixture control set successfully[0m[0m
+2024-07-30 16:19:15,264 - ServerLogger - INFO - [32m[32mMixture added successfully[0m[0m
+2024-07-30 16:21:43,727 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 16:21:46,440 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-30 16:22:08,113 - ServerLogger - INFO - [32m[32mMixture control set successfully[0m[0m
+2024-07-30 16:22:08,234 - ServerLogger - INFO - [32m[32mMixture added successfully[0m[0m
+2024-07-30 16:22:31,836 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-30 16:22:32,644 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-30 16:22:32,880 - ServerLogger - INFO - [32m[32m找到一筆準確資料:7440-23-5[0m[0m
+2024-07-30 16:22:58,522 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-30 16:22:59,000 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-30 16:22:59,235 - ServerLogger - INFO - [32m[32m找到一筆準確資料:7440-23-5[0m[0m
+2024-07-30 16:23:40,280 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-30 16:23:41,133 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-30 16:23:41,391 - ServerLogger - INFO - [32m[32m找到一筆準確資料:7440-23-5[0m[0m
+2024-07-30 16:23:52,640 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-30 16:23:53,143 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-30 16:23:53,367 - ServerLogger - INFO - [32m[32m找到一筆準確資料:7440-23-5[0m[0m
+2024-07-30 16:26:36,537 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 16:44:40,262 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 16:44:44,537 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-30 16:45:00,096 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-30 16:45:00,986 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-30 16:45:01,406 - ServerLogger - INFO - [32m[32m找到一筆準確資料:7440-23-5[0m[0m
+2024-07-30 16:46:16,353 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 16:46:20,063 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-30 16:46:25,344 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-30 16:46:25,828 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-30 16:46:26,027 - ServerLogger - INFO - [32m[32m找到一筆準確資料:7440-23-5[0m[0m
+2024-07-30 16:46:34,551 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-30 16:46:35,385 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-30 16:46:35,631 - ServerLogger - INFO - [32m[32m找到一筆準確資料:7440-23-5[0m[0m
+2024-07-30 16:52:18,813 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 16:52:22,535 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-30 16:52:25,671 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-30 16:52:26,174 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-30 16:52:26,431 - ServerLogger - INFO - [32m[32m找到一筆準確資料:7440-23-5[0m[0m
+2024-07-30 16:52:43,073 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-30 16:52:43,826 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-30 16:52:44,051 - ServerLogger - INFO - [32m[32m找到一筆準確資料:7440-23-5[0m[0m
+2024-07-30 16:53:02,245 - ServerLogger - INFO - [32m[32mresult message: None[0m[0m
+2024-07-30 16:53:18,334 - ServerLogger - INFO - [32m[32mresult message: None[0m[0m
+2024-07-30 16:53:58,886 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 16:54:59,021 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 16:55:01,746 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-30 16:55:07,413 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-30 16:55:07,923 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-30 16:55:08,151 - ServerLogger - INFO - [32m[32m找到一筆準確資料:7440-23-5[0m[0m
+2024-07-30 16:58:44,757 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 16:58:48,479 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-30 16:58:51,556 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-30 16:58:52,719 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-30 16:58:52,965 - ServerLogger - INFO - [32m[32m找到一筆準確資料:7440-23-5[0m[0m
+2024-07-30 17:01:30,316 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 17:09:37,632 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 17:09:44,420 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-30 17:10:35,688 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 17:11:09,523 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 17:11:12,201 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-30 17:11:22,932 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-30 17:11:23,715 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-30 17:11:23,953 - ServerLogger - INFO - [32m[32m找到一筆準確資料:7440-23-5[0m[0m
+2024-07-30 17:12:20,729 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 17:12:24,474 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-30 17:12:25,707 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-30 17:12:26,221 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-30 17:12:26,487 - ServerLogger - INFO - [32m[32m找到一筆準確資料:7440-23-5[0m[0m
+2024-07-30 17:12:31,818 - ServerLogger - INFO - [32m[32mSelected item 1 successfully[0m[0m
+2024-07-30 17:12:31,830 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '找到一筆準確資料:7440-23-5'}[0m[0m
+2024-07-30 17:12:43,479 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-30 17:12:44,238 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-30 17:12:44,454 - ServerLogger - INFO - [32m[32m找到一筆準確資料:7440-23-5[0m[0m
+2024-07-30 17:12:49,862 - ServerLogger - INFO - [32m[32mSelected item 1 successfully[0m[0m
+2024-07-30 17:12:49,862 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '找到一筆準確資料:7440-23-5'}[0m[0m
+2024-07-30 17:14:08,096 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 17:14:15,305 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 17:14:17,986 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-30 17:14:20,126 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-30 17:14:20,610 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-30 17:14:20,837 - ServerLogger - INFO - [32m[32m找到一筆準確資料:7440-23-5[0m[0m
+2024-07-30 17:14:20,838 - ServerLogger - ERROR - [31m[31mMapping ID 1 not found in the id_mapping dictionary[0m[0m
+2024-07-30 17:14:20,838 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '找到一筆準確資料:7440-23-5'}[0m[0m
+2024-07-30 17:15:42,185 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-07-30 17:15:44,936 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-07-30 17:15:48,906 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-30 17:15:49,384 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-30 17:15:49,620 - ServerLogger - INFO - [32m[32m找到一筆準確資料:7440-23-5[0m[0m
+2024-07-30 17:15:49,620 - ServerLogger - DEBUG - [36m[36mView: 393[0m[0m
+2024-07-30 17:15:51,034 - ServerLogger - WARNING - [33m[33mNo mixture selected[0m[0m
+2024-07-30 17:15:51,035 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '找到一筆準確資料:7440-23-5'}[0m[0m
+2024-07-30 17:16:05,582 - ServerLogger - DEBUG - [36m[36mEdit Field field found![0m[0m
+2024-07-30 17:16:06,385 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-07-30 17:16:06,618 - ServerLogger - INFO - [32m[32m找到一筆準確資料:7440-23-5[0m[0m
+2024-07-30 17:16:06,618 - ServerLogger - DEBUG - [36m[36mView: 393[0m[0m
+2024-07-30 17:16:12,749 - ServerLogger - INFO - [32m[32mSelected item 1 successfully[0m[0m
+2024-07-30 17:16:12,749 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '找到一筆準確資料:7440-23-5'}[0m[0m

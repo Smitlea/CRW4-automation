@@ -17,7 +17,7 @@ class ColoredFormatter(logging.Formatter):
         elif record.levelno == logging.WARNING:
             record.msg = f"{Fore.YELLOW}{record.msg}{Style.RESET_ALL}"
         elif record.levelno == logging.ERROR:
-            record.msg = f"{Fore.RED}{record.msg}{Style.RESET_ALL}"
+            record.msg = f"{Fore.LIGHTRED_EX}{record.msg}{Style.RESET_ALL}"
         return super().format(record)
 # 創建控制台日誌處理器
 console_handler = logging.StreamHandler()

@@ -9,13 +9,29 @@ api.add_namespace(api_ns)
 insert_input_payload = api_ns.model(
     "Insert Input",
     {
-        "name": fields.String(required=True, default="sodium"),
-        "cas": fields.String(required=True, default="7440-23-5"),
-        "un": fields.String(required=True, default="1428"),
+        "cas": fields.String(required=True, default="7440-23-5")
     },
 )
 insert_output_payload = api_ns.model(
     "Insert Output",
+    {
+        "status": fields.Integer(
+            required=True, description="0 for success, 1 for failure", default=1
+        ),
+        "result": fields.String(required=True, default="1"),
+        "error": fields.String(required=False, default=""),
+    },
+)
+
+new_mixture_payload = api_ns.model(
+    "New Mixture",
+    {
+        "mixture": fields.String(required=True, default="氰化物")
+    },
+)
+
+new_mixture_output_payload=api_ns.model(
+    "New Mixture Output",
     {
         "status": fields.Integer(
             required=True, description="0 for success, 1 for failure", default=1
@@ -30,6 +46,19 @@ search_output_payload = api_ns.model(
     {
         "status": fields.Integer(
             required=True, description="0 for success, 1 for failure", default=1
+        ),
+        "result": fields.String(required=True, default="1"),
+        "error": fields.String(required=False, default=""),
+    },
+)
+
+
+
+mulitple_output_payload = api_ns.model(
+    "Multiple Output",
+    {
+        "status": fields.Integer(
+            required=True, description="0 for success, 1 for failure", default=2
         ),
         "result": fields.String(required=True, default="1"),
         "error": fields.String(required=False, default=""),
