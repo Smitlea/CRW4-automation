@@ -35,8 +35,8 @@ class add_mixture(Resource):
         data = api.payload
         mixture = data.get("mixture")
         try:
-           result = crw4_automation.add_mixture(mixture)
-           return result
+            result = crw4_automation.add_mixture(mixture)
+            return result
         except Exception as e:
             return {"status": 1, "result": "", "error": str(e)}
         
@@ -72,12 +72,12 @@ class muiltiple_search(Resource):
         try:
             crw4_automation.set_edit_field("Field: Chemicals::y_gSearchCAS", cas )
             crw4_automation.search()
-            result = crw4_automation.check_search_results("Field: Chemicals::y_gSearchResults")
-            if result["status"] != 0:
-                return {"status": result["status"], "result": "", "error": result["message"]}
-            result1 = crw4_automation.select("1")
+            results = crw4_automation.check_search_results("Field: Chemicals::y_gSearchResults")
+            if results["status"] != 0:
+                return {"status": results["status"], "result": "", "error": results["message"]}
+            result = crw4_automation.select("1")
             logger.info(f"Search result: {result}")
-            return {"status": result1["status"], "result": result1["message"]}
+            return {"status": result["status"], "result": result["message"]}
         except Exception as e:
             return {"status": 1, "result": "", "error": str(e)}
         
@@ -89,7 +89,24 @@ class show(Resource):
         result = crw4_automation.show()
         return {"status": 0,"result": result, "error": ""}
     
+@api_ns.route("/test")
+class test(Resource):
+    @handle_request_exception
+    def get(self):
+        button = crw4_automation.main_window.child_window(title="Compatibility\rChart", control_type="Button")
+        button.click()
+        if crw4_automation.main_window.child_window(title="No mixture selected", control_type="Window").exists(timeout=3):
+            logger.warning("No mixture selected")
+            return {"status":1, "message":"使用者尚未選取化合物，請創建化合物後再產生列表"}
+        header = crw4_automation.main_window.child_window(title="Header", control_type="Pane")
+        crw4_automation.click_button("Export Chart Data", click_type="click", window=header) 
+        Export_window = crw4_automation.main_window.child_window(title="Compatibility Chart Data Export", control_type="Window")
+        crw4_automation.click_button("Proceed", click_type="click", window=Export_window) 
+        crw4_automation.click_button("OK", click_type="click")  
+        crw4_automation.click_button("Continue...", click_type="click") 
+        return {"status": 0, "result": "success", "error": ""}
 
+    
 if __name__ == "__main__":
     # Start the CRW4 application only once, prevent multiple instances
     if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
