@@ -1,5 +1,7 @@
 import json
 import os
+import shutil
+import time
 
 
 from pywinauto import Application
@@ -12,6 +14,7 @@ from util import CRW4Automation, handle_request_exception
 with open ("config.json", "r") as f:
     config = json.load(f)
 PATH = config["CRW4_PATH"]
+EXCEL_PATH = config["EXCEL_PATH"]
 
 crw4_automation = None
 
@@ -23,6 +26,8 @@ def start_crw4_application():
         app_instance = Application(backend="uia").connect(path=PATH)
         crw4_automation = CRW4Automation(app_instance)
         logger.info("CRW4 application started successfully")
+        logger.info(f"CRW4 PATH: {PATH}")
+        logger.info(f"EXCEL PATH: {EXCEL_PATH}")
     else:
         logger.info("CRW4 application already running")
 
@@ -61,8 +66,8 @@ class search(Resource):
         except Exception as e:
             return {"status": 1, "result": "", "error": str(e)}
         
-@api_ns.route("/muiltiple_search")
-class muiltiple_search(Resource):
+@api_ns.route("/add_chemical")
+class add_chemical(Resource):
     @handle_request_exception
     @api.expect(insert_input_payload)
     @api.marshal_with(mulitple_output_payload)
@@ -70,17 +75,28 @@ class muiltiple_search(Resource):
         data = api.payload
         cas = data.get("cas")
         try:
-            crw4_automation.set_edit_field("Field: Chemicals::y_gSearchCAS", cas )
-            crw4_automation.search()
-            results = crw4_automation.check_search_results("Field: Chemicals::y_gSearchResults")
-            if results["status"] != 0:
-                return {"status": results["status"], "result": "", "error": results["message"]}
-            result = crw4_automation.select("1")
-            logger.info(f"Search result: {result}")
-            return {"status": result["status"], "result": result["message"]}
+            result = crw4_automation.add_chemical(cas)
+            return result
         except Exception as e:
             return {"status": 1, "result": "", "error": str(e)}
-        
+
+
+### Developing : multiple_search
+@api_ns.route("/multiple_search")
+class muiltiple_search(Resource):
+    @api.expect(insert_input_payload)
+    @api.marshal_with(mulitple_output_payload)
+    @handle_request_exception
+    def post(self):
+        data = api.payload
+        cas = data.get("cas")
+        try:
+            result = crw4_automation.add_chemical(cas)
+            if result["status"] != 0:
+                pass
+            return result
+        except Exception as e:
+            return {"status": 1, "result": "", "error": str(e)}   
 
 @api_ns.route("/show")
 class show(Resource):
@@ -89,35 +105,26 @@ class show(Resource):
         result = crw4_automation.show()
         return {"status": 0,"result": result, "error": ""}
     
-@api_ns.route("/test")
+@api_ns.route("/output_to_csv")
 class test(Resource):
     @handle_request_exception
     def get(self):
-        button = crw4_automation.main_window.child_window(title="Compatibility\rChart", control_type="Button")
-        button.click()
-        if crw4_automation.main_window.child_window(title="No mixture selected", control_type="Window").exists(timeout=3):
-            logger.warning("No mixture selected")
-            return {"status":1, "message":"使用者尚未選取化合物，請創建化合物後再產生列表"}
-        header = crw4_automation.main_window.child_window(title="Header", control_type="Pane")
-        crw4_automation.click_button("Export Chart Data", click_type="click", window=header) 
-        Export_window = crw4_automation.main_window.child_window(title="Compatibility Chart Data Export", control_type="Window")
-        crw4_automation.click_button("Proceed", click_type="click", window=Export_window) 
-        crw4_automation.click_button("OK", click_type="click")  
-        crw4_automation.click_button("Continue...", click_type="click")
-        combo_box = crw4_automation.main_window.child_window(auto_id="IDC_EXPORT_ORDER_MENU", control_type="ComboBox")
-        combo_box.expand()
-        items = combo_box.descendants(control_type="ListItem")
-        for item in items:
-            logger.debug(f"item: {item.window_text()}")
-            if item.window_text() == "   ChartMixInfoLink":
-                item.click_input()
-                break
-        combo_box.collapse()
-        crw4_automation.main_window.child_window(title='::CASNum', control_type="DataItem").click_input()
-        if crw4_automation.main_window.child_window(title="» Move »", control_type="Button").is_enabled:
-            crw4_automation.click_button("» Move »", click_type="click")
-        crw4_automation.click_button("Export", click_type="click")
-        return {"status": 0, "result": "success", "error": ""}
+        try:
+            result = crw4_automation.output_chart_to_csv()
+            time.sleep(3)
+            path = PATH.split("\\")[0] + "\\CRW4\\CRW_Data_Export.xlsx"
+            logger.debug(f"複製文件: {EXCEL_PATH}")
+            if not os.path.exists(path):
+                logger.error(f"路徑:{path} csv創建文件失敗")
+                return {"status": 1, "result": "", "error": "csv創建文件失敗"}
+            if not os.path.exists(EXCEL_PATH) :
+                os.makedirs(EXCEL_PATH) 
+            destination_path  = os.path.join(EXCEL_PATH, "CRW_Data_Export.xlsx")
+            shutil.copy2(PATH, destination_path)
+            logger.info("csv創建文件成功")
+        except Exception as e:
+            return {"status": 1, "result": "", "error": str(e)}
+        return result
 
     
 if __name__ == "__main__":

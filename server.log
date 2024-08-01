@@ -370,3 +370,135 @@
 2024-08-01 14:56:20,595 - ServerLogger - DEBUG - [36m[36mitem:    ChartMixInfoLink[0m[0m
 2024-08-01 14:56:22,063 - ServerLogger - INFO - [32m[32m» Move » button clicked successfully[0m[0m
 2024-08-01 14:56:22,430 - ServerLogger - INFO - [32m[32mExport button clicked successfully[0m[0m
+2024-08-01 16:05:01,733 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 16:05:04,936 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-08-01 16:05:39,264 - ServerLogger - INFO - [32m[32mMixture control set successfully[0m[0m
+2024-08-01 16:05:39,390 - ServerLogger - INFO - [32m[32mMixture added successfully[0m[0m
+2024-08-01 16:05:46,777 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-08-01 16:05:46,876 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
+2024-08-01 16:05:47,037 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7440-23-5[0m[0m
+2024-08-01 16:31:14,715 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 16:31:18,525 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-08-01 16:31:34,818 - ServerLogger - ERROR - [91m[91mAn error occurred: ElementAmbiguousError: There are 3 elements that match the criteria {'title': 'Portal Row View 1', 'control_type': 'DataItem', 'top_level_only': False, 'parent': <uia_element_info.UIAElementInfo - 'CRW4', FMPRO18.0RUNTIME, 1116938>, 'backend': 'uia'}[0m[0m
+2024-08-01 16:31:35,985 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 16:44:20,247 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 16:44:24,666 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-08-01 16:44:44,218 - ServerLogger - ERROR - [91m[91mAn error occurred: ElementAmbiguousError: There are 3 elements that match the criteria {'title': 'Portal View', 'control_type': 'Pane', 'top_level_only': False, 'parent': <uia_element_info.UIAElementInfo - 'CRW4', FMPRO18.0RUNTIME, 9307170>, 'backend': 'uia'}[0m[0m
+2024-08-01 16:45:15,062 - ServerLogger - INFO - [32m[32mresult message: None[0m[0m
+2024-08-01 16:46:43,014 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 16:46:47,403 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-08-01 16:47:11,033 - ServerLogger - WARNING - [33m[33mNo mixture selected[0m[0m
+2024-08-01 16:47:36,703 - ServerLogger - DEBUG - [36m[36mExport Chart Data button clicked successfully[0m[0m
+2024-08-01 16:47:37,187 - ServerLogger - DEBUG - [36m[36mProceed button clicked successfully[0m[0m
+2024-08-01 16:47:37,799 - ServerLogger - DEBUG - [36m[36mOK button clicked successfully[0m[0m
+2024-08-01 16:47:38,366 - ServerLogger - DEBUG - [36m[36mContinue... button clicked successfully[0m[0m
+2024-08-01 16:47:41,022 - ServerLogger - DEBUG - [36m[36mitem: Current Layout (“Compatibility Chart Export”)[0m[0m
+2024-08-01 16:47:41,024 - ServerLogger - DEBUG - [36m[36mitem: Current Table (“Compatibility Chart”)[0m[0m
+2024-08-01 16:47:41,027 - ServerLogger - DEBUG - [36m[36mitem: System.Windows.Controls.Separator[0m[0m
+2024-08-01 16:47:41,030 - ServerLogger - DEBUG - [36m[36mitem: Related Tables[0m[0m
+2024-08-01 16:47:41,032 - ServerLogger - DEBUG - [36m[36mitem:    CBmatch[0m[0m
+2024-08-01 16:47:41,036 - ServerLogger - DEBUG - [36m[36mitem:    ChartInfoLink[0m[0m
+2024-08-01 16:47:41,038 - ServerLogger - DEBUG - [36m[36mitem:    ChartMixInfoLink[0m[0m
+2024-08-01 16:47:43,042 - ServerLogger - DEBUG - [36m[36m» Move » button clicked successfully[0m[0m
+2024-08-01 16:47:43,572 - ServerLogger - DEBUG - [36m[36mExport button clicked successfully[0m[0m
+2024-08-01 16:48:54,148 - ServerLogger - DEBUG - [36m[36mExport Chart Data button clicked successfully[0m[0m
+2024-08-01 16:48:54,636 - ServerLogger - DEBUG - [36m[36mProceed button clicked successfully[0m[0m
+2024-08-01 16:48:55,120 - ServerLogger - DEBUG - [36m[36mOK button clicked successfully[0m[0m
+2024-08-01 16:48:55,617 - ServerLogger - DEBUG - [36m[36mContinue... button clicked successfully[0m[0m
+2024-08-01 16:48:57,925 - ServerLogger - DEBUG - [36m[36mitem: Current Layout (“Compatibility Chart Export”)[0m[0m
+2024-08-01 16:48:57,929 - ServerLogger - DEBUG - [36m[36mitem: Current Table (“Compatibility Chart”)[0m[0m
+2024-08-01 16:48:57,931 - ServerLogger - DEBUG - [36m[36mitem: System.Windows.Controls.Separator[0m[0m
+2024-08-01 16:48:57,935 - ServerLogger - DEBUG - [36m[36mitem: Related Tables[0m[0m
+2024-08-01 16:48:57,937 - ServerLogger - DEBUG - [36m[36mitem:    CBmatch[0m[0m
+2024-08-01 16:48:57,938 - ServerLogger - DEBUG - [36m[36mitem:    ChartInfoLink[0m[0m
+2024-08-01 16:48:57,943 - ServerLogger - DEBUG - [36m[36mitem:    ChartMixInfoLink[0m[0m
+2024-08-01 16:48:59,843 - ServerLogger - DEBUG - [36m[36m» Move » button clicked successfully[0m[0m
+2024-08-01 16:49:00,345 - ServerLogger - DEBUG - [36m[36mExport button clicked successfully[0m[0m
+2024-08-01 17:16:00,145 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 17:16:02,922 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-08-01 17:16:47,590 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
+2024-08-01 17:16:47,694 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
+2024-08-01 17:16:47,830 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7440-23-5[0m[0m
+2024-08-01 17:16:49,770 - ServerLogger - WARNING - [33m[33mNo mixture selected[0m[0m
+2024-08-01 17:16:49,771 - ServerLogger - INFO - [32m[32mSearch result: {'status': 1, 'message': '使用者尚未選取化合物，請創建化合物後再選取化學品'}[0m[0m
+2024-08-01 17:16:56,730 - ServerLogger - DEBUG - [36m[36mCompatibilityChart button clicked successfully[0m[0m
+2024-08-01 17:16:59,984 - ServerLogger - DEBUG - [36m[36mExport Chart Data button clicked successfully[0m[0m
+2024-08-01 17:17:00,363 - ServerLogger - DEBUG - [36m[36mProceed button clicked successfully[0m[0m
+2024-08-01 17:17:00,780 - ServerLogger - DEBUG - [36m[36mOK button clicked successfully[0m[0m
+2024-08-01 17:17:01,242 - ServerLogger - DEBUG - [36m[36mContinue... button clicked successfully[0m[0m
+2024-08-01 17:17:04,480 - ServerLogger - DEBUG - [36m[36m» Move » button clicked successfully[0m[0m
+2024-08-01 17:17:04,840 - ServerLogger - DEBUG - [36m[36mExport button clicked successfully[0m[0m
+2024-08-01 17:17:04,841 - ServerLogger - ERROR - [91m[91mcsv創建文件失敗[0m[0m
+2024-08-01 17:21:28,152 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 17:21:31,170 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-08-01 17:21:36,318 - ServerLogger - DEBUG - [36m[36mCompatibilityChart button clicked successfully[0m[0m
+2024-08-01 17:21:39,532 - ServerLogger - DEBUG - [36m[36mExport Chart Data button clicked successfully[0m[0m
+2024-08-01 17:21:40,052 - ServerLogger - DEBUG - [36m[36mProceed button clicked successfully[0m[0m
+2024-08-01 17:21:40,489 - ServerLogger - DEBUG - [36m[36mOK button clicked successfully[0m[0m
+2024-08-01 17:21:40,926 - ServerLogger - DEBUG - [36m[36mContinue... button clicked successfully[0m[0m
+2024-08-01 17:21:44,185 - ServerLogger - DEBUG - [36m[36m» Move » button clicked successfully[0m[0m
+2024-08-01 17:21:44,549 - ServerLogger - DEBUG - [36m[36mExport button clicked successfully[0m[0m
+2024-08-01 17:22:16,627 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 17:22:19,415 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-08-01 17:22:24,167 - ServerLogger - DEBUG - [36m[36mCompatibilityChart button clicked successfully[0m[0m
+2024-08-01 17:22:27,322 - ServerLogger - DEBUG - [36m[36mExport Chart Data button clicked successfully[0m[0m
+2024-08-01 17:22:27,852 - ServerLogger - DEBUG - [36m[36mProceed button clicked successfully[0m[0m
+2024-08-01 17:22:28,281 - ServerLogger - DEBUG - [36m[36mOK button clicked successfully[0m[0m
+2024-08-01 17:22:28,734 - ServerLogger - DEBUG - [36m[36mContinue... button clicked successfully[0m[0m
+2024-08-01 17:22:32,219 - ServerLogger - DEBUG - [36m[36m» Move » button clicked successfully[0m[0m
+2024-08-01 17:22:32,583 - ServerLogger - DEBUG - [36m[36mExport button clicked successfully[0m[0m
+2024-08-01 17:23:03,557 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 17:27:51,464 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 17:27:54,403 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-08-01 17:28:00,204 - ServerLogger - DEBUG - [36m[36mCompatibilityChart button clicked successfully[0m[0m
+2024-08-01 17:28:03,438 - ServerLogger - DEBUG - [36m[36mExport Chart Data button clicked successfully[0m[0m
+2024-08-01 17:28:03,963 - ServerLogger - DEBUG - [36m[36mProceed button clicked successfully[0m[0m
+2024-08-01 17:28:04,374 - ServerLogger - DEBUG - [36m[36mOK button clicked successfully[0m[0m
+2024-08-01 17:28:04,825 - ServerLogger - DEBUG - [36m[36mContinue... button clicked successfully[0m[0m
+2024-08-01 17:28:08,120 - ServerLogger - DEBUG - [36m[36m» Move » button clicked successfully[0m[0m
+2024-08-01 17:28:08,485 - ServerLogger - DEBUG - [36m[36mExport button clicked successfully[0m[0m
+2024-08-01 17:28:08,486 - ServerLogger - ERROR - [91m[91m路徑:D:\CRW4\CRW_Data_Export.xlsx csv創建文件失敗[0m[0m
+2024-08-01 17:33:12,501 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 17:33:15,308 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-08-01 17:33:26,070 - ServerLogger - DEBUG - [36m[36mCompatibilityChart button clicked successfully[0m[0m
+2024-08-01 17:33:29,265 - ServerLogger - DEBUG - [36m[36mExport Chart Data button clicked successfully[0m[0m
+2024-08-01 17:33:29,798 - ServerLogger - DEBUG - [36m[36mProceed button clicked successfully[0m[0m
+2024-08-01 17:33:30,205 - ServerLogger - DEBUG - [36m[36mOK button clicked successfully[0m[0m
+2024-08-01 17:33:30,634 - ServerLogger - DEBUG - [36m[36mContinue... button clicked successfully[0m[0m
+2024-08-01 17:33:33,865 - ServerLogger - DEBUG - [36m[36m» Move » button clicked successfully[0m[0m
+2024-08-01 17:33:34,197 - ServerLogger - DEBUG - [36m[36mExport button clicked successfully[0m[0m
+2024-08-01 17:33:57,849 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 17:34:51,991 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 17:34:54,821 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-08-01 17:35:00,692 - ServerLogger - DEBUG - [36m[36mCompatibilityChart button clicked successfully[0m[0m
+2024-08-01 17:35:03,915 - ServerLogger - DEBUG - [36m[36mExport Chart Data button clicked successfully[0m[0m
+2024-08-01 17:35:04,399 - ServerLogger - DEBUG - [36m[36mProceed button clicked successfully[0m[0m
+2024-08-01 17:35:04,810 - ServerLogger - DEBUG - [36m[36mOK button clicked successfully[0m[0m
+2024-08-01 17:35:05,244 - ServerLogger - DEBUG - [36m[36mContinue... button clicked successfully[0m[0m
+2024-08-01 17:35:08,555 - ServerLogger - DEBUG - [36m[36m» Move » button clicked successfully[0m[0m
+2024-08-01 17:35:08,921 - ServerLogger - DEBUG - [36m[36mExport button clicked successfully[0m[0m
+2024-08-01 17:48:34,426 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 17:48:37,300 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-08-01 17:48:37,301 - ServerLogger - INFO - [32m[32mCRW4 PATH: D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 17:48:37,301 - ServerLogger - INFO - [32m[32mEXCEL PATH: D:\Systex\CRW4-automation\data[0m[0m
+2024-08-01 17:48:48,032 - ServerLogger - DEBUG - [36m[36mCompatibilityChart button clicked successfully[0m[0m
+2024-08-01 17:48:51,284 - ServerLogger - DEBUG - [36m[36mExport Chart Data button clicked successfully[0m[0m
+2024-08-01 17:48:51,785 - ServerLogger - DEBUG - [36m[36mProceed button clicked successfully[0m[0m
+2024-08-01 17:48:52,184 - ServerLogger - DEBUG - [36m[36mOK button clicked successfully[0m[0m
+2024-08-01 17:48:52,601 - ServerLogger - DEBUG - [36m[36mContinue... button clicked successfully[0m[0m
+2024-08-01 17:48:55,983 - ServerLogger - DEBUG - [36m[36m» Move » button clicked successfully[0m[0m
+2024-08-01 17:48:56,315 - ServerLogger - DEBUG - [36m[36mExport button clicked successfully[0m[0m
+2024-08-01 17:50:49,879 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 17:52:47,952 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 17:52:50,869 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-08-01 17:52:50,871 - ServerLogger - INFO - [32m[32mCRW4 PATH: D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 17:52:50,872 - ServerLogger - INFO - [32m[32mEXCEL PATH: D:\Systex\CRW4-automation\data[0m[0m
+2024-08-01 17:52:56,825 - ServerLogger - DEBUG - [36m[36mCompatibilityChart button clicked successfully[0m[0m
+2024-08-01 17:53:00,090 - ServerLogger - DEBUG - [36m[36mExport Chart Data button clicked successfully[0m[0m
+2024-08-01 17:53:00,602 - ServerLogger - DEBUG - [36m[36mProceed button clicked successfully[0m[0m
+2024-08-01 17:53:01,022 - ServerLogger - DEBUG - [36m[36mOK button clicked successfully[0m[0m
+2024-08-01 17:53:01,492 - ServerLogger - DEBUG - [36m[36mContinue... button clicked successfully[0m[0m
+2024-08-01 17:53:04,849 - ServerLogger - DEBUG - [36m[36m» Move » button clicked successfully[0m[0m
+2024-08-01 17:53:05,226 - ServerLogger - DEBUG - [36m[36mExport button clicked successfully[0m[0m
+2024-08-01 17:53:08,230 - ServerLogger - DEBUG - [36m[36m複製文件: D:\Systex\CRW4-automation\data[0m[0m
+2024-08-01 17:53:08,275 - ServerLogger - INFO - [32m[32mcsv創建文件成功[0m[0m

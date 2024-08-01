@@ -15,7 +15,6 @@ class CRW4Automation:
     def __init__(self, app:Application):
         self.app = app
         self.main_window = None
-        self.id_mapping = {"1": "View: 393", "2": "Portal Row View 2"}
         self.start()
     
     def start(self):
@@ -28,7 +27,6 @@ class CRW4Automation:
               
     def set_edit_field(self, auto_id, chemical_name):
         edit_field = self.main_window.child_window(auto_id=auto_id, control_type="Edit")
-        self.check_if_field_found(edit_field, "Edit Field")
         pyperclip.copy(chemical_name) 
         edit_field.click_input()  
         edit_field.type_keys('^v') 
@@ -38,10 +36,8 @@ class CRW4Automation:
         logger.debug(f"Text '{chemical_name}' set successfully in {auto_id}!")
 
     def select(self, mapping_id):
-        auto_id = self.id_mapping.get(mapping_id)
-        if not auto_id:
-            return logger.error(f"Mapping ID {mapping_id} not found in the id_mapping dictionary")
-        target_item = self.main_window.child_window(auto_id=auto_id, control_type="DataItem")
+        portal_view = self.main_window.child_window(auto_id="Layout Object: 381", control_type="Pane")
+        target_item = portal_view.child_window(title="Portal Row View 1", control_type="DataItem")
         target_item.click_input()
         time.sleep(0.5)
         target_item.click_input()
@@ -54,9 +50,7 @@ class CRW4Automation:
 
 
     def search(self):
-        search_button = self.main_window.child_window(title="Search", control_type="Button")
-        self.check_if_field_found(search_button, "Search Button")
-        search_button.click()
+        self.click_button("Search", click_type="click") 
 
     def click_button(self, title, control_type="Button", click_type="click", window=None):
         try:
@@ -68,7 +62,7 @@ class CRW4Automation:
                 button.click_input()
             else:
                 raise ValueError(f"Unsupported click_type: {click_type}")
-            logger.info(f"{title} button clicked successfully")
+            logger.debug(f"{title} button clicked successfully")
         except Exception as e:
             logger.error(f"Error clicking {title} button: {e}")
             raise
@@ -98,7 +92,6 @@ class CRW4Automation:
         logger.info(message)
         return {"status": 0, "message": message}
 
-    
     def add_mixture(self, mixture_name):
         Mixture_botton = self.main_window.child_window(title="New Mixture", control_type="Button")
         Mixture_botton.click()
@@ -112,6 +105,41 @@ class CRW4Automation:
         logger.info("Mixture added successfully")
         return {"status": 0, "result": f"化合物{mixture_name}創建成功"}
 
+    def add_chemical(self, cas):
+        self.set_edit_field("Field: Chemicals::y_gSearchCAS", cas )
+        self.search()
+        results = self.check_search_results("Field: Chemicals::y_gSearchResults")
+        if results["status"] != 0:
+            return {"status": results["status"], "result": "", "error": results["message"]}
+        result = self.select("1")
+        logger.info(f"Search result: {result}")
+        return {"status": result["status"], "result": result["message"]}
+
+    def output_chart_to_csv(self):
+        self.click_button("Compatibility\rChart", click_type="click")
+        if self.main_window.child_window(title="No mixture selected", control_type="Window").exists(timeout=3):
+            logger.warning("No mixture selected")
+            return {"status":1, "message":"使用者尚未選取化合物，請創建化合物後再產生列表"}
+        header = self.main_window.child_window(title="Header", control_type="Pane")
+        self.click_button("Export Chart Data", click_type="click", window=header) 
+        Export_window = self.main_window.child_window(title="Compatibility Chart Data Export", control_type="Window")
+        self.click_button("Proceed", click_type="click", window=Export_window) 
+        self.click_button("OK", click_type="click")  
+        self.click_button("Continue...", click_type="click")
+        combo_box = self.main_window.child_window(auto_id="IDC_EXPORT_ORDER_MENU", control_type="ComboBox")
+        combo_box.expand()
+        items = combo_box.descendants(control_type="ListItem")
+        for item in items:
+            if item.window_text() == "   ChartMixInfoLink":
+                item.click_input()
+                break
+        combo_box.collapse()
+        self.main_window.child_window(title='::CASNum', control_type="DataItem").click_input()
+        if self.main_window.child_window(title="» Move »", control_type="Button").is_enabled:
+            self.click_button("» Move »", click_type="click")
+        self.click_button("Export", click_type="click")
+        return {"status": 0, "result": "文件創建成功", "error": ""}
+
 
     def list_properties(self, auto_id):
         control = self.main_window.child_window(auto_id=auto_id, control_type="Edit")
@@ -121,13 +149,6 @@ class CRW4Automation:
         # for prop, value in props.items():
         #     print(f"{prop}: {value}")
 
-    @staticmethod
-    def check_if_field_found(edit_field, field_name):
-        if edit_field.exists():
-            logger.debug(f"{field_name} field found!")
-        else:
-            logger.error(f"{field_name} not found. Please check the auto_id and control_type.")
-        return edit_field
     
 
 def handle_request_exception(func):
