@@ -61,7 +61,6 @@ class CRW4Automation:
     def click_button(self, title, control_type="Button", click_type="click", window=None):
         try:
             window = self.main_window if window == None else window
-            logger.debug(f"window:{window}")
             button = window.child_window(title=title, control_type=control_type)
             if click_type == "click":
                 button.click()

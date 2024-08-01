@@ -103,7 +103,20 @@ class test(Resource):
         Export_window = crw4_automation.main_window.child_window(title="Compatibility Chart Data Export", control_type="Window")
         crw4_automation.click_button("Proceed", click_type="click", window=Export_window) 
         crw4_automation.click_button("OK", click_type="click")  
-        crw4_automation.click_button("Continue...", click_type="click") 
+        crw4_automation.click_button("Continue...", click_type="click")
+        combo_box = crw4_automation.main_window.child_window(auto_id="IDC_EXPORT_ORDER_MENU", control_type="ComboBox")
+        combo_box.expand()
+        items = combo_box.descendants(control_type="ListItem")
+        for item in items:
+            logger.debug(f"item: {item.window_text()}")
+            if item.window_text() == "   ChartMixInfoLink":
+                item.click_input()
+                break
+        combo_box.collapse()
+        crw4_automation.main_window.child_window(title='::CASNum', control_type="DataItem").click_input()
+        if crw4_automation.main_window.child_window(title="» Move »", control_type="Button").is_enabled:
+            crw4_automation.click_button("» Move »", click_type="click")
+        crw4_automation.click_button("Export", click_type="click")
         return {"status": 0, "result": "success", "error": ""}
 
     

@@ -121,3 +121,252 @@
 2024-08-01 14:07:49,035 - ServerLogger - DEBUG - [36m[36mwindow:<pywinauto.application.WindowSpecification object at 0x000001F9541A4460>[0m[0m
 2024-08-01 14:07:49,444 - ServerLogger - INFO - [32m[32mContinue... button clicked successfully[0m[0m
 2024-08-01 14:07:59,938 - ServerLogger - INFO - [32m[32mresult message: None[0m[0m
+2024-08-01 14:20:17,745 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 14:20:20,805 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-08-01 14:20:26,417 - ServerLogger - WARNING - [33m[33mNo mixture selected[0m[0m
+2024-08-01 14:20:34,789 - ServerLogger - INFO - [32m[32mExport Chart Data button clicked successfully[0m[0m
+2024-08-01 14:20:35,124 - ServerLogger - INFO - [32m[32mProceed button clicked successfully[0m[0m
+2024-08-01 14:20:35,513 - ServerLogger - INFO - [32m[32mOK button clicked successfully[0m[0m
+2024-08-01 14:20:35,945 - ServerLogger - INFO - [32m[32mContinue... button clicked successfully[0m[0m
+2024-08-01 14:20:37,668 - ServerLogger - DEBUG - [36m[36mitem: Current Layout (“Compatibility Chart Export”)[0m[0m
+2024-08-01 14:20:37,672 - ServerLogger - DEBUG - [36m[36mitem: Current Table (“Compatibility Chart”)[0m[0m
+2024-08-01 14:20:37,674 - ServerLogger - DEBUG - [36m[36mitem: System.Windows.Controls.Separator[0m[0m
+2024-08-01 14:20:37,676 - ServerLogger - DEBUG - [36m[36mitem: Related Tables[0m[0m
+2024-08-01 14:20:37,677 - ServerLogger - DEBUG - [36m[36mitem:    CBmatch[0m[0m
+2024-08-01 14:20:37,679 - ServerLogger - DEBUG - [36m[36mitem:    ChartInfoLink[0m[0m
+2024-08-01 14:20:37,681 - ServerLogger - DEBUG - [36m[36mitem:    ChartMixInfoLink[0m[0m
+2024-08-01 14:20:37,683 - ServerLogger - DEBUG - [36m[36mitem:    ChartReactivityInfo[0m[0m
+2024-08-01 14:20:37,684 - ServerLogger - DEBUG - [36m[36mitem:    ChemAbsorbents[0m[0m
+2024-08-01 14:20:37,686 - ServerLogger - DEBUG - [36m[36mitem:    ChemCheck1[0m[0m
+2024-08-01 14:20:37,688 - ServerLogger - DEBUG - [36m[36mitem:    ChemCheck2[0m[0m
+2024-08-01 14:20:37,690 - ServerLogger - DEBUG - [36m[36mitem:    Chemicals[0m[0m
+2024-08-01 14:20:37,691 - ServerLogger - DEBUG - [36m[36mitem:    ChemInfo[0m[0m
+2024-08-01 14:20:37,693 - ServerLogger - DEBUG - [36m[36mitem:    ChemInfo2[0m[0m
+2024-08-01 14:20:37,695 - ServerLogger - DEBUG - [36m[36mitem:    ChemInfoLink[0m[0m
+2024-08-01 14:20:37,697 - ServerLogger - DEBUG - [36m[36mitem:    ChemLink[0m[0m
+2024-08-01 14:20:37,699 - ServerLogger - DEBUG - [36m[36mitem:    ChemName[0m[0m
+2024-08-01 14:20:37,700 - ServerLogger - DEBUG - [36m[36mitem:    ChemNameLink[0m[0m
+2024-08-01 14:20:37,702 - ServerLogger - DEBUG - [36m[36mitem:    ChemRGLink[0m[0m
+2024-08-01 14:20:37,704 - ServerLogger - DEBUG - [36m[36mitem:    ChemRGs[0m[0m
+2024-08-01 14:20:37,706 - ServerLogger - DEBUG - [36m[36mitem:    CNmatch[0m[0m
+2024-08-01 14:20:37,707 - ServerLogger - DEBUG - [36m[36mitem:    CompChartLink[0m[0m
+2024-08-01 14:20:37,709 - ServerLogger - DEBUG - [36m[36mitem:    CompChartPairInfo[0m[0m
+2024-08-01 14:20:37,711 - ServerLogger - DEBUG - [36m[36mitem:    CRWGases[0m[0m
+2024-08-01 14:20:37,712 - ServerLogger - DEBUG - [36m[36mitem:    CustomChem[0m[0m
+2024-08-01 14:20:37,714 - ServerLogger - DEBUG - [36m[36mitem:    CustomChemCBLink[0m[0m
+2024-08-01 14:20:37,716 - ServerLogger - DEBUG - [36m[36mitem:    CustomChemLink[0m[0m
+2024-08-01 14:20:37,718 - ServerLogger - DEBUG - [36m[36mitem:    CustomChemView[0m[0m
+2024-08-01 14:20:37,719 - ServerLogger - DEBUG - [36m[36mitem:    GasesLink[0m[0m
+2024-08-01 14:20:37,721 - ServerLogger - DEBUG - [36m[36mitem:    HazardsLink[0m[0m
+2024-08-01 14:20:37,723 - ServerLogger - DEBUG - [36m[36mitem:    MasterMixLink[0m[0m
+2024-08-01 14:20:37,725 - ServerLogger - DEBUG - [36m[36mitem:    MixFlag[0m[0m
+2024-08-01 14:20:37,726 - ServerLogger - DEBUG - [36m[36mitem:    MixNameCheck[0m[0m
+2024-08-01 14:20:37,728 - ServerLogger - DEBUG - [36m[36mitem:    MixtureInfo[0m[0m
+2024-08-01 14:20:37,730 - ServerLogger - DEBUG - [36m[36mitem:    MixtureLink[0m[0m
+2024-08-01 14:20:37,732 - ServerLogger - DEBUG - [36m[36mitem:    MixtureRecs[0m[0m
+2024-08-01 14:20:37,733 - ServerLogger - DEBUG - [36m[36mitem:    MixtureRG[0m[0m
+2024-08-01 14:20:37,735 - ServerLogger - DEBUG - [36m[36mitem:    Mixtures[0m[0m
+2024-08-01 14:20:37,738 - ServerLogger - DEBUG - [36m[36mitem:    MixtureUpdate[0m[0m
+2024-08-01 14:20:37,739 - ServerLogger - DEBUG - [36m[36mitem:    NameCheck[0m[0m
+2024-08-01 14:20:37,741 - ServerLogger - DEBUG - [36m[36mitem:    Names[0m[0m
+2024-08-01 14:20:37,743 - ServerLogger - DEBUG - [36m[36mitem:    PairInfo[0m[0m
+2024-08-01 14:20:37,744 - ServerLogger - DEBUG - [36m[36mitem:    PairReactions[0m[0m
+2024-08-01 14:20:37,746 - ServerLogger - DEBUG - [36m[36mitem:    PickAPair1[0m[0m
+2024-08-01 14:20:37,747 - ServerLogger - DEBUG - [36m[36mitem:    PickAPair2[0m[0m
+2024-08-01 14:20:37,749 - ServerLogger - DEBUG - [36m[36mitem:    ReactionHazards[0m[0m
+2024-08-01 14:20:37,751 - ServerLogger - DEBUG - [36m[36mitem:    SearchNames[0m[0m
+2024-08-01 14:20:37,752 - ServerLogger - DEBUG - [36m[36mitem:    SearchResults[0m[0m
+2024-08-01 14:20:37,753 - ServerLogger - DEBUG - [36m[36mitem:    Selection1RGInfo[0m[0m
+2024-08-01 14:20:37,755 - ServerLogger - DEBUG - [36m[36mitem:    SpecialHazards[0m[0m
+2024-08-01 14:20:37,757 - ServerLogger - DEBUG - [36m[36mitem:    SynonymImport[0m[0m
+2024-08-01 14:20:37,759 - ServerLogger - DEBUG - [36m[36mitem:    SynonymLink[0m[0m
+2024-08-01 14:20:37,760 - ServerLogger - DEBUG - [36m[36mitem:    Synonyms[0m[0m
+2024-08-01 14:20:37,761 - ServerLogger - DEBUG - [36m[36mitem:    SynonymsSearch[0m[0m
+2024-08-01 14:20:37,763 - ServerLogger - DEBUG - [36m[36mitem: Unrelated Tables[0m[0m
+2024-08-01 14:20:37,765 - ServerLogger - DEBUG - [36m[36mitem:    AbsorbentDocumentation[0m[0m
+2024-08-01 14:20:37,766 - ServerLogger - DEBUG - [36m[36mitem:    AbsorbentInfo[0m[0m
+2024-08-01 14:20:37,768 - ServerLogger - DEBUG - [36m[36mitem:    AbsorbentRGLookup[0m[0m
+2024-08-01 14:20:37,770 - ServerLogger - DEBUG - [36m[36mitem:    Absorbents[0m[0m
+2024-08-01 14:20:37,772 - ServerLogger - DEBUG - [36m[36mitem:    AbsorbentsLink[0m[0m
+2024-08-01 14:20:37,773 - ServerLogger - DEBUG - [36m[36mitem:    ChemIncompatibility[0m[0m
+2024-08-01 14:20:37,775 - ServerLogger - DEBUG - [36m[36mitem:    Diagrams[0m[0m
+2024-08-01 14:20:37,776 - ServerLogger - DEBUG - [36m[36mitem:    DupeCheck[0m[0m
+2024-08-01 14:20:37,778 - ServerLogger - DEBUG - [36m[36mitem:    Elastomer Compatibility[0m[0m
+2024-08-01 14:20:37,779 - ServerLogger - DEBUG - [36m[36mitem:    ElastomerChemicals[0m[0m
+2024-08-01 14:20:37,781 - ServerLogger - DEBUG - [36m[36mitem:    ElastomerMaterials[0m[0m
+2024-08-01 14:20:37,782 - ServerLogger - DEBUG - [36m[36mitem:    IncompatibleChems[0m[0m
+2024-08-01 14:20:37,784 - ServerLogger - DEBUG - [36m[36mitem:    LibraryLink[0m[0m
+2024-08-01 14:20:37,786 - ServerLogger - DEBUG - [36m[36mitem:    MaterialName[0m[0m
+2024-08-01 14:20:37,787 - ServerLogger - DEBUG - [36m[36mitem:    MOCChemicals[0m[0m
+2024-08-01 14:20:37,789 - ServerLogger - DEBUG - [36m[36mitem:    MOCChemInfo[0m[0m
+2024-08-01 14:20:37,790 - ServerLogger - DEBUG - [36m[36mitem:    MOCChemLink[0m[0m
+2024-08-01 14:20:37,792 - ServerLogger - DEBUG - [36m[36mitem:    MOCFamilies[0m[0m
+2024-08-01 14:20:37,794 - ServerLogger - DEBUG - [36m[36mitem:    MOCHazards[0m[0m
+2024-08-01 14:20:37,795 - ServerLogger - DEBUG - [36m[36mitem:    MOCHazLink[0m[0m
+2024-08-01 14:20:37,797 - ServerLogger - DEBUG - [36m[36mitem:    MOCMaterials[0m[0m
+2024-08-01 14:20:37,798 - ServerLogger - DEBUG - [36m[36mitem:    MOCMatHaz[0m[0m
+2024-08-01 14:20:37,800 - ServerLogger - DEBUG - [36m[36mitem:    MOCMatHazards[0m[0m
+2024-08-01 14:20:37,802 - ServerLogger - DEBUG - [36m[36mitem:    MOCMatLink[0m[0m
+2024-08-01 14:20:37,803 - ServerLogger - DEBUG - [36m[36mitem:    OverrideCheck[0m[0m
+2024-08-01 14:20:37,805 - ServerLogger - DEBUG - [36m[36mitem:    PairCheck[0m[0m
+2024-08-01 14:20:37,807 - ServerLogger - DEBUG - [36m[36mitem:    React_Groups[0m[0m
+2024-08-01 14:20:37,808 - ServerLogger - DEBUG - [36m[36mitem:    react_groups_info[0m[0m
+2024-08-01 14:20:37,810 - ServerLogger - DEBUG - [36m[36mitem:    React_Groups1[0m[0m
+2024-08-01 14:20:37,812 - ServerLogger - DEBUG - [36m[36mitem:    React_Groups2[0m[0m
+2024-08-01 14:20:37,813 - ServerLogger - DEBUG - [36m[36mitem:    Reactivity[0m[0m
+2024-08-01 14:20:37,815 - ServerLogger - DEBUG - [36m[36mitem:    RGNameCheck[0m[0m
+2024-08-01 14:20:37,816 - ServerLogger - DEBUG - [36m[36mitem:    Scratch[0m[0m
+2024-08-01 14:21:23,464 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 14:23:54,194 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 14:23:57,014 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-08-01 14:24:06,572 - ServerLogger - INFO - [32m[32mExport Chart Data button clicked successfully[0m[0m
+2024-08-01 14:24:07,039 - ServerLogger - INFO - [32m[32mProceed button clicked successfully[0m[0m
+2024-08-01 14:24:07,434 - ServerLogger - INFO - [32m[32mOK button clicked successfully[0m[0m
+2024-08-01 14:24:07,823 - ServerLogger - INFO - [32m[32mContinue... button clicked successfully[0m[0m
+2024-08-01 14:24:09,651 - ServerLogger - DEBUG - [36m[36mitem: Current Layout (“Compatibility Chart Export”)[0m[0m
+2024-08-01 14:24:09,653 - ServerLogger - DEBUG - [36m[36mitem: Current Table (“Compatibility Chart”)[0m[0m
+2024-08-01 14:24:09,654 - ServerLogger - DEBUG - [36m[36mitem: System.Windows.Controls.Separator[0m[0m
+2024-08-01 14:24:09,656 - ServerLogger - DEBUG - [36m[36mitem: Related Tables[0m[0m
+2024-08-01 14:24:09,658 - ServerLogger - DEBUG - [36m[36mitem:    CBmatch[0m[0m
+2024-08-01 14:24:09,659 - ServerLogger - DEBUG - [36m[36mitem:    ChartInfoLink[0m[0m
+2024-08-01 14:24:09,661 - ServerLogger - DEBUG - [36m[36mitem:    ChartMixInfoLink[0m[0m
+2024-08-01 14:24:09,663 - ServerLogger - DEBUG - [36m[36mitem:    ChartReactivityInfo[0m[0m
+2024-08-01 14:24:09,664 - ServerLogger - DEBUG - [36m[36mitem:    ChemAbsorbents[0m[0m
+2024-08-01 14:24:09,666 - ServerLogger - DEBUG - [36m[36mitem:    ChemCheck1[0m[0m
+2024-08-01 14:24:09,667 - ServerLogger - DEBUG - [36m[36mitem:    ChemCheck2[0m[0m
+2024-08-01 14:24:09,669 - ServerLogger - DEBUG - [36m[36mitem:    Chemicals[0m[0m
+2024-08-01 14:24:09,671 - ServerLogger - DEBUG - [36m[36mitem:    ChemInfo[0m[0m
+2024-08-01 14:24:09,672 - ServerLogger - DEBUG - [36m[36mitem:    ChemInfo2[0m[0m
+2024-08-01 14:24:09,674 - ServerLogger - DEBUG - [36m[36mitem:    ChemInfoLink[0m[0m
+2024-08-01 14:24:09,675 - ServerLogger - DEBUG - [36m[36mitem:    ChemLink[0m[0m
+2024-08-01 14:24:09,677 - ServerLogger - DEBUG - [36m[36mitem:    ChemName[0m[0m
+2024-08-01 14:24:09,679 - ServerLogger - DEBUG - [36m[36mitem:    ChemNameLink[0m[0m
+2024-08-01 14:24:09,681 - ServerLogger - DEBUG - [36m[36mitem:    ChemRGLink[0m[0m
+2024-08-01 14:24:09,682 - ServerLogger - DEBUG - [36m[36mitem:    ChemRGs[0m[0m
+2024-08-01 14:24:09,684 - ServerLogger - DEBUG - [36m[36mitem:    CNmatch[0m[0m
+2024-08-01 14:24:09,685 - ServerLogger - DEBUG - [36m[36mitem:    CompChartLink[0m[0m
+2024-08-01 14:24:09,687 - ServerLogger - DEBUG - [36m[36mitem:    CompChartPairInfo[0m[0m
+2024-08-01 14:24:09,688 - ServerLogger - DEBUG - [36m[36mitem:    CRWGases[0m[0m
+2024-08-01 14:24:09,690 - ServerLogger - DEBUG - [36m[36mitem:    CustomChem[0m[0m
+2024-08-01 14:24:09,691 - ServerLogger - DEBUG - [36m[36mitem:    CustomChemCBLink[0m[0m
+2024-08-01 14:24:09,693 - ServerLogger - DEBUG - [36m[36mitem:    CustomChemLink[0m[0m
+2024-08-01 14:24:09,695 - ServerLogger - DEBUG - [36m[36mitem:    CustomChemView[0m[0m
+2024-08-01 14:24:09,696 - ServerLogger - DEBUG - [36m[36mitem:    GasesLink[0m[0m
+2024-08-01 14:24:09,698 - ServerLogger - DEBUG - [36m[36mitem:    HazardsLink[0m[0m
+2024-08-01 14:24:09,700 - ServerLogger - DEBUG - [36m[36mitem:    MasterMixLink[0m[0m
+2024-08-01 14:24:09,701 - ServerLogger - DEBUG - [36m[36mitem:    MixFlag[0m[0m
+2024-08-01 14:24:09,703 - ServerLogger - DEBUG - [36m[36mitem:    MixNameCheck[0m[0m
+2024-08-01 14:24:09,704 - ServerLogger - DEBUG - [36m[36mitem:    MixtureInfo[0m[0m
+2024-08-01 14:24:09,706 - ServerLogger - DEBUG - [36m[36mitem:    MixtureLink[0m[0m
+2024-08-01 14:24:09,708 - ServerLogger - DEBUG - [36m[36mitem:    MixtureRecs[0m[0m
+2024-08-01 14:24:09,709 - ServerLogger - DEBUG - [36m[36mitem:    MixtureRG[0m[0m
+2024-08-01 14:24:09,711 - ServerLogger - DEBUG - [36m[36mitem:    Mixtures[0m[0m
+2024-08-01 14:24:09,713 - ServerLogger - DEBUG - [36m[36mitem:    MixtureUpdate[0m[0m
+2024-08-01 14:24:09,714 - ServerLogger - DEBUG - [36m[36mitem:    NameCheck[0m[0m
+2024-08-01 14:24:09,716 - ServerLogger - DEBUG - [36m[36mitem:    Names[0m[0m
+2024-08-01 14:24:09,717 - ServerLogger - DEBUG - [36m[36mitem:    PairInfo[0m[0m
+2024-08-01 14:24:09,719 - ServerLogger - DEBUG - [36m[36mitem:    PairReactions[0m[0m
+2024-08-01 14:24:09,721 - ServerLogger - DEBUG - [36m[36mitem:    PickAPair1[0m[0m
+2024-08-01 14:24:09,722 - ServerLogger - DEBUG - [36m[36mitem:    PickAPair2[0m[0m
+2024-08-01 14:24:09,723 - ServerLogger - DEBUG - [36m[36mitem:    ReactionHazards[0m[0m
+2024-08-01 14:24:09,725 - ServerLogger - DEBUG - [36m[36mitem:    SearchNames[0m[0m
+2024-08-01 14:24:09,727 - ServerLogger - DEBUG - [36m[36mitem:    SearchResults[0m[0m
+2024-08-01 14:24:09,729 - ServerLogger - DEBUG - [36m[36mitem:    Selection1RGInfo[0m[0m
+2024-08-01 14:24:09,730 - ServerLogger - DEBUG - [36m[36mitem:    SpecialHazards[0m[0m
+2024-08-01 14:24:09,732 - ServerLogger - DEBUG - [36m[36mitem:    SynonymImport[0m[0m
+2024-08-01 14:24:09,733 - ServerLogger - DEBUG - [36m[36mitem:    SynonymLink[0m[0m
+2024-08-01 14:24:09,735 - ServerLogger - DEBUG - [36m[36mitem:    Synonyms[0m[0m
+2024-08-01 14:24:09,736 - ServerLogger - DEBUG - [36m[36mitem:    SynonymsSearch[0m[0m
+2024-08-01 14:24:09,738 - ServerLogger - DEBUG - [36m[36mitem: Unrelated Tables[0m[0m
+2024-08-01 14:24:09,740 - ServerLogger - DEBUG - [36m[36mitem:    AbsorbentDocumentation[0m[0m
+2024-08-01 14:24:09,742 - ServerLogger - DEBUG - [36m[36mitem:    AbsorbentInfo[0m[0m
+2024-08-01 14:24:09,743 - ServerLogger - DEBUG - [36m[36mitem:    AbsorbentRGLookup[0m[0m
+2024-08-01 14:24:09,745 - ServerLogger - DEBUG - [36m[36mitem:    Absorbents[0m[0m
+2024-08-01 14:24:09,747 - ServerLogger - DEBUG - [36m[36mitem:    AbsorbentsLink[0m[0m
+2024-08-01 14:24:09,749 - ServerLogger - DEBUG - [36m[36mitem:    ChemIncompatibility[0m[0m
+2024-08-01 14:24:09,750 - ServerLogger - DEBUG - [36m[36mitem:    Diagrams[0m[0m
+2024-08-01 14:24:09,751 - ServerLogger - DEBUG - [36m[36mitem:    DupeCheck[0m[0m
+2024-08-01 14:24:09,753 - ServerLogger - DEBUG - [36m[36mitem:    Elastomer Compatibility[0m[0m
+2024-08-01 14:24:09,755 - ServerLogger - DEBUG - [36m[36mitem:    ElastomerChemicals[0m[0m
+2024-08-01 14:24:09,757 - ServerLogger - DEBUG - [36m[36mitem:    ElastomerMaterials[0m[0m
+2024-08-01 14:24:09,758 - ServerLogger - DEBUG - [36m[36mitem:    IncompatibleChems[0m[0m
+2024-08-01 14:24:09,760 - ServerLogger - DEBUG - [36m[36mitem:    LibraryLink[0m[0m
+2024-08-01 14:24:09,761 - ServerLogger - DEBUG - [36m[36mitem:    MaterialName[0m[0m
+2024-08-01 14:24:09,763 - ServerLogger - DEBUG - [36m[36mitem:    MOCChemicals[0m[0m
+2024-08-01 14:24:09,765 - ServerLogger - DEBUG - [36m[36mitem:    MOCChemInfo[0m[0m
+2024-08-01 14:24:09,766 - ServerLogger - DEBUG - [36m[36mitem:    MOCChemLink[0m[0m
+2024-08-01 14:24:09,768 - ServerLogger - DEBUG - [36m[36mitem:    MOCFamilies[0m[0m
+2024-08-01 14:24:09,770 - ServerLogger - DEBUG - [36m[36mitem:    MOCHazards[0m[0m
+2024-08-01 14:24:09,772 - ServerLogger - DEBUG - [36m[36mitem:    MOCHazLink[0m[0m
+2024-08-01 14:24:09,773 - ServerLogger - DEBUG - [36m[36mitem:    MOCMaterials[0m[0m
+2024-08-01 14:24:09,775 - ServerLogger - DEBUG - [36m[36mitem:    MOCMatHaz[0m[0m
+2024-08-01 14:24:09,777 - ServerLogger - DEBUG - [36m[36mitem:    MOCMatHazards[0m[0m
+2024-08-01 14:24:09,778 - ServerLogger - DEBUG - [36m[36mitem:    MOCMatLink[0m[0m
+2024-08-01 14:24:09,780 - ServerLogger - DEBUG - [36m[36mitem:    OverrideCheck[0m[0m
+2024-08-01 14:24:09,781 - ServerLogger - DEBUG - [36m[36mitem:    PairCheck[0m[0m
+2024-08-01 14:24:09,783 - ServerLogger - DEBUG - [36m[36mitem:    React_Groups[0m[0m
+2024-08-01 14:24:09,784 - ServerLogger - DEBUG - [36m[36mitem:    react_groups_info[0m[0m
+2024-08-01 14:24:09,788 - ServerLogger - DEBUG - [36m[36mitem:    React_Groups1[0m[0m
+2024-08-01 14:24:09,790 - ServerLogger - DEBUG - [36m[36mitem:    React_Groups2[0m[0m
+2024-08-01 14:24:09,792 - ServerLogger - DEBUG - [36m[36mitem:    Reactivity[0m[0m
+2024-08-01 14:24:09,793 - ServerLogger - DEBUG - [36m[36mitem:    RGNameCheck[0m[0m
+2024-08-01 14:24:09,795 - ServerLogger - DEBUG - [36m[36mitem:    Scratch[0m[0m
+2024-08-01 14:26:48,340 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 14:26:51,188 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-08-01 14:27:00,960 - ServerLogger - INFO - [32m[32mExport Chart Data button clicked successfully[0m[0m
+2024-08-01 14:27:01,435 - ServerLogger - INFO - [32m[32mProceed button clicked successfully[0m[0m
+2024-08-01 14:27:01,845 - ServerLogger - INFO - [32m[32mOK button clicked successfully[0m[0m
+2024-08-01 14:27:02,280 - ServerLogger - INFO - [32m[32mContinue... button clicked successfully[0m[0m
+2024-08-01 14:27:04,054 - ServerLogger - DEBUG - [36m[36mitem: Current Layout (“Compatibility Chart Export”)[0m[0m
+2024-08-01 14:27:04,056 - ServerLogger - DEBUG - [36m[36mitem: Current Table (“Compatibility Chart”)[0m[0m
+2024-08-01 14:27:04,058 - ServerLogger - DEBUG - [36m[36mitem: System.Windows.Controls.Separator[0m[0m
+2024-08-01 14:27:04,061 - ServerLogger - DEBUG - [36m[36mitem: Related Tables[0m[0m
+2024-08-01 14:27:04,063 - ServerLogger - DEBUG - [36m[36mitem:    CBmatch[0m[0m
+2024-08-01 14:27:04,065 - ServerLogger - DEBUG - [36m[36mitem:    ChartInfoLink[0m[0m
+2024-08-01 14:27:04,068 - ServerLogger - DEBUG - [36m[36mitem:    ChartMixInfoLink[0m[0m
+2024-08-01 14:27:44,347 - ServerLogger - INFO - [32m[32mresult message: None[0m[0m
+2024-08-01 14:27:49,887 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 14:50:40,879 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 14:50:43,742 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-08-01 14:50:54,598 - ServerLogger - INFO - [32m[32mExport Chart Data button clicked successfully[0m[0m
+2024-08-01 14:50:55,089 - ServerLogger - INFO - [32m[32mProceed button clicked successfully[0m[0m
+2024-08-01 14:50:55,501 - ServerLogger - INFO - [32m[32mOK button clicked successfully[0m[0m
+2024-08-01 14:50:55,958 - ServerLogger - INFO - [32m[32mContinue... button clicked successfully[0m[0m
+2024-08-01 14:50:57,767 - ServerLogger - DEBUG - [36m[36mitem: Current Layout (“Compatibility Chart Export”)[0m[0m
+2024-08-01 14:50:57,770 - ServerLogger - DEBUG - [36m[36mitem: Current Table (“Compatibility Chart”)[0m[0m
+2024-08-01 14:50:57,771 - ServerLogger - DEBUG - [36m[36mitem: System.Windows.Controls.Separator[0m[0m
+2024-08-01 14:50:57,773 - ServerLogger - DEBUG - [36m[36mitem: Related Tables[0m[0m
+2024-08-01 14:50:57,775 - ServerLogger - DEBUG - [36m[36mitem:    CBmatch[0m[0m
+2024-08-01 14:50:57,777 - ServerLogger - DEBUG - [36m[36mitem:    ChartInfoLink[0m[0m
+2024-08-01 14:50:57,779 - ServerLogger - DEBUG - [36m[36mitem:    ChartMixInfoLink[0m[0m
+2024-08-01 14:51:03,877 - ServerLogger - ERROR - [91m[91mAn error occurred: ElementNotFoundError: {'title': 'Move', 'control_type': 'Button', 'top_level_only': False, 'parent': <uia_element_info.UIAElementInfo - 'CRW4', FMPRO18.0RUNTIME, 3934350>, 'backend': 'uia'}[0m[0m
+2024-08-01 14:51:57,884 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 14:55:34,492 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
+2024-08-01 14:55:37,439 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
+2024-08-01 14:55:45,264 - ServerLogger - INFO - [32m[32mExport Chart Data button clicked successfully[0m[0m
+2024-08-01 14:55:45,785 - ServerLogger - INFO - [32m[32mProceed button clicked successfully[0m[0m
+2024-08-01 14:55:46,195 - ServerLogger - INFO - [32m[32mOK button clicked successfully[0m[0m
+2024-08-01 14:55:46,614 - ServerLogger - INFO - [32m[32mContinue... button clicked successfully[0m[0m
+2024-08-01 14:55:48,470 - ServerLogger - DEBUG - [36m[36mitem: Current Layout (“Compatibility Chart Export”)[0m[0m
+2024-08-01 14:55:48,473 - ServerLogger - DEBUG - [36m[36mitem: Current Table (“Compatibility Chart”)[0m[0m
+2024-08-01 14:55:48,475 - ServerLogger - DEBUG - [36m[36mitem: System.Windows.Controls.Separator[0m[0m
+2024-08-01 14:55:48,477 - ServerLogger - DEBUG - [36m[36mitem: Related Tables[0m[0m
+2024-08-01 14:55:48,478 - ServerLogger - DEBUG - [36m[36mitem:    CBmatch[0m[0m
+2024-08-01 14:55:48,480 - ServerLogger - DEBUG - [36m[36mitem:    ChartInfoLink[0m[0m
+2024-08-01 14:55:48,482 - ServerLogger - DEBUG - [36m[36mitem:    ChartMixInfoLink[0m[0m
+2024-08-01 14:55:49,891 - ServerLogger - INFO - [32m[32m» Move » button clicked successfully[0m[0m
+2024-08-01 14:55:50,250 - ServerLogger - INFO - [32m[32mExport button clicked successfully[0m[0m
+2024-08-01 14:56:11,577 - ServerLogger - ERROR - [91m[91mAn error occurred: ElementNotFoundError: {'title': 'Compatibility\rChart', 'control_type': 'Button', 'top_level_only': False, 'parent': <uia_element_info.UIAElementInfo - 'CRW4', FMPRO18.0RUNTIME, 2426534>, 'backend': 'uia'}[0m[0m
+2024-08-01 14:56:17,722 - ServerLogger - INFO - [32m[32mExport Chart Data button clicked successfully[0m[0m
+2024-08-01 14:56:18,074 - ServerLogger - INFO - [32m[32mProceed button clicked successfully[0m[0m
+2024-08-01 14:56:18,464 - ServerLogger - INFO - [32m[32mOK button clicked successfully[0m[0m
+2024-08-01 14:56:18,856 - ServerLogger - INFO - [32m[32mContinue... button clicked successfully[0m[0m
+2024-08-01 14:56:20,584 - ServerLogger - DEBUG - [36m[36mitem: Current Layout (“Compatibility Chart Export”)[0m[0m
+2024-08-01 14:56:20,586 - ServerLogger - DEBUG - [36m[36mitem: Current Table (“Compatibility Chart”)[0m[0m
+2024-08-01 14:56:20,588 - ServerLogger - DEBUG - [36m[36mitem: System.Windows.Controls.Separator[0m[0m
+2024-08-01 14:56:20,590 - ServerLogger - DEBUG - [36m[36mitem: Related Tables[0m[0m
+2024-08-01 14:56:20,592 - ServerLogger - DEBUG - [36m[36mitem:    CBmatch[0m[0m
+2024-08-01 14:56:20,593 - ServerLogger - DEBUG - [36m[36mitem:    ChartInfoLink[0m[0m
+2024-08-01 14:56:20,595 - ServerLogger - DEBUG - [36m[36mitem:    ChartMixInfoLink[0m[0m
+2024-08-01 14:56:22,063 - ServerLogger - INFO - [32m[32m» Move » button clicked successfully[0m[0m
+2024-08-01 14:56:22,430 - ServerLogger - INFO - [32m[32mExport button clicked successfully[0m[0m
