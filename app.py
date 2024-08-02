@@ -8,13 +8,23 @@ from pywinauto import Application
 from flask_restx import Resource
 
 from logger import logger
-from models import api_ns, api, app, insert_input_payload, insert_output_payload, search_output_payload, mulitple_output_payload, new_mixture_payload, new_mixture_output_payload
+from model import DatabaseManager, TestTable
+from models import (
+    api_ns, api, app, 
+    cas_list_payload,
+    add_chemical_input_payload, 
+    general_output_payload,
+    new_mixture_payload
+)
 from util import CRW4Automation, handle_request_exception
 
 with open ("config.json", "r") as f:
     config = json.load(f)
 PATH = config["CRW4_PATH"]
 EXCEL_PATH = config["EXCEL_PATH"]
+
+
+db_manager = DatabaseManager()
 
 crw4_automation = None
 
@@ -35,7 +45,7 @@ def start_crw4_application():
 class add_mixture(Resource):
     @handle_request_exception
     @api.expect(new_mixture_payload)
-    @api.marshal_with(new_mixture_output_payload)
+    @api.marshal_with(general_output_payload)
     def post(self):
         data = api.payload
         mixture = data.get("mixture")
@@ -49,14 +59,34 @@ class add_mixture(Resource):
 class select(Resource):
     @handle_request_exception
     def get(self):
-        result = crw4_automation.select("1")
+        result = crw4_automation.select()
         return {"status": 0, "result": result, "error": ""}
 
+@api_ns.route("/insert")
+class insert(Resource):
+    @handle_request_exception
+    @api.expect(cas_list_payload)
+    @api.marshal_with(general_output_payload)
+    def post(self):
+        data = api.payload
+        cas_list = data.get("cas")
+        try:
+            with DatabaseManager().Session() as session:
+                session.query(TestTable).delete()
+                for cas in cas_list:
+                    if not session.query(TestTable).filter_by(cas=cas).first():
+                        new_cas = TestTable(cas=cas)
+                        result = session.add(new_cas)
+                        logger.debug(f"CAS number {cas} result: {result}")
+                session.commit()
+            return {"status": 0, "result": "CAS numbers inserted successfully"}
+        except Exception as e:
+            return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
 
 @api_ns.route("/search")
 class search(Resource):
     @handle_request_exception
-    @api.marshal_with(search_output_payload)
+    @api.marshal_with(general_output_payload)
     def get(self):
         try:
             crw4_automation.search()
@@ -69,8 +99,8 @@ class search(Resource):
 @api_ns.route("/add_chemical")
 class add_chemical(Resource):
     @handle_request_exception
-    @api.expect(insert_input_payload)
-    @api.marshal_with(mulitple_output_payload)
+    @api.expect(add_chemical_input_payload)
+    @api.marshal_with(general_output_payload)
     def post(self):
         data = api.payload
         cas = data.get("cas")
@@ -84,19 +114,22 @@ class add_chemical(Resource):
 ### Developing : multiple_search
 @api_ns.route("/multiple_search")
 class muiltiple_search(Resource):
-    @api.expect(insert_input_payload)
-    @api.marshal_with(mulitple_output_payload)
+    @api.marshal_with(general_output_payload)
     @handle_request_exception
-    def post(self):
-        data = api.payload
-        cas = data.get("cas")
-        try:
-            result = crw4_automation.add_chemical(cas)
-            if result["status"] != 0:
-                pass
-            return result
-        except Exception as e:
-            return {"status": 1, "result": "", "error": str(e)}   
+    def get(self):
+        with DatabaseManager().Session() as session:
+            chemicals = session.query(TestTable).all()
+            results = []
+            for chemical in chemicals:
+                cas = chemical.cas
+                logger.debug(f"Searching for CAS number: {cas}")
+                try:
+                    result = crw4_automation.add_chemical(cas)
+                    results.append({"cas": cas, "status": 0, "result": result['result']})
+                except Exception as e:
+                    results.append({"cas": cas, "status": 1, "error": str(e)})
+        return {"cas":cas, "result": results}
+
 
 @api_ns.route("/show")
 class show(Resource):

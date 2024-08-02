@@ -42,3 +42,4 @@ file_handler.setFormatter(formatter)
 # 將處理器添加到日誌記錄器
 logger.addHandler(console_handler)
 logger.addHandler(file_handler)
+

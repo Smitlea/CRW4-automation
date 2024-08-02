@@ -35,8 +35,8 @@ class CRW4Automation:
             logger.error(f"Failed to set text in {auto_id}. Current text: '{current_text}'")
         logger.debug(f"Text '{chemical_name}' set successfully in {auto_id}!")
 
-    def select(self, mapping_id):
-        portal_view = self.main_window.child_window(auto_id="Layout Object: 381", control_type="Pane")
+    def select(self):
+        portal_view = self.main_window.child_window(title="Portal View", control_type="Pane",found_index=0)
         target_item = portal_view.child_window(title="Portal Row View 1", control_type="DataItem")
         target_item.click_input()
         time.sleep(0.5)
@@ -45,7 +45,7 @@ class CRW4Automation:
             logger.warning("No mixture selected")
             return {"status":1, "message":"使用者尚未選取化合物，請創建化合物後再選取化學品"}
         else:
-            logger.info(f"Selected item {mapping_id} successfully")
+            logger.info(f"Selected item successfully")
             return {"status":0, "message":"選取化學品成功"}
 
 
@@ -111,7 +111,7 @@ class CRW4Automation:
         results = self.check_search_results("Field: Chemicals::y_gSearchResults")
         if results["status"] != 0:
             return {"status": results["status"], "result": "", "error": results["message"]}
-        result = self.select("1")
+        result = self.select()
         logger.info(f"Search result: {result}")
         return {"status": result["status"], "result": result["message"]}
 
