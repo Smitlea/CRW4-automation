@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: CRW4-automation
+    restart: always
+    environment:
+      - FLASK_ENV=development
+      - DATABASE_URL=mysql+pymysql://smitlea:2838@db:3306/Systex
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:latest
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 2838
+      MYSQL_DATABASE: Systex
+      MYSQL_USER: smitlea
+      MYSQL_PASSWORD: 2838
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

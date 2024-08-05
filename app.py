@@ -53,7 +53,7 @@ class add_mixture(Resource):
             result = crw4_automation.add_mixture(mixture)
             return result
         except Exception as e:
-            return {"status": 1, "result": "", "error": str(e)}
+            return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
         
 @api_ns.route("/insert")
 class insert(Resource):
@@ -76,18 +76,19 @@ class insert(Resource):
         except Exception as e:
             return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
 
-@api_ns.route("/search")
-class search(Resource):
-    @handle_request_exception
-    @api.marshal_with(general_output_payload)
-    def get(self):
-        try:
-            crw4_automation.search()
-            result = crw4_automation.check_search_results("Field: Chemicals::y_gSearchResults")
-            logger.info(f"Search result: {result}")
-            return {"status": 0, "result": result, "error": ""}
-        except Exception as e:
-            return {"status": 1, "result": "", "error": str(e)}
+# @api_ns.route("/search")
+# class search(Resource):
+#     @handle_request_exception
+#     @api.marshal_with(general_output_payload)
+#     def get(self):
+#         try:
+#             crw4_automation.search()
+#             result = crw4_automation.check_search_results("Field: Chemicals::y_gSearchResults")
+#             logger.info(f"Search result: {result}")
+#             return {"status": 0, "result": result, "error": ""}
+#         except Exception as e:
+#             return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
+
         
 @api_ns.route("/add_chemical")
 class add_chemical(Resource):
@@ -101,14 +102,15 @@ class add_chemical(Resource):
             result = crw4_automation.add_chemical(cas)
             return result
         except Exception as e:
-            return {"status": 1, "result": "", "error": str(e)}
+            return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
+
 
 @api_ns.route("/multiple_search")
 class muiltiple_search(Resource):
     @api.marshal_with(general_output_payload)
     @handle_request_exception
     def get(self):
-        crw4_automation.checked_mixture = False
+        crw4_automation.checked_mixture = False #每次查詢前先檢查是否有選取化合物
         with DatabaseManager().Session() as session:
             chemicals = session.query(TestTable).all()
             if not chemicals:
@@ -120,8 +122,7 @@ class muiltiple_search(Resource):
                 try:
                     result = crw4_automation.add_chemical(cas)
                     if result["status"] == 3:
-                        results.append({"status": 1, "result":"使用者尚未選取化合物"})
-                        break
+                        return {"status": 1, "result":"使用者尚未選取化合物"}
                     results.append({"cas": cas, "status": result["status"], "result": result['result']})
                 except Exception as e:
                     results.append({"cas": cas, "status": 1, "error": str(e)})

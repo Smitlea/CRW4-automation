@@ -104,7 +104,6 @@ class CRW4Automation:
         self.click_button("Search", click_type="click") 
         result = self.check_search_results("Field: Chemicals::y_gSearchResults")
 
-        logger.debug(f"debug:{result}")
         if result["status"] == 0:
             result = self.select()
             logger.info(f"Search result: {result}")
@@ -143,8 +142,6 @@ class CRW4Automation:
         # props = control.get_properties()
         # for prop, value in props.items():
         #     print(f"{prop}: {value}")
-
-    
 
 def handle_request_exception(func):
     @wraps(func)
