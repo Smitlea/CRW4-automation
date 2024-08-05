@@ -9,7 +9,7 @@ from flask_restx import Resource
 
 from logger import logger
 from model import DatabaseManager, TestTable
-from models import (
+from payload import (
     api_ns, api, app, 
     cas_list_payload,
     add_chemical_input_payload, 
@@ -55,13 +55,6 @@ class add_mixture(Resource):
         except Exception as e:
             return {"status": 1, "result": "", "error": str(e)}
         
-@api_ns.route("/select")
-class select(Resource):
-    @handle_request_exception
-    def get(self):
-        result = crw4_automation.select()
-        return {"status": 0, "result": result, "error": ""}
-
 @api_ns.route("/insert")
 class insert(Resource):
     @handle_request_exception
@@ -69,7 +62,7 @@ class insert(Resource):
     @api.marshal_with(general_output_payload)
     def post(self):
         data = api.payload
-        cas_list = data.get("cas")
+        cas_list = data.get("cas_list")
         try:
             with DatabaseManager().Session() as session:
                 session.query(TestTable).delete()
@@ -110,22 +103,26 @@ class add_chemical(Resource):
         except Exception as e:
             return {"status": 1, "result": "", "error": str(e)}
 
-
-### Developing : multiple_search
 @api_ns.route("/multiple_search")
 class muiltiple_search(Resource):
     @api.marshal_with(general_output_payload)
     @handle_request_exception
     def get(self):
+        crw4_automation.checked_mixture = False
         with DatabaseManager().Session() as session:
             chemicals = session.query(TestTable).all()
+            if not chemicals:
+                return {"status": 1, "result": "No CAS numbers found in the database", "error": ""}
             results = []
             for chemical in chemicals:
                 cas = chemical.cas
                 logger.debug(f"Searching for CAS number: {cas}")
                 try:
                     result = crw4_automation.add_chemical(cas)
-                    results.append({"cas": cas, "status": 0, "result": result['result']})
+                    if result["status"] == 3:
+                        results.append({"status": 1, "result":"使用者尚未選取化合物"})
+                        break
+                    results.append({"cas": cas, "status": result["status"], "result": result['result']})
                 except Exception as e:
                     results.append({"cas": cas, "status": 1, "error": str(e)})
         return {"cas":cas, "result": results}
@@ -144,16 +141,23 @@ class test(Resource):
     def get(self):
         try:
             result = crw4_automation.output_chart_to_csv()
-            time.sleep(3)
+            time.sleep(5)
             path = PATH.split("\\")[0] + "\\CRW4\\CRW_Data_Export.xlsx"
             logger.debug(f"複製文件: {EXCEL_PATH}")
+
             if not os.path.exists(path):
                 logger.error(f"路徑:{path} csv創建文件失敗")
                 return {"status": 1, "result": "", "error": "csv創建文件失敗"}
+            
             if not os.path.exists(EXCEL_PATH) :
                 os.makedirs(EXCEL_PATH) 
+            
             destination_path  = os.path.join(EXCEL_PATH, "CRW_Data_Export.xlsx")
-            shutil.copy2(PATH, destination_path)
+            if not os.path.isfile(path):
+                return {"status": 1, "result": "", "error": "文件不存在或不可讀"}
+            with open(path, 'rb') as src_file:
+                with open(destination_path, 'wb') as dst_file:
+                    shutil.copyfileobj(src_file, dst_file)
             logger.info("csv創建文件成功")
         except Exception as e:
             return {"status": 1, "result": "", "error": str(e)}

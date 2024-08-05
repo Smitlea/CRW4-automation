@@ -15,6 +15,7 @@ class CRW4Automation:
     def __init__(self, app:Application):
         self.app = app
         self.main_window = None
+        self.checked_mixture = False
         self.start()
     
     def start(self):
@@ -23,8 +24,7 @@ class CRW4Automation:
             self.main_window.wait('visible', timeout=20)
             ok_button = self.main_window.child_window(title="OK", control_type="Button")
             ok_button.click() if ok_button.exists() else None
-            
-              
+                       
     def set_edit_field(self, auto_id, chemical_name):
         edit_field = self.main_window.child_window(auto_id=auto_id, control_type="Edit")
         pyperclip.copy(chemical_name) 
@@ -32,25 +32,23 @@ class CRW4Automation:
         edit_field.type_keys('^v') 
         current_text = edit_field.get_value()
         if current_text != chemical_name:
-            logger.error(f"Failed to set text in {auto_id}. Current text: '{current_text}'")
+            logger.error(f"Word copy and past Failed to set text in {auto_id}. Current text: '{current_text}'")
         logger.debug(f"Text '{chemical_name}' set successfully in {auto_id}!")
 
     def select(self):
         portal_view = self.main_window.child_window(title="Portal View", control_type="Pane",found_index=0)
         target_item = portal_view.child_window(title="Portal Row View 1", control_type="DataItem")
         target_item.click_input()
-        time.sleep(0.5)
         target_item.click_input()
-        if self.main_window.child_window(title="No mixture selected", control_type="Window").exists(timeout=3):
-            logger.warning("No mixture selected")
-            return {"status":1, "message":"使用者尚未選取化合物，請創建化合物後再選取化學品"}
-        else:
-            logger.info(f"Selected item successfully")
-            return {"status":0, "message":"選取化學品成功"}
-
-
-    def search(self):
-        self.click_button("Search", click_type="click") 
+        if not self.checked_mixture:
+            logger.debug(f"檢查是否選取化學品")
+            if self.main_window.child_window(title="No mixture selected", control_type="Window").exists(timeout=1):
+                logger.warning("No mixture selected")
+                return {"status":3, "result":"使用者尚未選取化合物，請創建化合物後再選取化學品"}
+            else:
+                self.checked_mixture = True
+        logger.info(f"Selected item successfully")
+        return {"status":0, "result":"選取化學品成功"}
 
     def click_button(self, title, control_type="Button", click_type="click", window=None):
         try:
@@ -58,8 +56,6 @@ class CRW4Automation:
             button = window.child_window(title=title, control_type=control_type)
             if click_type == "click":
                 button.click()
-            elif click_type == "click_input":
-                button.click_input()
             else:
                 raise ValueError(f"Unsupported click_type: {click_type}")
             logger.debug(f"{title} button clicked successfully")
@@ -76,50 +72,50 @@ class CRW4Automation:
         control = self.main_window.child_window(auto_id=auto_id, control_type="Edit")
         legacy_value = control.legacy_properties().get("Value", "")
         status = legacy_value.split('g')[0] + 'g'
-        
+
         if status == "0 chemicals found exactly matching":
-            message = f"無相對應的資料: {status}"
-            logger.warning(message)
-            return {"status": 1, "message": message}
+            result = f"無相對應的資料"
+            logger.warning(result)
+            return {"status": 1, "result": result}
         
         if status != "1 chemical found exactly matching":
-            message = f"找到複數筆資料: {status}"
-            logger.warning(message)
-            return {"status": 2, "message": message}
+            result = f"找到複數筆資料"
+            logger.warning(result)
+            return {"status": 2, "result": result}
         
         chemical = legacy_value.split('>')[1].split('\\r')[0]
-        message = f"找到一筆準確資料: {chemical}"
-        logger.info(message)
-        return {"status": 0, "message": message}
+        result = f"找到一筆準確資料: {chemical}"
+        logger.info(result)
+        return {"status": 0, "result": result}
 
     def add_mixture(self, mixture_name):
-        Mixture_botton = self.main_window.child_window(title="New Mixture", control_type="Button")
-        Mixture_botton.click()
+        self.click_button("New Mixture", click_type="click") 
         edit_control = self.main_window.child_window(auto_id="IDC_SHOW_CUSTOM_MESSAGE_EDIT1", control_type="Edit")
         if not edit_control.is_visible() and edit_control.is_enabled():
             return {"status": 1, "error": "創建化合物視窗未彈出"}
         edit_control.set_edit_text(mixture_name)
         logger.info("Mixture control set successfully")
-        ok_button = self.main_window.child_window(title="OK", control_type="Button")
-        ok_button.click()
+        self.click_button("OK", click_type="click")
         logger.info("Mixture added successfully")
         return {"status": 0, "result": f"化合物{mixture_name}創建成功"}
 
     def add_chemical(self, cas):
         self.set_edit_field("Field: Chemicals::y_gSearchCAS", cas )
-        self.search()
-        results = self.check_search_results("Field: Chemicals::y_gSearchResults")
-        if results["status"] != 0:
-            return {"status": results["status"], "result": "", "error": results["message"]}
-        result = self.select()
-        logger.info(f"Search result: {result}")
-        return {"status": result["status"], "result": result["message"]}
+        self.click_button("Search", click_type="click") 
+        result = self.check_search_results("Field: Chemicals::y_gSearchResults")
+
+        logger.debug(f"debug:{result}")
+        if result["status"] == 0:
+            result = self.select()
+            logger.info(f"Search result: {result}")
+
+        return {"status": result["status"], "result": result["result"]}
 
     def output_chart_to_csv(self):
         self.click_button("Compatibility\rChart", click_type="click")
         if self.main_window.child_window(title="No mixture selected", control_type="Window").exists(timeout=3):
             logger.warning("No mixture selected")
-            return {"status":1, "message":"使用者尚未選取化合物，請創建化合物後再產生列表"}
+            return {"status":1, "result":"使用者尚未選取化合物，請創建化合物後再產生列表"}
         header = self.main_window.child_window(title="Header", control_type="Pane")
         self.click_button("Export Chart Data", click_type="click", window=header) 
         Export_window = self.main_window.child_window(title="Compatibility Chart Data Export", control_type="Window")
@@ -139,7 +135,6 @@ class CRW4Automation:
             self.click_button("» Move »", click_type="click")
         self.click_button("Export", click_type="click")
         return {"status": 0, "result": "文件創建成功", "error": ""}
-
 
     def list_properties(self, auto_id):
         control = self.main_window.child_window(auto_id=auto_id, control_type="Edit")

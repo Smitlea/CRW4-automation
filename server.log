@@ -1,404 +1,0 @@
-2024-08-02 16:35:53,336 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 16:35:59,313 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
-2024-08-02 16:35:59,316 - ServerLogger - INFO - [32m[32mCRW4 PATH: D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 16:35:59,317 - ServerLogger - INFO - [32m[32mEXCEL PATH: D:\Systex\CRW4-automation\data[0m[0m
-2024-08-02 16:36:54,343 - ServerLogger - ERROR - [91m[91mAn error occurred: TypeError: find_elements() got an unexpected keyword argument 'index'[0m[0m
-2024-08-02 16:36:55,616 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 16:37:53,182 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 16:37:55,721 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
-2024-08-02 16:37:55,722 - ServerLogger - INFO - [32m[32mCRW4 PATH: D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 16:37:55,724 - ServerLogger - INFO - [32m[32mEXCEL PATH: D:\Systex\CRW4-automation\data[0m[0m
-2024-08-02 16:38:13,900 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 16:38:43,050 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 16:38:45,995 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
-2024-08-02 16:38:45,998 - ServerLogger - INFO - [32m[32mCRW4 PATH: D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 16:38:45,999 - ServerLogger - INFO - [32m[32mEXCEL PATH: D:\Systex\CRW4-automation\data[0m[0m
-2024-08-02 16:39:01,518 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 16:39:08,497 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 17:56:38,703 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 17:56:42,494 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
-2024-08-02 17:56:42,497 - ServerLogger - INFO - [32m[32mCRW4 PATH: D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 17:56:42,497 - ServerLogger - INFO - [32m[32mEXCEL PATH: D:\Systex\CRW4-automation\data[0m[0m
-2024-08-02 17:58:32,452 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 17:58:35,412 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
-2024-08-02 17:58:35,416 - ServerLogger - INFO - [32m[32mCRW4 PATH: D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 17:58:35,418 - ServerLogger - INFO - [32m[32mEXCEL PATH: D:\Systex\CRW4-automation\data[0m[0m
-2024-08-02 17:59:41,127 - ServerLogger - DEBUG - [36m[36mCAS number 7761-88-8 result: None[0m[0m
-2024-08-02 17:59:41,133 - ServerLogger - DEBUG - [36m[36mCAS number 7784-27-2 result: None[0m[0m
-2024-08-02 17:59:41,136 - ServerLogger - DEBUG - [36m[36mCAS number 10043-35-3 result: None[0m[0m
-2024-08-02 17:59:41,142 - ServerLogger - DEBUG - [36m[36mCAS number 10022-31-8 result: None[0m[0m
-2024-08-02 17:59:41,145 - ServerLogger - DEBUG - [36m[36mCAS number 7440-69-9 result: None[0m[0m
-2024-08-02 17:59:41,149 - ServerLogger - DEBUG - [36m[36mCAS number 471-34-1 result: None[0m[0m
-2024-08-02 17:59:41,152 - ServerLogger - DEBUG - [36m[36mCAS number 7440-43-9 result: None[0m[0m
-2024-08-02 17:59:41,155 - ServerLogger - DEBUG - [36m[36mCAS number 7440-48-4 result: None[0m[0m
-2024-08-02 17:59:41,158 - ServerLogger - DEBUG - [36m[36mCAS number 7789-09-5 result: None[0m[0m
-2024-08-02 17:59:41,162 - ServerLogger - DEBUG - [36m[36mCAS number 7440-50-8 result: None[0m[0m
-2024-08-02 17:59:41,165 - ServerLogger - DEBUG - [36m[36mCAS number 7697-37-2 result: None[0m[0m
-2024-08-02 17:59:41,169 - ServerLogger - DEBUG - [36m[36mCAS number 13138-45-9 result: None[0m[0m
-2024-08-02 17:59:41,172 - ServerLogger - DEBUG - [36m[36mCAS number 10141-05-6 result: None[0m[0m
-2024-08-02 17:59:41,175 - ServerLogger - DEBUG - [36m[36mCAS number 3251-23-8 result: None[0m[0m
-2024-08-02 17:59:41,178 - ServerLogger - DEBUG - [36m[36mCAS number 7779-88-6 result: None[0m[0m
-2024-08-02 17:59:41,181 - ServerLogger - DEBUG - [36m[36mCAS number 10325-94-7 result: None[0m[0m
-2024-08-02 17:59:41,184 - ServerLogger - DEBUG - [36m[36mCAS number 10099-74-8 result: None[0m[0m
-2024-08-02 17:59:41,189 - ServerLogger - DEBUG - [36m[36mCAS number 10102-45-1 result: None[0m[0m
-2024-08-02 18:07:41,413 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 18:07:44,182 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
-2024-08-02 18:07:44,184 - ServerLogger - INFO - [32m[32mCRW4 PATH: D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 18:07:44,184 - ServerLogger - INFO - [32m[32mEXCEL PATH: D:\Systex\CRW4-automation\data[0m[0m
-2024-08-02 18:08:07,070 - ServerLogger - DEBUG - [36m[36mText '7761-88-8' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:08:07,146 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:08:07,275 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7761-88-8[0m[0m
-2024-08-02 18:09:22,771 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 18:10:54,669 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 18:10:58,403 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
-2024-08-02 18:10:58,405 - ServerLogger - INFO - [32m[32mCRW4 PATH: D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 18:10:58,408 - ServerLogger - INFO - [32m[32mEXCEL PATH: D:\Systex\CRW4-automation\data[0m[0m
-2024-08-02 18:11:05,487 - ServerLogger - DEBUG - [36m[36mChemicals: [<model.TestTable object at 0x0000016DDE16BC70>, <model.TestTable object at 0x0000016DDE169270>, <model.TestTable object at 0x0000016DDE16A320>, <model.TestTable object at 0x0000016DDE16A860>, <model.TestTable object at 0x0000016DDE16BB50>, <model.TestTable object at 0x0000016DDE1697B0>, <model.TestTable object at 0x0000016DDE16B3D0>, <model.TestTable object at 0x0000016DDE168F40>, <model.TestTable object at 0x0000016DDE16A560>, <model.TestTable object at 0x0000016DDE16A500>, <model.TestTable object at 0x0000016DDE168040>, <model.TestTable object at 0x0000016DDE1680D0>, <model.TestTable object at 0x0000016DDE168490>, <model.TestTable object at 0x0000016DDE168520>, <model.TestTable object at 0x0000016DDE1689A0>, <model.TestTable object at 0x0000016DDE168B80>, <model.TestTable object at 0x0000016DDE168AC0>, <model.TestTable object at 0x0000016DDE168CA0>][0m[0m
-2024-08-02 18:11:06,256 - ServerLogger - DEBUG - [36m[36mText '7761-88-8' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:11:06,325 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:11:06,438 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7761-88-8[0m[0m
-2024-08-02 18:11:49,507 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 18:13:58,569 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 18:14:01,190 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
-2024-08-02 18:14:01,193 - ServerLogger - INFO - [32m[32mCRW4 PATH: D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 18:14:01,194 - ServerLogger - INFO - [32m[32mEXCEL PATH: D:\Systex\CRW4-automation\data[0m[0m
-2024-08-02 18:14:06,070 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7761-88-8[0m[0m
-2024-08-02 18:14:06,554 - ServerLogger - DEBUG - [36m[36mText '7761-88-8' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:14:06,625 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:14:06,742 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7761-88-8[0m[0m
-2024-08-02 18:14:06,743 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7784-27-2[0m[0m
-2024-08-02 18:14:07,344 - ServerLogger - DEBUG - [36m[36mText '7784-27-2' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:14:07,418 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:14:07,531 - ServerLogger - WARNING - [33m[33m無相對應的資料: 0 chemicals found exactly matching[0m[0m
-2024-08-02 18:14:07,532 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 10043-35-3[0m[0m
-2024-08-02 18:14:08,310 - ServerLogger - DEBUG - [36m[36mText '10043-35-3' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:14:08,382 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:14:08,472 - ServerLogger - WARNING - [33m[33m無相對應的資料: 0 chemicals found exactly matching[0m[0m
-2024-08-02 18:14:08,473 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 10022-31-8[0m[0m
-2024-08-02 18:14:09,058 - ServerLogger - DEBUG - [36m[36mText '10022-31-8' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:14:09,132 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:14:09,254 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 10022-31-8[0m[0m
-2024-08-02 18:14:09,254 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7440-69-9[0m[0m
-2024-08-02 18:14:09,856 - ServerLogger - DEBUG - [36m[36mText '7440-69-9' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:14:09,928 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:14:10,041 - ServerLogger - WARNING - [33m[33m無相對應的資料: 0 chemicals found exactly matching[0m[0m
-2024-08-02 18:14:10,042 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 471-34-1[0m[0m
-2024-08-02 18:14:10,630 - ServerLogger - DEBUG - [36m[36mText '471-34-1' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:14:10,703 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:14:10,831 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 471-34-1[0m[0m
-2024-08-02 18:14:10,832 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7440-43-9[0m[0m
-2024-08-02 18:14:11,413 - ServerLogger - DEBUG - [36m[36mText '7440-43-9' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:14:11,487 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:14:11,576 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7440-43-9[0m[0m
-2024-08-02 18:14:11,577 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7440-48-4[0m[0m
-2024-08-02 18:14:12,159 - ServerLogger - DEBUG - [36m[36mText '7440-48-4' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:14:12,233 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:14:12,341 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7440-48-4[0m[0m
-2024-08-02 18:14:12,341 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7789-09-5[0m[0m
-2024-08-02 18:14:12,924 - ServerLogger - DEBUG - [36m[36mText '7789-09-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:14:13,017 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:14:13,112 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7789-09-5[0m[0m
-2024-08-02 18:14:13,113 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7440-50-8[0m[0m
-2024-08-02 18:14:13,693 - ServerLogger - DEBUG - [36m[36mText '7440-50-8' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:14:13,766 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:14:13,860 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7440-50-8[0m[0m
-2024-08-02 18:14:13,861 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7697-37-2[0m[0m
-2024-08-02 18:14:14,467 - ServerLogger - DEBUG - [36m[36mText '7697-37-2' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:14:14,541 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:14:14,643 - ServerLogger - WARNING - [33m[33m找到複數筆資料: 4 chemicals found exactly matching[0m[0m
-2024-08-02 18:14:14,644 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 13138-45-9[0m[0m
-2024-08-02 18:14:15,245 - ServerLogger - DEBUG - [36m[36mText '13138-45-9' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:14:15,323 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:14:15,438 - ServerLogger - WARNING - [33m[33m無相對應的資料: 0 chemicals found exactly matching[0m[0m
-2024-08-02 18:14:15,439 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 10141-05-6[0m[0m
-2024-08-02 18:14:16,025 - ServerLogger - DEBUG - [36m[36mText '10141-05-6' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:14:16,100 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:14:16,220 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 10141-05-6[0m[0m
-2024-08-02 18:14:16,220 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 3251-23-8[0m[0m
-2024-08-02 18:14:16,838 - ServerLogger - DEBUG - [36m[36mText '3251-23-8' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:14:16,933 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:14:17,031 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 3251-23-8[0m[0m
-2024-08-02 18:14:17,031 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7779-88-6[0m[0m
-2024-08-02 18:14:17,626 - ServerLogger - DEBUG - [36m[36mText '7779-88-6' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:14:17,705 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:14:17,802 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7779-88-6[0m[0m
-2024-08-02 18:14:17,802 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 10325-94-7[0m[0m
-2024-08-02 18:14:18,397 - ServerLogger - DEBUG - [36m[36mText '10325-94-7' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:14:18,480 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:14:18,582 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 10325-94-7[0m[0m
-2024-08-02 18:14:18,583 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 10099-74-8[0m[0m
-2024-08-02 18:14:19,176 - ServerLogger - DEBUG - [36m[36mText '10099-74-8' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:14:19,256 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:14:19,350 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 10099-74-8[0m[0m
-2024-08-02 18:14:19,350 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 10102-45-1[0m[0m
-2024-08-02 18:14:19,945 - ServerLogger - DEBUG - [36m[36mText '10102-45-1' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:14:20,027 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:14:20,154 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 10102-45-1[0m[0m
-2024-08-02 18:14:36,733 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 18:14:53,422 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 18:14:56,025 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
-2024-08-02 18:14:56,028 - ServerLogger - INFO - [32m[32mCRW4 PATH: D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 18:14:56,029 - ServerLogger - INFO - [32m[32mEXCEL PATH: D:\Systex\CRW4-automation\data[0m[0m
-2024-08-02 18:15:58,726 - ServerLogger - DEBUG - [36m[36mCAS number 7761-88-8 result: None[0m[0m
-2024-08-02 18:15:58,732 - ServerLogger - DEBUG - [36m[36mCAS number 7784-27-2 result: None[0m[0m
-2024-08-02 18:15:58,735 - ServerLogger - DEBUG - [36m[36mCAS number 10043-35-3 result: None[0m[0m
-2024-08-02 18:15:58,739 - ServerLogger - DEBUG - [36m[36mCAS number 10022-31-8 result: None[0m[0m
-2024-08-02 18:15:58,742 - ServerLogger - DEBUG - [36m[36mCAS number 7440-69-9 result: None[0m[0m
-2024-08-02 18:15:58,746 - ServerLogger - DEBUG - [36m[36mCAS number 471-34-1 result: None[0m[0m
-2024-08-02 18:15:58,749 - ServerLogger - DEBUG - [36m[36mCAS number 7440-43-9 result: None[0m[0m
-2024-08-02 18:15:58,753 - ServerLogger - DEBUG - [36m[36mCAS number 7440-48-4 result: None[0m[0m
-2024-08-02 18:15:58,757 - ServerLogger - DEBUG - [36m[36mCAS number 7789-09-5 result: None[0m[0m
-2024-08-02 18:15:58,760 - ServerLogger - DEBUG - [36m[36mCAS number 7440-50-8 result: None[0m[0m
-2024-08-02 18:15:58,763 - ServerLogger - DEBUG - [36m[36mCAS number 7697-37-2 result: None[0m[0m
-2024-08-02 18:15:58,768 - ServerLogger - DEBUG - [36m[36mCAS number 13138-45-9 result: None[0m[0m
-2024-08-02 18:15:58,772 - ServerLogger - DEBUG - [36m[36mCAS number 10141-05-6 result: None[0m[0m
-2024-08-02 18:15:58,775 - ServerLogger - DEBUG - [36m[36mCAS number 3251-23-8 result: None[0m[0m
-2024-08-02 18:15:58,780 - ServerLogger - DEBUG - [36m[36mCAS number 7779-88-6 result: None[0m[0m
-2024-08-02 18:15:58,783 - ServerLogger - DEBUG - [36m[36mCAS number 10325-94-7 result: None[0m[0m
-2024-08-02 18:15:58,787 - ServerLogger - DEBUG - [36m[36mCAS number 10099-74-8 result: None[0m[0m
-2024-08-02 18:15:58,793 - ServerLogger - DEBUG - [36m[36mCAS number 10102-45-1 result: None[0m[0m
-2024-08-02 18:16:19,801 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:16:19,917 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:16:20,108 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7440-23-5[0m[0m
-2024-08-02 18:16:21,449 - ServerLogger - WARNING - [33m[33mNo mixture selected[0m[0m
-2024-08-02 18:16:21,450 - ServerLogger - INFO - [32m[32mSearch result: {'status': 1, 'message': '使用者尚未選取化合物，請創建化合物後再選取化學品'}[0m[0m
-2024-08-02 18:16:47,842 - ServerLogger - DEBUG - [36m[36mText '7440-23-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:16:47,920 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:16:48,048 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7440-23-5[0m[0m
-2024-08-02 18:16:52,241 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:16:52,242 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:17:02,075 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7761-88-8[0m[0m
-2024-08-02 18:17:02,592 - ServerLogger - DEBUG - [36m[36mText '7761-88-8' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:17:02,672 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:17:02,766 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7761-88-8[0m[0m
-2024-08-02 18:17:07,036 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:17:07,037 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:17:07,037 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7784-27-2[0m[0m
-2024-08-02 18:17:07,417 - ServerLogger - DEBUG - [36m[36mText '7784-27-2' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:17:07,490 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:17:07,589 - ServerLogger - WARNING - [33m[33m無相對應的資料: 0 chemicals found exactly matching[0m[0m
-2024-08-02 18:17:07,590 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 10043-35-3[0m[0m
-2024-08-02 18:17:08,191 - ServerLogger - DEBUG - [36m[36mText '10043-35-3' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:17:08,267 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:17:08,373 - ServerLogger - WARNING - [33m[33m無相對應的資料: 0 chemicals found exactly matching[0m[0m
-2024-08-02 18:17:08,374 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 10022-31-8[0m[0m
-2024-08-02 18:17:08,961 - ServerLogger - DEBUG - [36m[36mText '10022-31-8' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:17:09,037 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:17:09,141 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 10022-31-8[0m[0m
-2024-08-02 18:17:13,319 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:17:13,320 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:17:13,321 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7440-69-9[0m[0m
-2024-08-02 18:17:13,715 - ServerLogger - DEBUG - [36m[36mText '7440-69-9' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:17:13,789 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:17:13,878 - ServerLogger - WARNING - [33m[33m無相對應的資料: 0 chemicals found exactly matching[0m[0m
-2024-08-02 18:17:13,880 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 471-34-1[0m[0m
-2024-08-02 18:17:14,467 - ServerLogger - DEBUG - [36m[36mText '471-34-1' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:17:14,542 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:17:14,660 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 471-34-1[0m[0m
-2024-08-02 18:17:18,836 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:17:18,837 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:17:18,838 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7440-43-9[0m[0m
-2024-08-02 18:17:19,233 - ServerLogger - DEBUG - [36m[36mText '7440-43-9' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:17:19,312 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:17:19,418 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7440-43-9[0m[0m
-2024-08-02 18:17:23,569 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:17:23,570 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:17:23,570 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7440-48-4[0m[0m
-2024-08-02 18:17:23,981 - ServerLogger - DEBUG - [36m[36mText '7440-48-4' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:17:24,059 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:17:24,177 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7440-48-4[0m[0m
-2024-08-02 18:17:28,338 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:17:28,339 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:17:28,340 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7789-09-5[0m[0m
-2024-08-02 18:17:28,737 - ServerLogger - DEBUG - [36m[36mText '7789-09-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:17:28,815 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:17:28,929 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7789-09-5[0m[0m
-2024-08-02 18:17:33,112 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:17:33,113 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:17:33,114 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7440-50-8[0m[0m
-2024-08-02 18:17:33,513 - ServerLogger - DEBUG - [36m[36mText '7440-50-8' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:17:33,592 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:17:33,710 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7440-50-8[0m[0m
-2024-08-02 18:17:37,869 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:17:37,870 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:17:37,870 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7697-37-2[0m[0m
-2024-08-02 18:17:38,283 - ServerLogger - DEBUG - [36m[36mText '7697-37-2' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:17:38,362 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:17:38,503 - ServerLogger - WARNING - [33m[33m找到複數筆資料: 4 chemicals found exactly matching[0m[0m
-2024-08-02 18:17:38,504 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 13138-45-9[0m[0m
-2024-08-02 18:17:39,109 - ServerLogger - DEBUG - [36m[36mText '13138-45-9' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:17:39,196 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:17:39,294 - ServerLogger - WARNING - [33m[33m無相對應的資料: 0 chemicals found exactly matching[0m[0m
-2024-08-02 18:17:39,295 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 10141-05-6[0m[0m
-2024-08-02 18:17:39,891 - ServerLogger - DEBUG - [36m[36mText '10141-05-6' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:17:39,974 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:17:40,093 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 10141-05-6[0m[0m
-2024-08-02 18:17:44,240 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:17:44,241 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:17:44,241 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 3251-23-8[0m[0m
-2024-08-02 18:17:44,639 - ServerLogger - DEBUG - [36m[36mText '3251-23-8' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:17:44,720 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:17:44,824 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 3251-23-8[0m[0m
-2024-08-02 18:17:48,991 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:17:48,992 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:17:48,992 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7779-88-6[0m[0m
-2024-08-02 18:17:49,389 - ServerLogger - DEBUG - [36m[36mText '7779-88-6' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:17:49,470 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:17:49,599 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7779-88-6[0m[0m
-2024-08-02 18:17:53,750 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:17:53,750 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:17:53,751 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 10325-94-7[0m[0m
-2024-08-02 18:17:54,146 - ServerLogger - DEBUG - [36m[36mText '10325-94-7' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:17:54,229 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:17:54,350 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 10325-94-7[0m[0m
-2024-08-02 18:17:58,523 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:17:58,524 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:17:58,524 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 10099-74-8[0m[0m
-2024-08-02 18:17:58,951 - ServerLogger - DEBUG - [36m[36mText '10099-74-8' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:17:59,037 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:17:59,169 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 10099-74-8[0m[0m
-2024-08-02 18:18:03,327 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:18:03,328 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:18:03,328 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 10102-45-1[0m[0m
-2024-08-02 18:18:03,732 - ServerLogger - DEBUG - [36m[36mText '10102-45-1' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:18:03,817 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:18:03,956 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 10102-45-1[0m[0m
-2024-08-02 18:18:08,122 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:18:08,123 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:18:54,054 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 18:21:45,417 - ServerLogger - INFO - [32m[32mStarting CRW4 application at D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 18:21:48,561 - ServerLogger - INFO - [32m[32mCRW4 application started successfully[0m[0m
-2024-08-02 18:21:48,562 - ServerLogger - INFO - [32m[32mCRW4 PATH: D:\CRW4\CRW4.exe[0m[0m
-2024-08-02 18:21:48,563 - ServerLogger - INFO - [32m[32mEXCEL PATH: D:\Systex\CRW4-automation\data[0m[0m
-2024-08-02 18:22:08,044 - ServerLogger - DEBUG - [36m[36mCAS number 7761-88-8 result: None[0m[0m
-2024-08-02 18:22:08,056 - ServerLogger - DEBUG - [36m[36mCAS number 7784-27-2 result: None[0m[0m
-2024-08-02 18:22:08,062 - ServerLogger - DEBUG - [36m[36mCAS number 10043-35-3 result: None[0m[0m
-2024-08-02 18:22:08,068 - ServerLogger - DEBUG - [36m[36mCAS number 10022-31-8 result: None[0m[0m
-2024-08-02 18:22:08,074 - ServerLogger - DEBUG - [36m[36mCAS number 7440-69-9 result: None[0m[0m
-2024-08-02 18:22:08,081 - ServerLogger - DEBUG - [36m[36mCAS number 471-34-1 result: None[0m[0m
-2024-08-02 18:22:08,090 - ServerLogger - DEBUG - [36m[36mCAS number 7440-43-9 result: None[0m[0m
-2024-08-02 18:22:08,097 - ServerLogger - DEBUG - [36m[36mCAS number 7440-48-4 result: None[0m[0m
-2024-08-02 18:22:08,103 - ServerLogger - DEBUG - [36m[36mCAS number 7789-09-5 result: None[0m[0m
-2024-08-02 18:22:08,107 - ServerLogger - DEBUG - [36m[36mCAS number 7440-50-8 result: None[0m[0m
-2024-08-02 18:22:08,112 - ServerLogger - DEBUG - [36m[36mCAS number 7697-37-2 result: None[0m[0m
-2024-08-02 18:22:08,119 - ServerLogger - DEBUG - [36m[36mCAS number 13138-45-9 result: None[0m[0m
-2024-08-02 18:22:08,124 - ServerLogger - DEBUG - [36m[36mCAS number 10141-05-6 result: None[0m[0m
-2024-08-02 18:22:08,128 - ServerLogger - DEBUG - [36m[36mCAS number 3251-23-8 result: None[0m[0m
-2024-08-02 18:22:08,135 - ServerLogger - DEBUG - [36m[36mCAS number 7779-88-6 result: None[0m[0m
-2024-08-02 18:22:08,139 - ServerLogger - DEBUG - [36m[36mCAS number 10325-94-7 result: None[0m[0m
-2024-08-02 18:22:08,142 - ServerLogger - DEBUG - [36m[36mCAS number 10099-74-8 result: None[0m[0m
-2024-08-02 18:22:08,150 - ServerLogger - DEBUG - [36m[36mCAS number 10102-45-1 result: None[0m[0m
-2024-08-02 18:22:30,784 - ServerLogger - INFO - [32m[32mMixture control set successfully[0m[0m
-2024-08-02 18:22:30,985 - ServerLogger - INFO - [32m[32mMixture added successfully[0m[0m
-2024-08-02 18:22:48,185 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7761-88-8[0m[0m
-2024-08-02 18:22:49,441 - ServerLogger - DEBUG - [36m[36mText '7761-88-8' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:22:49,591 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:22:49,792 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7761-88-8[0m[0m
-2024-08-02 18:22:54,416 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:22:54,417 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:22:54,418 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7784-27-2[0m[0m
-2024-08-02 18:22:54,980 - ServerLogger - DEBUG - [36m[36mText '7784-27-2' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:22:55,128 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:22:55,303 - ServerLogger - WARNING - [33m[33m無相對應的資料: 0 chemicals found exactly matching[0m[0m
-2024-08-02 18:22:55,304 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 10043-35-3[0m[0m
-2024-08-02 18:22:55,900 - ServerLogger - DEBUG - [36m[36mText '10043-35-3' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:22:56,053 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:22:56,240 - ServerLogger - WARNING - [33m[33m無相對應的資料: 0 chemicals found exactly matching[0m[0m
-2024-08-02 18:22:56,242 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 10022-31-8[0m[0m
-2024-08-02 18:22:56,843 - ServerLogger - DEBUG - [36m[36mText '10022-31-8' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:22:57,045 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:22:57,232 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 10022-31-8[0m[0m
-2024-08-02 18:23:01,438 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:23:01,439 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:23:01,440 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7440-69-9[0m[0m
-2024-08-02 18:23:02,076 - ServerLogger - DEBUG - [36m[36mText '7440-69-9' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:23:02,243 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:23:02,418 - ServerLogger - WARNING - [33m[33m無相對應的資料: 0 chemicals found exactly matching[0m[0m
-2024-08-02 18:23:02,419 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 471-34-1[0m[0m
-2024-08-02 18:23:03,056 - ServerLogger - DEBUG - [36m[36mText '471-34-1' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:23:03,258 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:23:03,460 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 471-34-1[0m[0m
-2024-08-02 18:23:07,593 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:23:07,593 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:23:07,593 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7440-43-9[0m[0m
-2024-08-02 18:23:08,631 - ServerLogger - DEBUG - [36m[36mText '7440-43-9' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:23:08,799 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:23:08,998 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7440-43-9[0m[0m
-2024-08-02 18:23:13,420 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:23:13,421 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:23:13,422 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7440-48-4[0m[0m
-2024-08-02 18:23:13,989 - ServerLogger - DEBUG - [36m[36mText '7440-48-4' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:23:14,140 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:23:14,336 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7440-48-4[0m[0m
-2024-08-02 18:23:18,490 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:23:18,491 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:23:18,492 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7789-09-5[0m[0m
-2024-08-02 18:23:19,066 - ServerLogger - DEBUG - [36m[36mText '7789-09-5' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:23:19,218 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:23:19,406 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7789-09-5[0m[0m
-2024-08-02 18:23:23,575 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:23:23,576 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:23:23,577 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7440-50-8[0m[0m
-2024-08-02 18:23:24,644 - ServerLogger - DEBUG - [36m[36mText '7440-50-8' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:23:24,801 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:23:24,982 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7440-50-8[0m[0m
-2024-08-02 18:23:29,440 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:23:29,442 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:23:29,443 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7697-37-2[0m[0m
-2024-08-02 18:23:30,026 - ServerLogger - DEBUG - [36m[36mText '7697-37-2' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:23:30,183 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:23:30,401 - ServerLogger - WARNING - [33m[33m找到複數筆資料: 4 chemicals found exactly matching[0m[0m
-2024-08-02 18:23:30,403 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 13138-45-9[0m[0m
-2024-08-02 18:23:30,999 - ServerLogger - DEBUG - [36m[36mText '13138-45-9' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:23:31,182 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:23:31,405 - ServerLogger - WARNING - [33m[33m無相對應的資料: 0 chemicals found exactly matching[0m[0m
-2024-08-02 18:23:31,407 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 10141-05-6[0m[0m
-2024-08-02 18:23:32,047 - ServerLogger - DEBUG - [36m[36mText '10141-05-6' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:23:32,212 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:23:32,407 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 10141-05-6[0m[0m
-2024-08-02 18:23:36,601 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:23:36,602 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:23:36,603 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 3251-23-8[0m[0m
-2024-08-02 18:23:37,700 - ServerLogger - DEBUG - [36m[36mText '3251-23-8' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:23:37,886 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:23:38,108 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 3251-23-8[0m[0m
-2024-08-02 18:23:42,486 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:23:42,488 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:23:42,489 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 7779-88-6[0m[0m
-2024-08-02 18:23:43,123 - ServerLogger - DEBUG - [36m[36mText '7779-88-6' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:23:43,301 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:23:43,496 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 7779-88-6[0m[0m
-2024-08-02 18:23:47,659 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:23:47,661 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:23:47,662 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 10325-94-7[0m[0m
-2024-08-02 18:23:49,024 - ServerLogger - DEBUG - [36m[36mText '10325-94-7' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:23:49,183 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:23:49,403 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 10325-94-7[0m[0m
-2024-08-02 18:23:53,551 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:23:53,552 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:23:53,553 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 10099-74-8[0m[0m
-2024-08-02 18:23:54,719 - ServerLogger - DEBUG - [36m[36mText '10099-74-8' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:23:54,879 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:23:55,080 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 10099-74-8[0m[0m
-2024-08-02 18:23:59,453 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:23:59,454 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:23:59,456 - ServerLogger - DEBUG - [36m[36mSearching for CAS number: 10102-45-1[0m[0m
-2024-08-02 18:24:00,092 - ServerLogger - DEBUG - [36m[36mText '10102-45-1' set successfully in Field: Chemicals::y_gSearchCAS![0m[0m
-2024-08-02 18:24:00,256 - ServerLogger - DEBUG - [36m[36mSearch button clicked successfully[0m[0m
-2024-08-02 18:24:00,461 - ServerLogger - INFO - [32m[32m找到一筆準確資料: 10102-45-1[0m[0m
-2024-08-02 18:24:04,631 - ServerLogger - INFO - [32m[32mSelected item successfully[0m[0m
-2024-08-02 18:24:04,632 - ServerLogger - INFO - [32m[32mSearch result: {'status': 0, 'message': '選取化學品成功'}[0m[0m
-2024-08-02 18:24:24,139 - ServerLogger - DEBUG - [36m[36mCompatibilityChart button clicked successfully[0m[0m
-2024-08-02 18:24:31,743 - ServerLogger - DEBUG - [36m[36mExport Chart Data button clicked successfully[0m[0m
-2024-08-02 18:24:32,189 - ServerLogger - DEBUG - [36m[36mProceed button clicked successfully[0m[0m
-2024-08-02 18:24:32,814 - ServerLogger - DEBUG - [36m[36mOK button clicked successfully[0m[0m
-2024-08-02 18:24:33,477 - ServerLogger - DEBUG - [36m[36mContinue... button clicked successfully[0m[0m
-2024-08-02 18:25:05,359 - ServerLogger - DEBUG - [36m[36mCompatibilityChart button clicked successfully[0m[0m
-2024-08-02 18:25:08,591 - ServerLogger - DEBUG - [36m[36mExport Chart Data button clicked successfully[0m[0m
-2024-08-02 18:25:09,006 - ServerLogger - DEBUG - [36m[36mProceed button clicked successfully[0m[0m
-2024-08-02 18:25:09,533 - ServerLogger - DEBUG - [36m[36mOK button clicked successfully[0m[0m
-2024-08-02 18:25:10,152 - ServerLogger - DEBUG - [36m[36mContinue... button clicked successfully[0m[0m
-2024-08-02 18:25:13,901 - ServerLogger - DEBUG - [36m[36m» Move » button clicked successfully[0m[0m
-2024-08-02 18:25:14,252 - ServerLogger - DEBUG - [36m[36mExport button clicked successfully[0m[0m
-2024-08-02 18:25:17,264 - ServerLogger - DEBUG - [36m[36m複製文件: D:\Systex\CRW4-automation\data[0m[0m
-2024-08-02 18:25:17,303 - ServerLogger - INFO - [32m[32mcsv創建文件成功[0m[0m

@@ -1,3 +1,4 @@
 control_identifiers.txt
 server.log
 data
+.env
