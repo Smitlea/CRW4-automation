@@ -2,7 +2,7 @@ import json
 import os
 import shutil
 import time
-
+import datetime
 
 from pywinauto import Application
 from flask_restx import Resource
@@ -20,10 +20,12 @@ from util import CRW4Automation, handle_request_exception
 
 with open ("config.json", "r") as f:
     config = json.load(f)
+
+def get_absolute_path(relative_path):
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), relative_path))
+
 PATH = config["CRW4_PATH"]
-EXCEL_PATH = config["EXCEL_PATH"]
-
-
+EXCEL_PATH = get_absolute_path(os.environ.get("EXCEL_PATH"))
 db_manager = DatabaseManager()
 
 crw4_automation = None
@@ -31,13 +33,11 @@ crw4_automation = None
 def start_crw4_application():
     global crw4_automation
     if crw4_automation is None:
-        logger.info(f"Starting CRW4 application at {PATH}")
+        logger.info(f"Starting CRW4 Launching from: {PATH}, Output CSV to: {EXCEL_PATH}")
         app_instance = Application().start(PATH)
         app_instance = Application(backend="uia").connect(path=PATH)
         crw4_automation = CRW4Automation(app_instance)
         logger.info("CRW4 application started successfully")
-        logger.info(f"CRW4 PATH: {PATH}")
-        logger.info(f"EXCEL PATH: {EXCEL_PATH}")
     else:
         logger.info("CRW4 application already running")
 
@@ -69,12 +69,20 @@ class insert(Resource):
                 for cas in cas_list:
                     if not session.query(TestTable).filter_by(cas=cas).first():
                         new_cas = TestTable(cas=cas)
-                        result = session.add(new_cas)
-                        logger.debug(f"CAS number {cas} result: {result}")
+                        session.add(new_cas)
                 session.commit()
+                logger.info(f"{len(cas_list)} item's update successfully")
             return {"status": 0, "result": "CAS numbers inserted successfully"}
         except Exception as e:
             return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
+        
+@api_ns.route("/start")
+class start(Resource):
+    @handle_request_exception
+    @api.marshal_with(general_output_payload)
+    def get(self):
+        start_crw4_application()
+        return {"status": 0, "result": "CRW4 application started successfully", "error": ""}
 
 # @api_ns.route("/search")
 # class search(Resource):
@@ -144,7 +152,7 @@ class test(Resource):
             result = crw4_automation.output_chart_to_csv()
             time.sleep(5)
             path = PATH.split("\\")[0] + "\\CRW4\\CRW_Data_Export.xlsx"
-            logger.debug(f"複製文件: {EXCEL_PATH}")
+            current_time = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
             if not os.path.exists(path):
                 logger.error(f"路徑:{path} csv創建文件失敗")
@@ -152,8 +160,10 @@ class test(Resource):
             
             if not os.path.exists(EXCEL_PATH) :
                 os.makedirs(EXCEL_PATH) 
+
+            logger.debug(f"複製文件: {path}至 {EXCEL_PATH}")
+            destination_path  = os.path.join(EXCEL_PATH,  f"{current_time} CRW_Data_Export.xlsx")
             
-            destination_path  = os.path.join(EXCEL_PATH, "CRW_Data_Export.xlsx")
             if not os.path.isfile(path):
                 return {"status": 1, "result": "", "error": "文件不存在或不可讀"}
             with open(path, 'rb') as src_file:
@@ -166,9 +176,6 @@ class test(Resource):
 
     
 if __name__ == "__main__":
-    # Start the CRW4 application only once, prevent multiple instances
-    if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
-        start_crw4_application()
     app.run(host="0.0.0.0", port="5000", debug=True)
 # logger.warning("Listing properties of the search results field")
 # crw4_automation.show()

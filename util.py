@@ -20,10 +20,14 @@ class CRW4Automation:
     
     def start(self):
         if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
-            self.main_window = self.app.window(title_re="CRW4.*")
-            self.main_window.wait('visible', timeout=20)
-            ok_button = self.main_window.child_window(title="OK", control_type="Button")
-            ok_button.click() if ok_button.exists() else None
+            try:
+                self.main_window = self.app.window(title_re="CRW4.*")
+                self.main_window.wait('visible', timeout=20)
+                logger.info("Main window found")
+                self.click_button("OK", click_type="click")
+                logger.info("Main window found and 'OK' button clicked")
+            except Exception as e:
+                logger.error(f"Failed to initialize CRW4 main window: {e}")
                        
     def set_edit_field(self, auto_id, chemical_name):
         edit_field = self.main_window.child_window(auto_id=auto_id, control_type="Edit")

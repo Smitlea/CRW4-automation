@@ -8,6 +8,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.dialects.mysql import DECIMAL
 from sqlalchemy.orm import declarative_base, sessionmaker
 
+load_dotenv()
 SQL_URL=os.environ.get("SQL_SERVER")
 Base = declarative_base()
 
@@ -19,7 +20,7 @@ class DatabaseManager:
         self.Base = declarative_base()
 
     def _create_engine(self):
-        engine_url = f"mysql://smitlea:2838@127.0.0.1:3306/Systex?charset=utf8mb4"
+        engine_url = f"{SQL_URL}?charset=utf8mb4"
         return create_engine(engine_url)
 
 
