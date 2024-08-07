@@ -6,6 +6,7 @@ import datetime
 
 from pywinauto import Application
 from flask_restx import Resource
+from dotenv import load_dotenv
 
 from logger import logger
 from model import DatabaseManager, TestTable
@@ -17,6 +18,8 @@ from payload import (
     new_mixture_payload
 )
 from util import CRW4Automation, handle_request_exception
+
+load_dotenv()
 
 with open ("config.json", "r") as f:
     config = json.load(f)
