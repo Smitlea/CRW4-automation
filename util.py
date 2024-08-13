@@ -23,9 +23,7 @@ class CRW4Automation:
             try:
                 self.main_window = self.app.window(title_re="CRW4.*")
                 self.main_window.wait('visible', timeout=20)
-                logger.info("Main window found")
                 self.click_button("OK", click_type="click")
-                logger.info("Main window found and 'OK' button clicked")
             except Exception as e:
                 logger.error(f"Failed to initialize CRW4 main window: {e}")
                        

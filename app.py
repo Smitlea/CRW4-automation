@@ -28,7 +28,8 @@ def get_absolute_path(relative_path):
     return os.path.abspath(os.path.join(os.path.dirname(__file__), relative_path))
 
 PATH = config["CRW4_PATH"]
-EXCEL_PATH = get_absolute_path(os.environ.get("EXCEL_PATH"))
+OUTPUT_PATH = config["OUTPUT_PATH"]
+# EXCEL_PATH = get_absolute_path(os.environ.get("EXCEL_PATH"))
 db_manager = DatabaseManager()
 
 crw4_automation = None
@@ -36,7 +37,7 @@ crw4_automation = None
 def start_crw4_application():
     global crw4_automation
     if crw4_automation is None:
-        logger.info(f"Starting CRW4 Launching from: {PATH}, Output CSV to: {EXCEL_PATH}")
+        logger.info(f"Starting CRW4 Launching from: {PATH}, Output CSV to: {OUTPUT_PATH}")
         app_instance = Application().start(PATH)
         app_instance = Application(backend="uia").connect(path=PATH)
         crw4_automation = CRW4Automation(app_instance)
@@ -121,7 +122,7 @@ class muiltiple_search(Resource):
     @api.marshal_with(general_output_payload)
     @handle_request_exception
     def get(self):
-        crw4_automation.checked_mixture = False #每次查詢前先檢查是否有選取化合物
+        crw4_automation.checked_mixture = False
         with DatabaseManager().Session() as session:
             chemicals = session.query(TestTable).all()
             if not chemicals:
@@ -155,26 +156,28 @@ class test(Resource):
             result = crw4_automation.output_chart_to_csv()
             time.sleep(5)
             path = PATH.split("\\")[0] + "\\CRW4\\CRW_Data_Export.xlsx"
-            current_time = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+            current_time = datetime.datetime.now().strftime("%Y%m%d")
 
+            ##檢查csv是否有被CRW4成功創建
             if not os.path.exists(path):
                 logger.error(f"路徑:{path} csv創建文件失敗")
                 return {"status": 1, "result": "", "error": "csv創建文件失敗"}
             
-            if not os.path.exists(EXCEL_PATH) :
-                os.makedirs(EXCEL_PATH) 
+            ##創建輸出資料夾
+            if not os.path.exists(OUTPUT_PATH) :
+                os.makedirs(OUTPUT_PATH) 
 
-            logger.debug(f"複製文件: {path}至 {EXCEL_PATH}")
-            destination_path  = os.path.join(EXCEL_PATH,  f"{current_time} CRW_Data_Export.xlsx")
+            logger.debug(f"複製文件: {path}至 {OUTPUT_PATH}")
+
+            destination_path  = os.path.join(OUTPUT_PATH,  f"{current_time} CRW_Data_Export.xlsx")
             
             if not os.path.isfile(path):
                 return {"status": 1, "result": "", "error": "文件不存在或不可讀"}
-            with open(path, 'rb') as src_file:
-                with open(destination_path, 'wb') as dst_file:
-                    shutil.copyfileobj(src_file, dst_file)
-            logger.info("csv創建文件成功")
+            shutil.copy2(path, destination_path)
+            logger.info(f"文件成功複製到 {destination_path}")
         except Exception as e:
-            return {"status": 1, "result": "", "error": str(e)}
+            return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
+
         return result
 
     

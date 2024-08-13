@@ -44,6 +44,6 @@ if __name__ == "__main__":
     if os.path.exists(dotenv_path):
         load_dotenv(f"{os.path.dirname(os.path.abspath(__file__))}/.env")
 
-    engine = create_engine("mysql://smitlea:2838@127.0.0.1:3306/Systex", echo=True)
+    engine = create_engine(SQL_URL, echo=True)
     Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
