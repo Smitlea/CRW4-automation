@@ -5,18 +5,23 @@ import time
 import datetime
 
 from pywinauto import Application
+from flask import request
 from flask_restx import Resource
 from dotenv import load_dotenv
+from celery.result import AsyncResult
 
 from logger import logger
 from model import DatabaseManager, TestTable
 from payload import (
-    api_ns, api, app, 
+    api_ns, api, app, api_test,
     cas_list_payload,
+    task_id_output,
+    queue_list_payload,
     add_chemical_input_payload, 
     general_output_payload,
     new_mixture_payload
 )
+from tasks import CRW4Auto, Celery_app, CRW4add
 from util import CRW4Automation, handle_request_exception
 
 load_dotenv()
@@ -38,7 +43,7 @@ def start_crw4_application():
     global crw4_automation
     if crw4_automation is None:
         logger.info(f"Starting CRW4 Launching from: {PATH}, Output CSV to: {OUTPUT_PATH}")
-        app_instance = Application().start(PATH)
+        Application().start(PATH)
         app_instance = Application(backend="uia").connect(path=PATH)
         crw4_automation = CRW4Automation(app_instance)
         logger.info("CRW4 application started successfully")
@@ -46,7 +51,7 @@ def start_crw4_application():
         logger.info("CRW4 application already running")
 
 @api_ns.route("/add_mixture")
-class add_mixture(Resource):
+class Add_mixture(Resource):
     @handle_request_exception
     @api.expect(new_mixture_payload)
     @api.marshal_with(general_output_payload)
@@ -60,7 +65,7 @@ class add_mixture(Resource):
             return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
         
 @api_ns.route("/insert")
-class insert(Resource):
+class Insert(Resource):
     @handle_request_exception
     @api.expect(cas_list_payload)
     @api.marshal_with(general_output_payload)
@@ -81,29 +86,16 @@ class insert(Resource):
             return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
         
 @api_ns.route("/start")
-class start(Resource):
+class Start(Resource):
     @handle_request_exception
     @api.marshal_with(general_output_payload)
     def get(self):
         start_crw4_application()
         return {"status": 0, "result": "CRW4 application started successfully", "error": ""}
 
-# @api_ns.route("/search")
-# class search(Resource):
-#     @handle_request_exception
-#     @api.marshal_with(general_output_payload)
-#     def get(self):
-#         try:
-#             crw4_automation.search()
-#             result = crw4_automation.check_search_results("Field: Chemicals::y_gSearchResults")
-#             logger.info(f"Search result: {result}")
-#             return {"status": 0, "result": result, "error": ""}
-#         except Exception as e:
-#             return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
-
         
 @api_ns.route("/add_chemical")
-class add_chemical(Resource):
+class Add_chemical(Resource):
     @handle_request_exception
     @api.expect(add_chemical_input_payload)
     @api.marshal_with(general_output_payload)
@@ -118,7 +110,7 @@ class add_chemical(Resource):
 
 
 @api_ns.route("/multiple_search")
-class muiltiple_search(Resource):
+class Muiltiple_search(Resource):
     @api.marshal_with(general_output_payload)
     @handle_request_exception
     def get(self):
@@ -142,14 +134,86 @@ class muiltiple_search(Resource):
 
 
 @api_ns.route("/show")
-class show(Resource):
+class Show(Resource):
     @handle_request_exception
     def get(self):
         result = crw4_automation.show()
         return {"status": 0,"result": result, "error": ""}
     
-@api_ns.route("/output_to_csv")
-class test(Resource):
+@api.route("/queue")
+class Register(Resource):
+    @handle_request_exception
+    @api.expect(queue_list_payload)
+    @api.marshal_with(task_id_output)
+    def post(self):
+        data = api.payload
+        cas_list = data.get("cas_list")
+        id = data.get("id")
+        try:
+            task = CRW4Auto.apply_async((cas_list ,id))
+            logger.info(f"Task created ID:{task.id}")
+            return {'task_id': task.id}
+        except Exception as e:
+            return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
+        
+@api.route("/status")
+class Test(Resource):
+    @api.doc(params={'task_id': 'input'})
+    def get(self):
+        getTask = request.args.get('task_id')
+        result = AsyncResult(getTask, app=Celery_app)
+        logger.info(f" state: {result}")
+        logger.info(f" state: {result.info}")
+
+@api.route("/add")
+class Add(Resource):
+    @handle_request_exception
+    @api.expect(add_chemical_input_payload)
+    @api.marshal_with(task_id_output)
+    def post(self):
+        data = api.payload
+        cas = data.get("cas")
+        try:
+            result = CRW4add.apply_async((cas,))
+            return result
+        except Exception as e:
+            return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
+
+
+@api.route('/result')
+class Result(Resource):
+    @api.doc(params={'task_id': 'input'})
+    def get(self):
+        getTask = request.args.get('task_id')
+        result = AsyncResult(getTask, app=Celery_app)
+
+        if result.state == 'PENDING' and result.info is None:
+            logger.warning(f"task_id:{getTask} task is pending...")
+            response = {
+                'state': result.state,
+                'current': result.current,
+                'status': 'pending...'
+            }
+        elif result.state != 'SUCCESS':
+            logger.warning("Task is processing")
+            logger.debug(result)
+            response = {
+                'state': result.state,
+                'current': result.info.get('current', 0) ,
+                'total': result.info.get('total', 1) ,
+            }
+            if result.result:
+                response['result'] = result.result
+        else:
+            response = {
+                'state': result.state,
+                'status': result.info if result.info else 'Task failed'
+            }
+        
+        return response
+    
+@api_ns.route("/render_as_excel")
+class Render(Resource):
     @handle_request_exception
     def get(self):
         try:
@@ -180,9 +244,25 @@ class test(Resource):
 
         return result
 
-    
+@api_test.route("/search")
+class search(Resource):
+    @handle_request_exception
+    @api.marshal_with(general_output_payload)
+    def get(self):
+        try:
+            crw4_automation.search()
+            result = crw4_automation.check_search_results("Field: Chemicals::y_gSearchResults")
+            logger.info(f"Search result: {result}")
+            return {"status": 0, "result": result, "error": ""}
+        except Exception as e:
+            return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
+
+
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000", debug=True)
+
 # logger.warning("Listing properties of the search results field")
 # crw4_automation.show()
 

@@ -19,13 +19,13 @@ class CRW4Automation:
         self.start()
     
     def start(self):
-        if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
-            try:
-                self.main_window = self.app.window(title_re="CRW4.*")
-                self.main_window.wait('visible', timeout=20)
-                self.click_button("OK", click_type="click")
-            except Exception as e:
-                logger.error(f"Failed to initialize CRW4 main window: {e}")
+        try:
+            self.main_window = self.app.window(title_re="CRW4.*")
+            self.main_window.wait('visible', timeout=20)
+            self.click_button("OK", click_type="click")
+        except Exception as e:
+            logger.error(f"Failed to initialize CRW4 main window: {e}")
+
                        
     def set_edit_field(self, auto_id, chemical_name):
         edit_field = self.main_window.child_window(auto_id=auto_id, control_type="Edit")
@@ -137,7 +137,7 @@ class CRW4Automation:
         self.click_button("Export", click_type="click")
         return {"status": 0, "result": "文件創建成功", "error": ""}
 
-    def list_properties(self, auto_id):
+    def list_properties(self, auto_id): ##developing
         control = self.main_window.child_window(auto_id=auto_id, control_type="Edit")
         legacy_value = control.legacy_properties().get("Value", None)
         logger.info(f"result message: {legacy_value}")

@@ -6,8 +6,10 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 # 創建並配置日誌記錄器
 init(autoreset=True)
+
 logger = logging.getLogger('ServerLogger')
 logger.setLevel(logging.DEBUG)  # 設置日誌級別
+logger.propagate = False
 
 class ColoredFormatter(logging.Formatter):
     def format(self, record):
@@ -21,7 +23,6 @@ class ColoredFormatter(logging.Formatter):
             record.msg = f"{Fore.LIGHTRED_EX}{record.msg}{Style.RESET_ALL}"
         return super().format(record)
 
-
 console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.DEBUG)
 
@@ -33,12 +34,11 @@ file_handler = TimedRotatingFileHandler(
     )
 file_handler.setLevel(logging.DEBUG)
 
-
 formatter = ColoredFormatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-
 
 console_handler.setFormatter(formatter)
 file_handler.setFormatter(formatter)
 
 logger.addHandler(console_handler)
 logger.addHandler(file_handler)
+
