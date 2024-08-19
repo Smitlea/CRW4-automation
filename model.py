@@ -37,7 +37,6 @@ class TestTable(BaseTable, Base):
     cas = Column(String(40), nullable=False)
     
 
-
 if __name__ == "__main__":
     # Load env variable
     dotenv_path = f"{os.path.dirname(os.path.abspath(__file__))}/.env"

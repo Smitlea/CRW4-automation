@@ -45,7 +45,6 @@ class CRW4Add(Task):
 class CRW4AutoSelect(Task):
     def run(self, cas_list, id):
         results = []
-
         logger.debug(cas_list)
         for i in trange(len(cas_list)):
             try:
