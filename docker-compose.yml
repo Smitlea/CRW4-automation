@@ -1,31 +1,22 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  backend:
-    build: .
-    container_name: CRW4-automation
-    restart: always
-    environment:
-      - FLASK_ENV=development
-      - DATABASE_URL=mysql+pymysql://smitlea:2838@db:3306/Systex
-    ports:
-      - "5000:5000"
-    depends_on:
-      - db
 
-  db:
-    image: mariadb:latest
-    container_name: mariadb
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: 2838
-      MYSQL_DATABASE: Systex
-      MYSQL_USER: smitlea
-      MYSQL_PASSWORD: 2838
+  redis:
+    image: redis:latest
     ports:
-      - "3306:3306"
+      - 6379:6379
+    command: ["redis-server", "--appendonly", "yes"]
     volumes:
-      - db_data:/var/lib/mysql
+      - redis-data:/data
 
-volumes:
-  db_data:
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+      - HTTP_USER=root
+      - HTTP_PASSWORD=qwerty
+    ports:
+      - 8081:8081
+    depends_on:
+      - redis

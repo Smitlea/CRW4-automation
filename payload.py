@@ -59,7 +59,8 @@ queue_list_payload = api_ns.model(
 task_id_output = api_ns.model(
     "Task Output",
     {
-        "task_id": fields.String(required=True, default="3e4f5e4f-3e4f-3e4f-3e4f-3e4f5e4f5e4f")
+        "task_id": fields.String(required=True, default="3e4f5e4f-3e4f-3e4f-3e4f-3e4f5e4f5e4f"),
+        "order": fields.Integer(required=True, default=1)
     },
 )
 

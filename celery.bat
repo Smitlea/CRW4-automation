@@ -1,4 +1,4 @@
 @echo off
-cd /d D:\Systex\CRW4-automation
+cd /d "%~dp0"
 pipenv run celery -A tasks.Celery_app worker -l INFO --pool=solo
 pause

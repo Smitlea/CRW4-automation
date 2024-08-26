@@ -1,22 +1,31 @@
+import json
 import time
-import os
 
 from functools import wraps
 from flask_restx import abort
 from http import HTTPStatus
 from pywinauto import Application
-from pywinauto.timings import Timings
+from pywinauto.controls.uia_controls import MenuWrapper
 from werkzeug.exceptions import BadRequest
+from tqdm import tqdm
 import pyperclip
 
 from logger import logger
 
+with open ("config.json", "r") as f:
+    config = json.load(f)
+PATH = config["CRW4_PATH"]
+OUTPUT_PATH = config["OUTPUT_PATH"]
+
+crw4_automation = None
+
 class CRW4Automation:
-    def __init__(self, app:Application):
+    def __init__(self, app:Application, window=None):
         self.app = app
-        self.main_window = None
+        self.main_window = window
         self.checked_mixture = False
-        self.start()
+        if self.main_window == None :
+            self.start()
     
     def start(self):
         try:
@@ -80,7 +89,10 @@ class CRW4Automation:
         return {"status": 0, "result": result}
 
     def add_mixture(self, mixture_name):
-        """新增化合物至CRW4"""
+        """
+        新增化合物至CRW4 
+        mixture_name:str
+        """
         self.click_button("New Mixture") 
         edit_control = self.main_window.child_window(auto_id="IDC_SHOW_CUSTOM_MESSAGE_EDIT1", control_type="Edit")
         if not edit_control.is_visible() and edit_control.is_enabled():
@@ -127,6 +139,7 @@ class CRW4Automation:
             self.checked_mixture = True
 
         ##成功回傳化學品名稱及CAS
+        ## v0.0.15 本來想要新增根據選取化合物裡面是否有相對名稱來判斷確定新增成功，但是發現CRW4化合物資料會根據ABCD順序排序，太複雜故先不做此判斷
         offical_name = self.main_window.child_window(auto_id="Field: SearchResults::OfficialChemicalName", control_type="Edit", found_index=0).legacy_properties()['Value']
         # chemical_name = self.main_window.child_window(auto_id="Field: MixtureInfo::ChemName", control_type="Edit").legacy_properties()['Value']
         # current_cas = self.main_window.child_window(auto_id="Field: MixtureInfo::CASNum", control_type="Edit").legacy_properties()['Value']
@@ -143,6 +156,7 @@ class CRW4Automation:
         if self.main_window.child_window(title="No mixture selected", control_type="Window").exists(timeout=3):
             logger.warning("No mixture selected")
             return {"status":1, "result":"使用者尚未選取化合物，請創建化合物後再產生列表"}
+        ###點選複數確認按鈕
         header = self.main_window.child_window(title="Header", control_type="Pane")
         self.click_button("Export Chart Data", window=header) 
         Export_window = self.main_window.child_window(title="Compatibility Chart Data Export", control_type="Window")
@@ -164,13 +178,92 @@ class CRW4Automation:
         self.click_button("Export")
         return {"status": 0, "result": "文件創建成功", "error": ""}
 
-    def list_properties(self, auto_id): ##developing
-        control = self.main_window.child_window(auto_id=auto_id, control_type="Edit")
-        legacy_value = control.legacy_properties().get("Value", None)
-        logger.info(f"result message: {legacy_value}")
-        # props = control.get_properties()
-        # for prop, value in props.items():
-        #     print(f"{prop}: {value}")
+    def format_output(self, id, results):
+        """Payload:
+        id: str
+        results: list  -> look output.json for example
+        Output format
+        {
+            "id": "123456",
+            "cas_list": [
+                {
+                    "status": 0,
+                    "7440-23-5": "sodium"
+                },
+                {
+                    "status": 1,
+                    "7440-23-6": ""
+                }....
+            ]
+        } 
+        """
+        formatted_result = {
+            "id": id,  
+            "cas_list": []
+        }
+
+        for item in results:
+            cas_entry = {
+                "status": item['status']
+            }
+            if item['status'] == 0:
+                cas_entry[item['cas']] = item['result']['chemical_name']
+            else:
+                cas_entry[item['cas']] = ""
+
+            formatted_result['cas_list'].append(cas_entry)
+        return formatted_result
+
+    def clear_mixture(self):
+        """在下一次使用之前將所有化學品全部刪除"""
+        try:
+            ##點擊化學品選取視窗
+            dropdown_menu = self.main_window.child_window(control_type="Menu", auto_id="Field: Chemicals::y_gMixtureNameSelect")
+            dropdown_menu.click_input()
+            ###CRW4 這裡有個設計缺陷 在選取化學品的視窗和主視窗是分開的，所以要先選取路徑位置視窗才能找到裡面的MenuItem
+            combobox = self.app.window(title_re="路徑位置")
+            if not combobox.exists(timeout=1):
+                return {"status": 1, "result": "刪除化學品時找不到路徑位置，可能是化學品選取視窗未完全開啟"}
+            menu_items = combobox.children(control_type="MenuItem")
+            for i in range(len(menu_items)):
+                try: 
+                    menu_item = combobox.child_window(auto_id="1", control_type="MenuItem")
+                    if not menu_item.exists():
+                        logger.debug(f"找不到第{i+1}個化學品MenuItem")
+                        break
+                    menu_item.click_input()
+                    self.click_button("Delete  Mixture")
+                    lock_window = self.main_window.child_window(title="This mixture is locked", control_type="Window")
+                    if lock_window.exists(timeout=1):  ###CRW4 在化學品選項預設都會有個被鎖定的Reactive Group Matrix 這是偵測到鎖定時的例外處理
+                        logger.debug(f"偵測到選擇為reactive matrix化學品被鎖定, 正在解鎖")
+                        self.click_button("OK")
+                        dropdown_menu.click_input()
+                        menu_item = combobox.child_window(auto_id="2", control_type="MenuItem")
+                        menu_item.click_input()
+                        self.click_button("Delete  Mixture")
+                    self.click_button("OK")
+                    logger.info(f"成功刪除了第{i+1}個化學品")
+                    dropdown_menu.click_input()
+
+                except Exception as e:
+                    logger.debug(f"{e.args[0]}.error:{e.__class__.__name__}")
+            return {"status": 0, "result": "已清除所有化學品"}
+        except Exception as e:
+            return {"status": 1, "result": f"刪除化合物失敗: {e}" , "error": e.__class__.__name__}
+
+    def muliple_search(self, cas_list):
+        results = []
+        for i in tqdm(range(len(cas_list))):
+            cas = cas_list[i]
+            try:
+                result = self.add_chemical(cas)
+                logger.debug(f"Adding chemical: {cas} result :{result}")
+                if result["status"] == 3:
+                    return {"status": 1, "result":"使用者尚未選取化合物"}
+                results.append({"cas": cas, "status": result["status"], "result": result['result']})
+            except Exception as e:
+                results.append({"cas": cas, "status": 1, "error": e.args[0]})
+        return results
 
 def handle_request_exception(func):
     @wraps(func)

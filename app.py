@@ -20,17 +20,6 @@ from payload import (
 )
 from util import CRW4Automation, handle_request_exception
 
-with open ("config.json", "r") as f:
-    config = json.load(f)
-
-def get_absolute_path(relative_path):
-    return os.path.abspath(os.path.join(os.path.dirname(__file__), relative_path))
-
-PATH = config["CRW4_PATH"]
-OUTPUT_PATH = config["OUTPUT_PATH"]
-
-crw4_automation = None
-
 def start_crw4_application():
     global crw4_automation
     if crw4_automation is None:
@@ -42,6 +31,18 @@ def start_crw4_application():
     else:
         logger.info("CRW4 application already running")
 
+
+with open ("config.json", "r") as f:
+    config = json.load(f)
+
+def get_absolute_path(relative_path):
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), relative_path))
+
+PATH = config["CRW4_PATH"]
+OUTPUT_PATH = config["OUTPUT_PATH"]
+
+crw4_automation = None
+
 @api_ns.route("/start")
 class Start(Resource):
     @handle_request_exception
@@ -50,8 +51,43 @@ class Start(Resource):
         start_crw4_application()
         return {"status": 0, "result": "CRW4 application started successfully", "error": ""}
 
+
+@api_ns.route("/clear_mixture")
+class Clear(Resource):
+    @handle_request_exception
+    @api.marshal_with(general_output_payload)
+    def get(self):
+        result = crw4_automation.clear_mixture()
+
+        
+        return {"status": result['status'], "result": result["result"]}
+    
 @api_ns.route("/multiple_search")
 class Muiltiple_search(Resource):
+    @api.expect(queue_list_payload)
+    @api.marshal_with(general_output_payload)
+    @handle_request_exception
+    def post(self):
+        data = api.payload
+        cas_list = data.get("cas_list")
+        id = data.get("id")
+        crw4_automation.checked_mixture = False #防呆機制
+        cas_list = list(set(cas_list))
+        results = []
+        for i in trange(len(cas_list)):
+            cas = cas_list[i]
+            logger.debug(f"Searching for CAS number: {cas}")
+            try:
+                result = crw4_automation.add_chemical(cas)
+                if result["status"] == 3:
+                    return {"status": 1, "result":"使用者尚未選取化合物"}
+                results.append({"cas": cas, "status": result["status"], "result": result['result']})
+            except Exception as e:
+                results.append({"cas": cas, "status": 1, "error": str(e)})
+        return {"status": 0, "result": results}
+    
+@api_ns.route("/generate_json")
+class Generate_json(Resource):
     @api.expect(queue_list_payload)
     @api.marshal_with(general_output_payload)
     @handle_request_exception
@@ -74,7 +110,28 @@ class Muiltiple_search(Resource):
                 results.append({"cas": cas, "status": result["status"], "result": result['result']})
             except Exception as e:
                 results.append({"cas": cas, "status": 1, "error": str(e)})
-        return {"status": 0, "result": results}
+
+        formatted_result = {
+            "id": id, 
+            "cas_list": []
+        }
+
+        for item in results:
+            cas_entry = {
+                "status": item['status']
+            }
+            if item['status'] == 0:
+                cas_entry[item['cas']] = item['result']['chemical_name']
+            else:
+                cas_entry[item['cas']] = ""
+
+            formatted_result['cas_list'].append(cas_entry)
+
+        with open('output.json', 'w', encoding='utf-8') as f:
+            json.dump(formatted_result, f, ensure_ascii=False, indent=4)
+        
+        return {"status": 0, "result": formatted_result, "error": ""}
+
 
 @api_ns.route("/show")
 class Show(Resource):
@@ -161,7 +218,7 @@ class Conclusion(Resource):
             logger.info(f"文件成功複製到 {destination_path}")
 
             
-            return {"cas":cas, "result": results}
+            
 
             
         except Exception as e:

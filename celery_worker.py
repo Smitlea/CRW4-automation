@@ -1,12 +1,12 @@
-from pywinauto import Application
+import json
+
 from flask import request
 from flask_restx import Resource
-from dotenv import load_dotenv
 from celery.result import AsyncResult
 from tqdm.tk import trange
+from pywinauto import Application
 
 from logger import logger
-from model import DatabaseManager, TestTable
 from payload import (
     api_ns, api, app, api_test,
     cas_list_payload,
@@ -16,8 +16,9 @@ from payload import (
     general_output_payload,
     new_mixture_payload
 )
-from tasks import CRW4Auto, Celery_app, CRW4add
-from util import CRW4Automation, handle_request_exception
+from tasks import CRW4Auto, Celery_app, CRW4add, count
+from celery.app.control import Inspect
+from util import handle_request_exception
 
 @api.route("/queue")
 class Register(Resource):
@@ -30,19 +31,39 @@ class Register(Resource):
         id = data.get("id")
         try:
             task = CRW4Auto.apply_async((cas_list ,id))
+
             logger.info(f"Task created ID:{task.id}")
-            return {'task_id': task.id}
+            return {'status': 0,'task_id': task.id}
         except Exception as e:
             return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
-        
-@api.route("/status")
-class Test(Resource):
-    @api.doc(params={'task_id': 'input'})
+
+@api.route("/search")
+class Search(Resource):
+    @handle_request_exception
+    @api.marshal_with(task_id_output)
     def get(self):
-        getTask = request.args.get('task_id')
-        result = AsyncResult(getTask, app=Celery_app)
-        logger.info(f" state: {result}")
-        logger.info(f" state: {result.info}")
+        try:
+            task = count.delay()
+            logger.debug(task.id)
+            i = Celery_app.control.inspect()
+            # active_lst = insp.active()
+            # for key in active_lst.keys():
+            #     print(key)
+            pending_tasks = i.reserved() or {}
+            active_tasks = i.active() or {}
+            scheduled_tasks = i.scheduled() or {}
+            tasks_ahead = 1
+            logger.debug(pending_tasks.items())
+            logger.debug(active_tasks.items())
+            logger.debug(scheduled_tasks.items())
+            for worker, tasks in pending_tasks.items():
+                for task in tasks:
+                    if task['id'] == task.id:
+                        break
+                    tasks_ahead += 1
+            return {'status': 0,'task_id': task.id, 'order': tasks_ahead}
+        except Exception as e:
+            return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
 
 @api.route("/add")
 class Add(Resource):
@@ -92,3 +113,6 @@ class Result(Resource):
         
         return response
     
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port="5000", debug=True)
+
