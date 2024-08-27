@@ -5,7 +5,6 @@ from functools import wraps
 from flask_restx import abort
 from http import HTTPStatus
 from pywinauto import Application
-from pywinauto.controls.uia_controls import MenuWrapper
 from werkzeug.exceptions import BadRequest
 from tqdm import tqdm
 import pyperclip
@@ -120,11 +119,27 @@ class CRW4Automation:
         self.click_button("Search") 
         result = self.check_search_results(cas)
 
-        if result["status"] != 0:
+        if result["status"] == 2 :
+            result = {}
+            logger.debug(f"cas:{cas}進入複數判定")
+            for i in range(1, 11):
+                control = self.main_window.child_window(title=f"Portal Row View {str(i)}", control_type="DataItem", found_index=0)
+                chemical_field=control.child_window(auto_id="Field: SearchResults::OfficialChemicalName", control_type="Edit", found_index=0)
+                if chemical_field.exists():
+                    chemical_name = chemical_field.legacy_properties()['Value']
+                    result[f"{cas}_{i}"] = chemical_name
+                else:
+                    logger.debug(f"{cas} 總共有 {i-1} 筆相同的資料")
+                    break
+            logger.info(f"cas 複數結果: {result}")
+            return {"status": 2, "result": result}
+
+        elif result["status"] != 0:
             logger.warning(f"Search result: {result}")
             return {"status": result["status"], "result": result["result"]}
         
         ##找到化學品視窗以點擊兩次
+        ##portal_view有複數個相同名稱的視窗，所以指定index=0，也就是找到的第一個。
         portal_view = self.main_window.child_window(title="Portal View", control_type="Pane", found_index=0)
         target_item = portal_view.child_window(title="Portal Row View 1", control_type="DataItem")
         target_item.click_input()
@@ -219,31 +234,31 @@ class CRW4Automation:
         try:
             ##點擊化學品選取視窗
             dropdown_menu = self.main_window.child_window(control_type="Menu", auto_id="Field: Chemicals::y_gMixtureNameSelect")
-            dropdown_menu.click_input()
+            dropdown_menu.click()
             ###CRW4 這裡有個設計缺陷 在選取化學品的視窗和主視窗是分開的，所以要先選取路徑位置視窗才能找到裡面的MenuItem
             combobox = self.app.window(title_re="路徑位置")
             if not combobox.exists(timeout=1):
                 return {"status": 1, "result": "刪除化學品時找不到路徑位置，可能是化學品選取視窗未完全開啟"}
             menu_items = combobox.children(control_type="MenuItem")
-            for i in range(len(menu_items)):
+            for i in range(len(menu_items)-1):
                 try: 
                     menu_item = combobox.child_window(auto_id="1", control_type="MenuItem")
                     if not menu_item.exists():
                         logger.debug(f"找不到第{i+1}個化學品MenuItem")
                         break
-                    menu_item.click_input()
+                    menu_item.click()
                     self.click_button("Delete  Mixture")
                     lock_window = self.main_window.child_window(title="This mixture is locked", control_type="Window")
-                    if lock_window.exists(timeout=1):  ###CRW4 在化學品選項預設都會有個被鎖定的Reactive Group Matrix 這是偵測到鎖定時的例外處理
+                    if lock_window.exists():  ###CRW4 在化學品選項預設都會有個被鎖定的Reactive Group Matrix 這是偵測到鎖定時的例外處理
                         logger.debug(f"偵測到選擇為reactive matrix化學品被鎖定, 正在解鎖")
                         self.click_button("OK")
-                        dropdown_menu.click_input()
+                        dropdown_menu.click()
                         menu_item = combobox.child_window(auto_id="2", control_type="MenuItem")
-                        menu_item.click_input()
+                        menu_item.click()
                         self.click_button("Delete  Mixture")
                     self.click_button("OK")
                     logger.info(f"成功刪除了第{i+1}個化學品")
-                    dropdown_menu.click_input()
+                    dropdown_menu.click()
 
                 except Exception as e:
                     logger.debug(f"{e.args[0]}.error:{e.__class__.__name__}")
@@ -251,19 +266,27 @@ class CRW4Automation:
         except Exception as e:
             return {"status": 1, "result": f"刪除化合物失敗: {e}" , "error": e.__class__.__name__}
 
-    def muliple_search(self, cas_list):
+    def multiple_search(self, cas_list):
         results = []
-        for i in tqdm(range(len(cas_list))):
-            cas = cas_list[i]
+
+        for cas in tqdm(cas_list):
             try:
                 result = self.add_chemical(cas)
-                logger.debug(f"Adding chemical: {cas} result :{result}")
-                if result["status"] == 3:
-                    return {"status": 1, "result":"使用者尚未選取化合物"}
-                results.append({"cas": cas, "status": result["status"], "result": result['result']})
+                logger.debug(f"Adding chemical: {cas} result: {result}")
+                
+                status = result.get("status")
+                if status == 3:
+                    return {"status": 1, "result": "使用者尚未選取化合物"}
+                elif status == 2:
+                    results.append({"cas": cas, "status": 2, "result": {key: result[key] for key in result if key != "status"}})
+                else:
+                    results.append({"cas": cas, "status": status, "result": result.get("result")})
+            
             except Exception as e:
-                results.append({"cas": cas, "status": 1, "error": e.args[0]})
-        return results
+                results.append({"cas": cas, "status": 1, "error": str(e)})
+
+        return {"status": 0, "result": results}
+
 
 def handle_request_exception(func):
     @wraps(func)

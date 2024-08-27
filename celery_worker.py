@@ -1,20 +1,14 @@
 import json
-
 from flask import request
 from flask_restx import Resource
 from celery.result import AsyncResult
-from tqdm.tk import trange
-from pywinauto import Application
-
 from logger import logger
+
 from payload import (
     api_ns, api, app, api_test,
-    cas_list_payload,
     task_id_output,
     queue_list_payload,
-    add_chemical_input_payload, 
-    general_output_payload,
-    new_mixture_payload
+    add_chemical_input_payload
 )
 from tasks import CRW4Auto, Celery_app, CRW4add, count
 from celery.app.control import Inspect
@@ -31,7 +25,6 @@ class Register(Resource):
         id = data.get("id")
         try:
             task = CRW4Auto.apply_async((cas_list ,id))
-
             logger.info(f"Task created ID:{task.id}")
             return {'status': 0,'task_id': task.id}
         except Exception as e:

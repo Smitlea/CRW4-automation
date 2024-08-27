@@ -72,19 +72,8 @@ class Muiltiple_search(Resource):
         cas_list = data.get("cas_list")
         id = data.get("id")
         crw4_automation.checked_mixture = False #防呆機制
-        cas_list = list(set(cas_list))
-        results = []
-        for i in trange(len(cas_list)):
-            cas = cas_list[i]
-            logger.debug(f"Searching for CAS number: {cas}")
-            try:
-                result = crw4_automation.add_chemical(cas)
-                if result["status"] == 3:
-                    return {"status": 1, "result":"使用者尚未選取化合物"}
-                results.append({"cas": cas, "status": result["status"], "result": result['result']})
-            except Exception as e:
-                results.append({"cas": cas, "status": 1, "error": str(e)})
-        return {"status": 0, "result": results}
+        result=crw4_automation.multiple_search(cas_list)
+        return {"status": result['status'], "result": result['result']}
     
 @api_ns.route("/generate_json")
 class Generate_json(Resource):

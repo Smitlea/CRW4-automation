@@ -44,7 +44,7 @@ class CRW4Task(Task):
             #創建混合物
             crw4_automation.add_mixture(mixture_name=id)
             #添加化學品
-            results = crw4_automation.muliple_search(cas_list) 
+            results = crw4_automation.multiple_search(cas_list) 
             #輸出圖表
             crw4_automation.output_chart_to_csv()
             #回到主頁面
@@ -93,14 +93,14 @@ def start_crw4_application():
     crw4_automation = CRW4Automation(app_instance)
     logger.info("CRW4 application started successfully")
 
-def check_CRW4_connection():
-    if crw4_automation is None:
-        try:
-            logger.info("CRW4 application not running, starting now")
-            app_instance=Application(backend="uia").connect(path=PATH)
-            main_window=Application().connect(title_re="CRW4.*")
-            crw4_automation = CRW4Automation(app_instance, window=main_window)
-        except Exception as e:
-            logger.error(f"Failed to connect to CRW4 application, whether celery is not active or application init failed: {e}")
-            return {"status": 1, "result": "", "error": e}
-    return {"status": 0, "result": "CRW4 application connected successfully", "error": ""}
+# def check_CRW4_connection():
+#     if crw4_automation is None:
+#         try:
+#             logger.info("CRW4 application not running, starting now")
+#             app_instance=Application(backend="uia").connect(path=PATH)
+#             main_window=Application().connect(title_re="CRW4.*")
+#             crw4_automation = CRW4Automation(app_instance, window=main_window)
+#         except Exception as e:
+#             logger.error(f"Failed to connect to CRW4 application, whether celery is not active or application init failed: {e}")
+#             return {"status": 1, "result": "", "error": e}
+#     return {"status": 0, "result": "CRW4 application connected successfully", "error": ""}
