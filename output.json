@@ -1,131 +1,43 @@
-[
-    {
-        "cas": "10043-35-3",
-        "status": 1,
-        "result": "cas:10043-35-3 無相對應的資料"
-    },
-    {
-        "cas": "10102-45-1",
-        "status": 0,
-        "result": {
-            "cas": "10102-45-1",
-            "chemical_name": "THALLIUM NITRATE"
-        }
-    },
-    {
-        "cas": "7440-48-4",
-        "status": 0,
-        "result": {
-            "cas": "7440-48-4",
-            "chemical_name": "COBALT"
-        }
-    },
-    {
-        "cas": "7789-09-5",
-        "status": 0,
-        "result": {
-            "cas": "7789-09-5",
-            "chemical_name": "AMMONIUM DICHROMATE"
-        }
-    },
-    {
-        "cas": "7761-88-8",
-        "status": 0,
-        "result": {
-            "cas": "7761-88-8",
-            "chemical_name": "SILVER NITRATE"
-        }
-    },
-    {
-        "cas": "10325-94-7",
-        "status": 0,
-        "result": {
-            "cas": "10325-94-7",
-            "chemical_name": "CADMIUM NITRATE"
-        }
-    },
-    {
-        "cas": "10099-74-8",
-        "status": 0,
-        "result": {
-            "cas": "10099-74-8",
-            "chemical_name": "LEAD NITRATE"
-        }
-    },
-    {
-        "cas": "13138-45-9",
-        "status": 1,
-        "result": "cas:13138-45-9 無相對應的資料"
-    },
-    {
-        "cas": "10141-05-6",
-        "status": 0,
-        "result": {
-            "cas": "10141-05-6",
-            "chemical_name": "COBALT NITRATE"
-        }
-    },
-    {
-        "cas": "7779-88-6",
-        "status": 0,
-        "result": {
-            "cas": "7779-88-6",
-            "chemical_name": "ZINC NITRATE"
-        }
-    },
-    {
-        "cas": "7697-37-2",
-        "status": 2,
-        "result": "cas:7697-37-2 找到複數筆資料"
-    },
-    {
-        "cas": "10022-31-8",
-        "status": 0,
-        "result": {
-            "cas": "10022-31-8",
-            "chemical_name": "BARIUM NITRATE"
-        }
-    },
-    {
-        "cas": "7440-69-9",
-        "status": 1,
-        "result": "cas:7440-69-9 無相對應的資料"
-    },
-    {
-        "cas": "471-34-1",
-        "status": 0,
-        "result": {
-            "cas": "471-34-1",
-            "chemical_name": "CALCIUM CARBONATE"
-        }
-    },
-    {
-        "cas": "7440-43-9",
-        "status": 0,
-        "result": {
-            "cas": "7440-43-9",
-            "chemical_name": "CADMIUM"
-        }
-    },
-    {
-        "cas": "3251-23-8",
-        "status": 0,
-        "result": {
-            "cas": "3251-23-8",
-            "chemical_name": "CUPRIC NITRATE"
-        }
-    },
-    {
-        "cas": "7440-50-8",
-        "status": 0,
-        "result": {
+{
+    "status": 0,
+    "result": [
+        {
+            "cas": "13138-45-9",
+            "status": 1,
+            "result": "cas:13138-45-9 無相對應的資料"
+        },
+        {
+            "cas": "10043-35-3",
+            "status": 1,
+            "result": "cas:10043-35-3 無相對應的資料"
+        },
+        {
             "cas": "7440-50-8",
-            "chemical_name": "COPPER"
+            "status": 0,
+            "result": {
+                "cas": "7440-50-8",
+                "chemical_name": "COPPER"
+            }
+        },
+        {
+            "cas": "10102-45-1",
+            "status": 0,
+            "result": {
+                "cas": "10102-45-1",
+                "chemical_name": "THALLIUM NITRATE"
+            }
+        },
+        {
+            "cas": "7697-37-2",
+            "status": 2,
+            "result": {
+                "result": {
+                    "7697-37-2_1": "NITRATING ACID, MIXTURE, (WITH <= 50% NITRIC ACID)",
+                    "7697-37-2_2": "NITRATING ACID, MIXTURE, (WITH > 50% NITRIC ACID)",
+                    "7697-37-2_3": "NITRIC ACID, OTHER THAN RED FUMING",
+                    "7697-37-2_4": "NITRIC ACID, RED FUMING"
+                }
+            }
         }
-    },
-    {
-        "cas": "7784-27-2",
-        "status": 1,
-        "result": "cas:7784-27-2 無相對應的資料"
-    }
-]
+    ]
+}

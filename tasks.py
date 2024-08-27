@@ -52,7 +52,11 @@ class CRW4Task(Task):
             #清空混合物
             crw4_automation.clear_mixture()
             #整理輸出結果
+            with open("output.json", 'w', encoding='utf-8') as f:
+                json.dump(results, f, ensure_ascii=False, indent=4)
+            logger.debug(f"i am here results: {results}")
             formatted_result = crw4_automation.format_output(id, results)
+            logger.debug(f"i am here formatted_result: {formatted_result}")
             current_time = datetime.datetime.now().strftime("%Y%m%d")
             #創建data資料夾
             if not os.path.exists(OUTPUT_PATH) :

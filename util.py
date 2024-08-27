@@ -208,7 +208,15 @@ class CRW4Automation:
                 {
                     "status": 1,
                     "7440-23-6": ""
-                }....
+                },
+                {
+                    "status": 2,
+                    "7440-23-5_1": "NITRATING ACID, MIXTURE, (WITH <= 50% NITRIC ACID)"
+                },
+                {
+                    "status": 2,
+                    "7440-23-5_2": "NITRATING ACID, MIXTURE, (WITH > 50% NITRIC ACID)"
+                },
             ]
         } 
         """
@@ -216,17 +224,36 @@ class CRW4Automation:
             "id": id,  
             "cas_list": []
         }
+        try:
 
-        for item in results:
-            cas_entry = {
-                "status": item['status']
-            }
-            if item['status'] == 0:
-                cas_entry[item['cas']] = item['result']['chemical_name']
-            else:
-                cas_entry[item['cas']] = ""
-
-            formatted_result['cas_list'].append(cas_entry)
+            for item in results["result"]:
+                status = item["status"]
+                cas = item["cas"]
+                
+                if status == 0:
+                    chemical_name = item["result"].get("chemical_name", "")
+                    formatted_result["cas_list"].append({
+                        "status": status,
+                        cas: chemical_name
+                    })
+                elif status == 1:
+                    formatted_result["cas_list"].append({
+                        "status": status,
+                        cas: ""
+                    })
+                elif status == 2:
+                    result = item["result"]["result"]
+                    for key, value in result.items():
+                        formatted_result["cas_list"].append({
+                            "status": status,
+                            key: value
+                        })
+        except KeyError as e:
+            logger.error(f"KeyError: {e} in item: {item}")
+        except TypeError as e:
+            logger.error(f"TypeError: {e} in item: {item}")
+        except Exception as e:
+            logger.error(f"Unexpected error: {e} in item: {item}")
         return formatted_result
 
     def clear_mixture(self):
@@ -234,7 +261,7 @@ class CRW4Automation:
         try:
             ##點擊化學品選取視窗
             dropdown_menu = self.main_window.child_window(control_type="Menu", auto_id="Field: Chemicals::y_gMixtureNameSelect")
-            dropdown_menu.click()
+            dropdown_menu.click_input()
             ###CRW4 這裡有個設計缺陷 在選取化學品的視窗和主視窗是分開的，所以要先選取路徑位置視窗才能找到裡面的MenuItem
             combobox = self.app.window(title_re="路徑位置")
             if not combobox.exists(timeout=1):
@@ -246,19 +273,19 @@ class CRW4Automation:
                     if not menu_item.exists():
                         logger.debug(f"找不到第{i+1}個化學品MenuItem")
                         break
-                    menu_item.click()
+                    menu_item.click_input()
                     self.click_button("Delete  Mixture")
                     lock_window = self.main_window.child_window(title="This mixture is locked", control_type="Window")
                     if lock_window.exists():  ###CRW4 在化學品選項預設都會有個被鎖定的Reactive Group Matrix 這是偵測到鎖定時的例外處理
                         logger.debug(f"偵測到選擇為reactive matrix化學品被鎖定, 正在解鎖")
                         self.click_button("OK")
-                        dropdown_menu.click()
+                        dropdown_menu.click_input()
                         menu_item = combobox.child_window(auto_id="2", control_type="MenuItem")
-                        menu_item.click()
+                        menu_item.click_input()
                         self.click_button("Delete  Mixture")
                     self.click_button("OK")
                     logger.info(f"成功刪除了第{i+1}個化學品")
-                    dropdown_menu.click()
+                    dropdown_menu.click_input()
 
                 except Exception as e:
                     logger.debug(f"{e.args[0]}.error:{e.__class__.__name__}")
