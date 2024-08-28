@@ -1,5 +1,7 @@
 import json
 import time
+import os
+import shutil
 
 from functools import wraps
 from flask_restx import abort
@@ -341,3 +343,47 @@ def handle_request_exception(func):
             )
 
     return wrapper
+
+def file_handler(file_type: str, data=None, id=None):
+    if file_type not in ["json", "xlsx"]:
+        logger.error(f"Invalid file type: {file_type}")
+        return {"status": 1, "result": "Invalid file type"}
+
+    os.makedirs(OUTPUT_PATH, exist_ok=True)
+    current_time = time.strftime("%Y%m%d")
+    base_filename = f"SDS_911058_{id}_{current_time}"
+    
+    try:
+        if file_type == "json":
+            json_path = os.path.join(OUTPUT_PATH, "json")
+            os.makedirs(json_path, exist_ok=True)
+            destination_path = os.path.join(json_path, f"{base_filename}.json")
+            with open(destination_path, 'w', encoding='utf-8') as f:
+                json.dump(data, f, ensure_ascii=False, indent=4)
+            logger.info(f"JSON file successfully saved to {destination_path}")
+            result = {"status": 0, "result": f"JSON file successfully saved to {destination_path}"}
+        
+        elif file_type == "xlsx":
+            xlsx_path = os.path.join(OUTPUT_PATH, "xlsx")
+            os.makedirs(xlsx_path, exist_ok=True)
+            source_path = os.path.join(PATH.split("\\")[0], "\\CRW4", "CRW_Data_Export.xlsx")
+            max_attempts = 5
+            for attempt in range(max_attempts):
+                if os.path.exists(source_path):
+                    break
+                logger.info(f"等待CRW4 xlsx文件創建 次數: {attempt + 1}/{max_attempts}")
+                time.sleep(3)
+            else:
+                logger.error(f"Source file not found after {max_attempts} attempts")
+                return {"status": 1, "result": "xlsx文件沒有被CRW4成功創建，等待時間逾時"}
+
+            destination_path = os.path.join(xlsx_path, f"{base_filename}_CRW_Data_Export.xlsx")
+            shutil.copy2(source_path, destination_path)
+            logger.info(f"XLSX file successfully saved to {destination_path}")
+            result = {"status": 0, "result": f"XLSX file successfully saved to {destination_path}"}
+
+    except Exception as e:
+        logger.error(f"Error saving file: {e}")
+        result = {"status": 1, "result": f"Error saving file: {e}"}
+    
+    return result

@@ -1,4 +1,5 @@
 control_identifiers.txt
 server.log
+server.log/*
 data
 .env

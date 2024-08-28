@@ -9,7 +9,7 @@ from celery.signals import worker_process_init
 
 from logger import logger
 from pywinauto import Application
-from util import CRW4Automation
+from util import CRW4Automation, file_handler
 
 load_dotenv()
 #broker是用來傳遞任務的訊息代理，backend是用來存儲任務執行結果的資料庫，兩者可以是相同的
@@ -47,6 +47,8 @@ class CRW4Task(Task):
             results = crw4_automation.multiple_search(cas_list) 
             #輸出圖表
             crw4_automation.output_chart_to_csv()
+            #存到data資料夾 範例"data\SDS_911058_001_20240826.xlsx"
+            file_handler("xlsx", id=id)
             #回到主頁面
             crw4_automation.click_button("Mixture\rManager")
             #清空混合物
@@ -54,21 +56,13 @@ class CRW4Task(Task):
             #整理輸出結果
             with open("output.json", 'w', encoding='utf-8') as f:
                 json.dump(results, f, ensure_ascii=False, indent=4)
-            logger.debug(f"i am here results: {results}")
             formatted_result = crw4_automation.format_output(id, results)
-            logger.debug(f"i am here formatted_result: {formatted_result}")
-            current_time = datetime.datetime.now().strftime("%Y%m%d")
-            #創建data資料夾
-            if not os.path.exists(OUTPUT_PATH) :
-                os.makedirs(OUTPUT_PATH) 
-            #存到data 範例"data\SDS_911058_001_20240826.json" 
-            destnation_path = f"{OUTPUT_PATH}\SDS_911058_{id}_{current_time}.json"
-            with open(destnation_path, 'w', encoding='utf-8') as f:
-                json.dump(formatted_result, f, ensure_ascii=False, indent=4)
+            #存到data資料夾 範例"data\SDS_911058_001_20240826.json" 
+            result=file_handler("json", formatted_result, id)
         except Exception as e:
             return {"id":id ,'status': 1, "result": e.args[0], "error": e.__class__.__name__}
         
-        return {"id":id ,'status': 0, "result": f"Json文件成功保存到{OUTPUT_PATH}"}
+        return {"id":id ,'status': result["result"], "result": f"Json文件成功保存到{OUTPUT_PATH}"}
 
 
 
