@@ -24,6 +24,7 @@ class CRW4Automation:
     def __init__(self, app:Application, window=None):
         self.app = app
         self.main_window = window
+        self.current_task = None  
         self.checked_mixture = False
         if self.main_window == None :
             self.start()
@@ -35,7 +36,13 @@ class CRW4Automation:
             self.click_button("OK")
         except Exception as e:
             logger.error(f"Failed to initialize CRW4 main window: {e}")
-           
+    
+    def set_task(self, task):
+        """
+        這個功能是為了讓CRW4Automation能夠抓到Celery目前的進度所設置的
+        """
+        self.current_task = task
+
     def set_edit_field(self, auto_id, chemical_name):
         edit_field = self.main_window.child_window(auto_id=auto_id, control_type="Edit")
         pyperclip.copy(chemical_name) 
@@ -295,12 +302,14 @@ class CRW4Automation:
         except Exception as e:
             return {"status": 1, "result": f"刪除化合物失敗: {e}" , "error": e.__class__.__name__}
 
+    
     def multiple_search(self, cas_list):
         results = []
-
+        i = 0
         for cas in tqdm(cas_list):
             try:
                 result = self.add_chemical(cas)
+                self.current_task.update_state(state='PROGRESS', meta={'current': i + 1, 'total': len(cas_list)})
                 logger.debug(f"Adding chemical: {cas} result: {result}")
                 
                 status = result.get("status")

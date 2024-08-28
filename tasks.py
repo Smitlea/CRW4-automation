@@ -41,6 +41,7 @@ class CRW4Task(Task):
         cas_list = list(set(cas_list))
         crw4_automation.checked_mixture = False #防呆機制
         try:
+            crw4_automation.set_task(self)
             #創建混合物
             crw4_automation.add_mixture(mixture_name=id)
             #添加化學品
@@ -57,6 +58,7 @@ class CRW4Task(Task):
             with open("output.json", 'w', encoding='utf-8') as f:
                 json.dump(results, f, ensure_ascii=False, indent=4)
             formatted_result = crw4_automation.format_output(id, results)
+            logger.debug(f"Formatted result: {formatted_result}")
             #存到data資料夾 範例"data\SDS_911058_001_20240826.json" 
             result=file_handler("json", formatted_result, id)
         except Exception as e:

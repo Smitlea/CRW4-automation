@@ -85,25 +85,41 @@ class Result(Resource):
             logger.warning(f"task_id:{getTask} task is pending...")
             response = {
                 'state': result.state,
-                'current': result.current,
-                'status': 'pending...'
+                'status': 'Pending...',
+                'progress': 0  
+            }
+        elif result.state == 'PROGRESS':
+            current = result.info.get('current', 0)
+            total = result.info.get('total', 1)
+            progress = (current / total) * 100
+            response = {
+                'state': result.state,
+                'status': 'In progress...',
+                'progress': progress, 
+                'current': current,
+                'total': total,
             }
         elif result.state != 'SUCCESS':
             logger.warning("Task is processing")
             logger.debug(result)
+            current = result.info.get('current', 0)
+            total = result.info.get('total', 1)
+            progress = (current / total) * 100
             response = {
                 'state': result.state,
-                'current': result.info.get('current', 0) ,
-                'total': result.info.get('total', 1) ,
+                'progress': progress,
+                'current': current,
+                'total': total,
             }
             if result.result:
                 response['result'] = result.result
         else:
             response = {
                 'state': result.state,
-                'status': result.info if result.info else 'Task failed'
+                'status': result.info if result.info else 'Task failed',
+                'progress': 100 
             }
-        
+
         return response
     
 if __name__ == "__main__":
