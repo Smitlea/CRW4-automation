@@ -39,7 +39,7 @@ celery -A tasks.Celery_app worker -l INFO --pool=solo
 
 - Set up Swagger
 ```CMD=
- python celery_worker.py
+ python app.py
 ```
 
 
