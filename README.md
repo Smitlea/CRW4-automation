@@ -65,4 +65,6 @@ Swagger: \<Domain\>/api/doc
 | POST | /generate_json | 多次搜尋並顯示化合物搜尋狀態 |  |
 | POST | /mulitiple_select_and_render | 多次搜尋並輸出CSV檔案|  |
 
+## Structure
 
+![CRW4流程圖v2 drawio](https://github.com/user-attachments/assets/a8f086e8-1e53-42d4-ac92-2bc2ef91aaef)
