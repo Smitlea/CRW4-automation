@@ -1,6 +1,4 @@
 # CRW4AutoMation CRW4自動化行程工具 
-###### tags: `Systex`
-[TOC]
 
 ## CRW4Automation
 An project & customizable UI for CRW4 aim to assisst labotory for automatic and scheduable chemicals search with CRW4(Chemical Reactivity Worksheet 4), an close and outdated application publish by AIChE, yet been use worldwide due to it's strict and precise harm prediction。
