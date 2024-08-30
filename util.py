@@ -151,7 +151,7 @@ class CRW4Automation:
         ##portal_view有複數個相同名稱的視窗，所以指定index=0，也就是找到的第一個。
         portal_view = self.main_window.child_window(title="Portal View", control_type="Pane", found_index=0)
         target_item = portal_view.child_window(title="Portal Row View 1", control_type="DataItem")
-        target_item.click_input()
+        target_item.window().set_focus() ## developing
         target_item.click_input()
 
         ##防呆機制
@@ -301,15 +301,15 @@ class CRW4Automation:
             return {"status": 0, "result": "已清除所有化學品"}
         except Exception as e:
             return {"status": 1, "result": f"刪除化合物失敗: {e}" , "error": e.__class__.__name__}
-
-    
+  
     def multiple_search(self, cas_list):
         results = []
         i = 0
         for cas in tqdm(cas_list):
             try:
                 result = self.add_chemical(cas)
-                self.current_task.update_state(state='PROGRESS', meta={'current': i + 1, 'total': len(cas_list)})
+                self.current_task.update_state(state='PROGRESS', meta={'current': i, 'total': len(cas_list)})
+                i += 1
                 logger.debug(f"Adding chemical: {cas} result: {result}")
                 
                 status = result.get("status")
