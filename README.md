@@ -5,7 +5,7 @@
 ## CRW4Automation
 An project & customizable UI for CRW4 aim to assisst labotory for automatic and scheduable chemicals search with CRW4(Chemical Reactivity Worksheet 4), an close and outdated application publish by AIChE, yet been use worldwide due to it's strict and precise harm prediction。
 
-![image](https://hackmd.io/_uploads/SJoww3CjC.png)
+![upload_6d6ba7fce9c2087d48fa1f70a603cf5d](https://github.com/user-attachments/assets/421fd7bf-9cbe-4ca5-9cae-189fd55db90c)
 
 ## Installation
 
