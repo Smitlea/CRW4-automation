@@ -38,7 +38,9 @@ celery -A tasks.Celery_app worker -l INFO --pool=solo
 ```
 
 - Set up Swagger
-``` python celery_worker.py ```
+```CMD=
+ python celery_worker.py
+```
 
 
 ## CRW4 Flask Backend Endpoint app.py 
