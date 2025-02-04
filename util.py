@@ -106,7 +106,6 @@ class CRW4Automation:
         if not edit_control.is_visible() and edit_control.is_enabled():
             return {"status": 1, "error": "創建化合物視窗未彈出"}
         edit_control.set_edit_text(mixture_name)
-        logger.info("Mixture control set successfully")
         self.click_button("OK")
         logger.info("Mixture added successfully")
         return {"status": 0, "result": f"化合物{mixture_name}創建成功"}
@@ -151,9 +150,10 @@ class CRW4Automation:
         ##portal_view有複數個相同名稱的視窗，所以指定index=0，也就是找到的第一個。
         portal_view = self.main_window.child_window(title="Portal View", control_type="Pane", found_index=0)
         target_item = portal_view.child_window(title="Portal Row View 1", control_type="DataItem")
-        target_item.window().set_focus() ## developing
+        # target_item.window().set_focus() ## developing
         target_item.click_input()
-
+        target_item.click_input()
+        
         ##防呆機制
         if not self.checked_mixture:
             logger.debug("檢查是否選取化學品")

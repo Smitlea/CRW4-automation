@@ -2,4 +2,6 @@ control_identifiers.txt
 server.log
 server.log/*
 data
+Pipfile
 .env
+output.json

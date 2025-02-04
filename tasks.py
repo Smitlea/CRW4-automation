@@ -58,7 +58,6 @@ class CRW4Task(Task):
             with open("output.json", 'w', encoding='utf-8') as f:
                 json.dump(results, f, ensure_ascii=False, indent=4)
             formatted_result = crw4_automation.format_output(id, results)
-            logger.debug(f"Formatted result: {formatted_result}")
             #存到data資料夾 範例"data\SDS_911058_001_20240826.json" 
             result=file_handler("json", formatted_result, id)
         except Exception as e:
