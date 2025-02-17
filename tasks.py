@@ -64,11 +64,37 @@ class CRW4Task(Task):
             return {"id":id ,'status': 1, "result": e.args[0], "error": e.__class__.__name__}
         
         return {"id":id ,'status': result["result"], "result": f"Json文件成功保存到{OUTPUT_PATH}"}
+    
+class CRW4Check(Task):
+    def run (self, cas_list, id):
+        cas_list = list(set(cas_list))
+        crw4_automation.checked_mixture = False
+        try:
+            crw4_automation.set_task(self)
+            #創建混合物
+            crw4_automation.add_mixture(mixture_name=id)
+            #添加化學品
+            results = crw4_automation.multiple_check(cas_list)
+            #清空混合物
+            crw4_automation.clear_mixture()
+            with open("output.json", 'w', encoding='utf-8') as f:
+                json.dump(results, f, ensure_ascii=False, indent=4)
+            formatted_check_result = crw4_automation.formate_check_output(id, results)
+            result=file_handler("json", formatted_check_result, id)
+
+        except Exception as e:
+            return {"id":id ,'status': 1, "result": e.args[0], "error": e.__class__.__name__}
+        
+        return {"id":id ,'status': result["result"], "result": f"Json文件成功保存到{OUTPUT_PATH}"}
+        
+        
+
 
 
 
 CRW4Auto = Celery_app.register_task(CRW4Task())
 CRW4add = Celery_app.register_task(CRW4Add())
+CRW4check = Celery_app.register_task(CRW4Check())
 
 #當worker啟動時，初始化CRW4應用程式
 @worker_process_init.connect

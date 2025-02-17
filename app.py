@@ -10,7 +10,7 @@ from payload import (
     queue_list_payload,
     add_chemical_input_payload
 )
-from tasks import CRW4Auto, Celery_app, CRW4add, count
+from tasks import CRW4Auto, Celery_app, CRW4add, CRW4check, count
 from celery.app.control import Inspect
 from util import handle_request_exception
 
@@ -69,6 +69,22 @@ class Add(Resource):
         try:
             result = CRW4add.apply_async((cas,))
             return result
+        except Exception as e:
+            return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
+
+@api.route("/check")
+class Check(Resource):
+    @handle_request_exception
+    @api.expect(queue_list_payload)
+    @api.marshal_with(task_id_output)
+    def post(self):
+        data = api.payload
+        cas_list = data.get("cas_list")
+        id = data.get("id")
+        try:
+            task = CRW4check.apply_async((cas_list ,id))
+            logger.info(f"Task created ID:{task.id}")
+            return {'status': 0,'task_id': task.id}
         except Exception as e:
             return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
 

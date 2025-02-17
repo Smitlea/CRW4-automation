@@ -80,6 +80,10 @@ class CRW4Automation:
         control = self.main_window.child_window(auto_id="Field: Chemicals::y_gSearchResults", control_type="Edit")
         legacy_value = control.legacy_properties().get("Value", "")
         status = legacy_value.split('g')[0] + 'g'
+        if status == "":
+            result = f"錯誤，檢查化合物是否清除"
+            logger.warning(result)
+            return {"status": 1, "result": result}
 
         if status == "0 chemicals found exactly matching":
             result = f"cas:{cas} 無相對應的資料"
@@ -264,6 +268,64 @@ class CRW4Automation:
         except Exception as e:
             logger.error(f"Unexpected error: {e} in item: {item}")
         return formatted_result
+    
+    def formate_check_output(self, id, results:dict) -> dict:
+        """
+        根據 results 裡面每筆 item 的 'status' 來計算
+        - 0: 成功
+        - 1: 失敗
+        - 2: 有複數筆結果
+        回傳一個 dict 方便後續寫入檔案或記錄 log。
+        """
+        if "result" not in results or not isinstance(results["result"], list):
+            # 保險起見，若 results 不符合預期的結構可以直接 return 或 raise
+            return {
+                "id": id,
+                "total": 0,
+                "detail": {
+                    "success": 0,
+                    "miss": 0,
+                    "muiltiple": 0
+                },
+                "success_item": [],
+                "failed_item": [],
+                "multiple_item": []
+            }
+    
+        
+        total = len(results["result"])
+        success_cnt = 0
+        fail_cnt = 0
+        multiple_cnt = 0
+        success_list = []
+        fail_list = []
+        multiple_list = []
+        
+        for item in results["result"]:
+            status_val = item.get("status")
+            cas_val = item.get("cas")  # 從 item 裏面取得 CAS
+            if status_val == 0:
+                success_cnt += 1
+                success_list.append(cas_val)
+            elif status_val == 1:
+                fail_cnt += 1
+                fail_list.append(cas_val)
+            elif status_val == 2:
+                multiple_cnt += 1
+                multiple_list.append(cas_val)
+        
+        return {
+            "id": id,
+            "total": total,
+            "detail": {
+                "success": success_cnt,
+                "miss": fail_cnt,
+                "muiltiple": multiple_cnt
+            },
+            "success_item": success_list,
+            "failed_item": fail_list,
+            "multiple_item": multiple_list
+        }
 
     def clear_mixture(self):
         """在下一次使用之前將所有化學品全部刪除"""
@@ -301,7 +363,37 @@ class CRW4Automation:
             return {"status": 0, "result": "已清除所有化學品"}
         except Exception as e:
             return {"status": 1, "result": f"刪除化合物失敗: {e}" , "error": e.__class__.__name__}
-  
+    
+    def multiple_check(self, cas_list):
+        results = []
+        i = 0
+        for cas in tqdm(cas_list):
+            try:
+                self.set_edit_field("Field: Chemicals::y_gSearchCAS", cas)
+                self.click_button("Search") 
+                result = self.check_search_results(cas)
+
+                if not self.checked_mixture:
+                    logger.debug("檢查是否選取化學品")
+                    if self.main_window.child_window(title="No mixture selected", control_type="Window").exists(timeout=1):
+                        logger.warning("No mixture selected")
+                    return {"status": 3, "result": "使用者尚未選取化合物，請創建化合物後再選取化學品"}
+                self.checked_mixture = True
+                self.current_task.update_state(state='PROGRESS', meta={'current': i, 'total': len(cas_list)})
+                i += 1
+                logger.debug(f"Checking chemical: {cas} result: {result}")
+                status = result.get("status")
+                if status == 3:
+                    return {"status": 1, "result": "使用者尚未選取化合物"}
+                elif status == 2:
+                    results.append({"cas": cas, "status": 2, "result": {key: result[key] for key in result if key != "status"}})
+                else:
+                    results.append({"cas": cas, "status": status, "result": result.get("result")})
+            except Exception as e:
+                results.append({"cas": cas, "status": 1, "error": str(e)})
+
+        return {"status": 0, "result": results}
+            
     def multiple_search(self, cas_list):
         results = []
         i = 0
@@ -353,6 +445,48 @@ def handle_request_exception(func):
 
     return wrapper
 
+
+def check_for_file_ready(file_path, max_attempts=5, interval=3):
+    """
+    等待檔案「真正完成寫入」且「解鎖」的方法。
+    - 每次循環檢查檔案可讀可開啟，並檢查大小是否連續兩次都維持不變。
+    - 若都符合就代表寫入完成。
+    """
+    last_size = -1
+    stable_count = 0
+
+    for attempt in range(max_attempts):
+        if not os.path.exists(file_path):
+            logger.info(f"等待CRW4 xlsx文件出現，次數: {attempt + 1}/{max_attempts}")
+            time.sleep(interval)
+            continue
+        
+        try:
+            current_size = os.path.getsize(file_path)
+            # 檔案可以正常開啟 (代表沒有被鎖住)
+            with open(file_path, 'rb') as f:
+                f.read(1024)  # 簡單讀一下看是否有IOError或PermissionError
+            
+            # 檢查檔案大小是否穩定
+            if current_size == last_size and current_size > 0:
+                stable_count += 1
+            else:
+                stable_count = 0
+
+            # 連續兩次檔案大小都一樣，認為寫入完成 (可自行調整次數)
+            if stable_count >= 2:
+                return True
+            
+            last_size = current_size
+            logger.info(f"檔案大小為 {current_size} bytes，等待寫入穩定中...")
+            
+        except (IOError, PermissionError):
+            logger.info("檔案被鎖定或尚未完成寫入，重試中...")
+
+        time.sleep(interval)
+
+    return False
+
 def file_handler(file_type: str, data=None, id=None):
     if file_type not in ["json", "xlsx"]:
         logger.error(f"Invalid file type: {file_type}")
@@ -376,15 +510,10 @@ def file_handler(file_type: str, data=None, id=None):
             xlsx_path = os.path.join(OUTPUT_PATH, "xlsx")
             os.makedirs(xlsx_path, exist_ok=True)
             source_path = os.path.join(PATH.split("\\")[0], "\\CRW4", "CRW_Data_Export.xlsx")
-            max_attempts = 5
-            for attempt in range(max_attempts):
-                if os.path.exists(source_path):
-                    break
-                logger.info(f"等待CRW4 xlsx文件創建 次數: {attempt + 1}/{max_attempts}")
-                time.sleep(3)
-            else:
-                logger.error(f"Source file not found after {max_attempts} attempts")
-                return {"status": 1, "result": "xlsx文件沒有被CRW4成功創建，等待時間逾時"}
+
+            if not check_for_file_ready(source_path, max_attempts=10, interval=3):
+                logger.error("Source file not ready after waiting.")
+                return {"status": 1, "result": "xlsx文件沒有被CRW4成功創建或寫入未完成，等待時間逾時"}
 
             destination_path = os.path.join(xlsx_path, f"{base_filename}_CRW_Data_Export.xlsx")
             shutil.copy2(source_path, destination_path)
