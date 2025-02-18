@@ -73,25 +73,30 @@ class CRW4Automation:
         control = self.main_window.child_window(auto_id="Field: Chemicals::y_gSearchResults", control_type="Edit")
         legacy_value = control.legacy_properties().get("Value", "")
         status = legacy_value.split('g')[0] + 'g'
-        if status == "":
-            result = f"錯誤，檢查化合物是否清除"
-            logger.warning(result)
-            return {"status": 1, "result": result}
+
 
         if status == "0 chemicals found exactly matching":
             result = f"cas:{cas} 無相對應的資料"
             logger.warning(result)
-            return {"status": 1, "result": result}
+            return {"status": 1, "result": {"cas":result, "chemical_name": ""}}
         
         if status != "1 chemical found exactly matching":
-            result = f"cas:{cas} 找到複數筆資料"
+            chemical_list = []
+            for i in range(1, 11):
+                control = self.main_window.child_window(title=f"Portal Row View {str(i)}", control_type="DataItem", found_index=0)
+                chemical_field=control.child_window(auto_id="Field: SearchResults::OfficialChemicalName", control_type="Edit", found_index=0)
+                if chemical_field.exists():
+                        chemical_name = chemical_field.legacy_properties()['Value']
+                        chemical_list.append(chemical_name)
+            result = f"cas:{cas} 找到複數筆資料"            
             logger.warning(result)
-            return {"status": 2, "result": result}
+            return {"status": 2, "result": {"cas":cas, "chemical_name": chemical_list}}
         
         chemical = legacy_value.split('>')[1].split('\\r')[0]
+        offical_name = self.main_window.child_window(auto_id="Field: SearchResults::OfficialChemicalName", control_type="Edit", found_index=0).legacy_properties()['Value']
         result = f"cas:{cas} 找到一筆準確資料: {chemical}"
         logger.info(result)
-        return {"status": 0, "result": result}
+        return {"status": 0, "result": {"cas":result, "chemical_name": offical_name}}
 
     def add_mixture(self, mixture_name):
         """
@@ -364,6 +369,7 @@ class CRW4Automation:
                 self.set_edit_field("Field: Chemicals::y_gSearchCAS", cas)
                 self.click_button("Search") 
                 result = self.check_search_results(cas)
+
 
                 if not self.checked_mixture:
                     if self.main_window.child_window(title="No mixture selected", control_type="Window").exists(timeout=1):
