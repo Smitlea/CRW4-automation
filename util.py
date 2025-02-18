@@ -24,7 +24,6 @@ class CRW4Automation:
     def __init__(self, app:Application, window=None):
         self.app = app
         self.main_window = window
-        self.current_task = None  
         self.checked_mixture = False
         if self.main_window == None :
             self.start()
@@ -37,12 +36,6 @@ class CRW4Automation:
         except Exception as e:
             logger.error(f"Failed to initialize CRW4 main window: {e}")
     
-    def set_task(self, task):
-        """
-        這個功能是為了讓CRW4Automation能夠抓到Celery目前的進度所設置的
-        """
-        self.current_task = task
-
     def set_edit_field(self, auto_id, chemical_name):
         edit_field = self.main_window.child_window(auto_id=auto_id, control_type="Edit")
         pyperclip.copy(chemical_name) 
@@ -366,29 +359,28 @@ class CRW4Automation:
     
     def multiple_check(self, cas_list):
         results = []
-        i = 0
-        for cas in tqdm(cas_list):
+        for i, cas in enumerate(tqdm(cas_list)):
             try:
                 self.set_edit_field("Field: Chemicals::y_gSearchCAS", cas)
                 self.click_button("Search") 
                 result = self.check_search_results(cas)
 
                 if not self.checked_mixture:
-                    logger.debug("檢查是否選取化學品")
                     if self.main_window.child_window(title="No mixture selected", control_type="Window").exists(timeout=1):
-                        logger.warning("No mixture selected")
-                    return {"status": 3, "result": "使用者尚未選取化合物，請創建化合物後再選取化學品"}
-                self.checked_mixture = True
-                self.current_task.update_state(state='PROGRESS', meta={'current': i, 'total': len(cas_list)})
-                i += 1
-                logger.debug(f"Checking chemical: {cas} result: {result}")
-                status = result.get("status")
+                        return {"status": 3, "result": "使用者尚未選取化合物，請創建化合物後再選取化學品"}
+                    self.checked_mixture = True
+
+                status = result.get("status", 1)
+                
                 if status == 3:
                     return {"status": 1, "result": "使用者尚未選取化合物"}
-                elif status == 2:
-                    results.append({"cas": cas, "status": 2, "result": {key: result[key] for key in result if key != "status"}})
-                else:
-                    results.append({"cas": cas, "status": status, "result": result.get("result")})
+                
+                results.append({
+                    "cas": cas,
+                    "status": status,
+                    "result": result if status != 2 else {k: v for k, v in result.items() if k != "status"}
+                })
+                
             except Exception as e:
                 results.append({"cas": cas, "status": 1, "error": str(e)})
 
@@ -396,26 +388,26 @@ class CRW4Automation:
             
     def multiple_search(self, cas_list):
         results = []
-        i = 0
-        for cas in tqdm(cas_list):
+        for i, cas in enumerate(tqdm(cas_list)):
             try:
                 result = self.add_chemical(cas)
-                self.current_task.update_state(state='PROGRESS', meta={'current': i, 'total': len(cas_list)})
-                i += 1
-                logger.debug(f"Adding chemical: {cas} result: {result}")
-                
-                status = result.get("status")
+                status = result.get("status", 1)
+
                 if status == 3:
                     return {"status": 1, "result": "使用者尚未選取化合物"}
-                elif status == 2:
-                    results.append({"cas": cas, "status": 2, "result": {key: result[key] for key in result if key != "status"}})
-                else:
-                    results.append({"cas": cas, "status": status, "result": result.get("result")})
-            
+                
+                results.append({
+                    "cas": cas,
+                    "status": status,
+                    "result": result.get("result") if status != 2 else {k: v for k, v in result.items() if k != "status"}
+                })
+
             except Exception as e:
                 results.append({"cas": cas, "status": 1, "error": str(e)})
 
         return {"status": 0, "result": results}
+
+
 
 
 def handle_request_exception(func):
@@ -444,7 +436,6 @@ def handle_request_exception(func):
             )
 
     return wrapper
-
 
 def check_for_file_ready(file_path, max_attempts=5, interval=3):
     """

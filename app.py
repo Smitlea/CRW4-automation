@@ -1,4 +1,4 @@
-import json
+import os
 from flask import request
 from flask_restx import Resource
 from celery.result import AsyncResult
@@ -10,12 +10,15 @@ from payload import (
     queue_list_payload,
     add_chemical_input_payload
 )
-from tasks import CRW4Auto, Celery_app, CRW4add, CRW4check, count
-from celery.app.control import Inspect
+from tasks import CRW4Mechanization,start_crw4_application
 from util import handle_request_exception
 
-@api.route("/queue")
-class Register(Resource):
+
+
+mechization = CRW4Mechanization()
+
+@api.route("/auto")
+class Auto(Resource):
     @handle_request_exception
     @api.expect(queue_list_payload)
     @api.marshal_with(task_id_output)
@@ -24,37 +27,24 @@ class Register(Resource):
         cas_list = data.get("cas_list")
         id = data.get("id")
         try:
-            task = CRW4Auto.apply_async((cas_list ,id))
-            logger.info(f"Task created ID:{task.id}")
-            return {'status': 0,'task_id': task.id}
+            result = mechization.automate(cas_list=cas_list, id=id)
+            return {'status': 0, "result": result}
         except Exception as e:
             return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
 
-@api.route("/search")
-class Search(Resource):
+
+@api.route("/check")
+class Check(Resource):
     @handle_request_exception
+    @api.expect(queue_list_payload)
     @api.marshal_with(task_id_output)
-    def get(self):
+    def post(self):
+        data = api.payload
+        cas_list = data.get("cas_list")
+        id = data.get("id")
         try:
-            task = count.delay()
-            logger.debug(task.id)
-            i = Celery_app.control.inspect()
-            # active_lst = insp.active()
-            # for key in active_lst.keys():
-            #     print(key)
-            pending_tasks = i.reserved() or {}
-            active_tasks = i.active() or {}
-            scheduled_tasks = i.scheduled() or {}
-            tasks_ahead = 1
-            logger.debug(pending_tasks.items())
-            logger.debug(active_tasks.items())
-            logger.debug(scheduled_tasks.items())
-            for worker, tasks in pending_tasks.items():
-                for task in tasks:
-                    if task['id'] == task.id:
-                        break
-                    tasks_ahead += 1
-            return {'status': 0,'task_id': task.id, 'order': tasks_ahead}
+            result = mechization.automate_check(cas_list=cas_list, id=id)
+            return {'status': 0, "result": result}
         except Exception as e:
             return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
 
@@ -67,77 +57,13 @@ class Add(Resource):
         data = api.payload
         cas = data.get("cas")
         try:
-            result = CRW4add.apply_async((cas,))
+            result = mechization.test(cas=cas)
             return result
         except Exception as e:
             return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
 
-@api.route("/check")
-class Check(Resource):
-    @handle_request_exception
-    @api.expect(queue_list_payload)
-    @api.marshal_with(task_id_output)
-    def post(self):
-        data = api.payload
-        cas_list = data.get("cas_list")
-        id = data.get("id")
-        try:
-            task = CRW4check.apply_async((cas_list ,id))
-            logger.info(f"Task created ID:{task.id}")
-            return {'status': 0,'task_id': task.id}
-        except Exception as e:
-            return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
-
-
-
-@api.route('/result')
-class Result(Resource):
-    @api.doc(params={'task_id': 'input'})
-    def get(self):
-        getTask = request.args.get('task_id')
-        result = AsyncResult(getTask, app=Celery_app)
-
-        if result.state == 'PENDING' and result.info is None:
-            logger.warning(f"task_id:{getTask} task is pending...")
-            response = {
-                'state': result.state,
-                'status': 'Pending...',
-                'progress': 0  
-            }
-        elif result.state == 'PROGRESS':
-            current = result.info.get('current', 0)
-            total = result.info.get('total', 1)
-            progress = (current / total) * 100
-            response = {
-                'state': result.state,
-                'status': 'In progress...',
-                'progress': progress, 
-                'current': current,
-                'total': total,
-            }
-        elif result.state != 'SUCCESS':
-            logger.warning("Task is processing")
-            logger.debug(result)
-            current = result.info.get('current', 0)
-            total = result.info.get('total', 1)
-            progress = (current / total) * 100
-            response = {
-                'state': result.state,
-                'progress': progress,
-                'current': current,
-                'total': total,
-            }
-            if result.result:
-                response['result'] = result.result
-        else:
-            response = {
-                'state': result.state,
-                'status': result.info if result.info else 'Task failed',
-                'progress': 100 
-            }
-
-        return response
     
 if __name__ == "__main__":
+    if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
+        start_crw4_application()
     app.run(host="0.0.0.0", port="5000", debug=True)
-
