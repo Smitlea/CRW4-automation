@@ -1,7 +1,4 @@
-import os
-from flask import request
 from flask_restx import Resource
-from celery.result import AsyncResult
 from logger import logger
 
 from payload import (
@@ -13,10 +10,8 @@ from payload import (
 from tasks import CRW4Mechanization,start_crw4_application
 from util import handle_request_exception
 
-
-
-mechization = CRW4Mechanization()
-
+mechanization = CRW4Mechanization(start_crw4_application())
+        
 @api.route("/auto")
 class Auto(Resource):
     @handle_request_exception
@@ -27,7 +22,7 @@ class Auto(Resource):
         cas_list = data.get("cas_list")
         id = data.get("id")
         try:
-            result = mechization.automate(cas_list=cas_list, id=id)
+            result = mechanization.automate(cas_list=cas_list, id=id)
             return {'status': 0, "result": result}
         except Exception as e:
             return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
@@ -43,7 +38,7 @@ class Check(Resource):
         cas_list = data.get("cas_list")
         id = data.get("id")
         try:
-            result = mechization.automate_check(cas_list=cas_list, id=id)
+            result = mechanization.automate_check(cas_list=cas_list, id=id)
             return {'status': 0, "result": result}
         except Exception as e:
             return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
@@ -57,13 +52,11 @@ class Add(Resource):
         data = api.payload
         cas = data.get("cas")
         try:
-            result = mechization.test(cas=cas)
+            result = mechanization.test(cas=cas)
             return result
         except Exception as e:
             return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
 
     
 if __name__ == "__main__":
-    if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
-        start_crw4_application()
-    app.run(host="0.0.0.0", port="5000", debug=True)
+    app.run(host="0.0.0.0", port="5000", debug=False, use_reloader=False)

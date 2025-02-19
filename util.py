@@ -36,22 +36,24 @@ class CRW4Automation:
         except Exception as e:
             logger.error(f"Failed to initialize CRW4 main window: {e}")
     
-    def set_edit_field(self, auto_id, chemical_name):
+    def set_edit_field(self, auto_id, cas):
         edit_field = self.main_window.child_window(auto_id=auto_id, control_type="Edit")
-        pyperclip.copy(chemical_name) 
+        pyperclip.copy(cas) 
         edit_field.click_input()  
         edit_field.type_keys('^v') 
-        current_text = edit_field.get_value()
-        if current_text != chemical_name:
-            logger.error(f"Word copy and past Failed to set text in {auto_id}. Current text: '{current_text}'")
-        logger.debug(f"Text '{chemical_name}' set successfully in {auto_id}!")
+        current_cas = edit_field.get_value()
+        if current_cas != cas:
+            logger.error(f"Failed to set text in {auto_id}. chemical_name: '{cas}'")
+            return False
+        logger.debug(f"Text '{cas}' set successfully in {auto_id}!")
+        return True
 
     def click_button(self, title, control_type="Button", window=None):
         """根據標題(control identifiers)點擊按鈕 輸入方式click_buttion("標題")"""
         try:
             window = self.main_window if window == None else window
             button = window.child_window(title=title, control_type=control_type)
-            button.click()
+            button.click_input()
             logger.debug(f"{title} button clicked successfully")
         except Exception as e:
             logger.error(f"Error clicking {title} button: {e}")
@@ -78,7 +80,7 @@ class CRW4Automation:
         if status == "0 chemicals found exactly matching":
             result = f"cas:{cas} 無相對應的資料"
             logger.warning(result)
-            return {"status": 1, "result": {"cas":result, "chemical_name": ""}}
+            return {"status": 1, "result": {"cas":cas, "chemical_name": ""}}
         
         if status != "1 chemical found exactly matching":
             chemical_list = []
@@ -96,7 +98,7 @@ class CRW4Automation:
         offical_name = self.main_window.child_window(auto_id="Field: SearchResults::OfficialChemicalName", control_type="Edit", found_index=0).legacy_properties()['Value']
         result = f"cas:{cas} 找到一筆準確資料: {chemical}"
         logger.info(result)
-        return {"status": 0, "result": {"cas":result, "chemical_name": offical_name}}
+        return {"status": 0, "result": {"cas":cas, "chemical_name": offical_name}}
 
     def add_mixture(self, mixture_name):
         """
@@ -125,57 +127,59 @@ class CRW4Automation:
         }
         status 0=成功 1=失敗 2=找到複數筆資料 3=使用者尚未選取化合物
         """
-        self.set_edit_field("Field: Chemicals::y_gSearchCAS", cas)
-        self.click_button("Search") 
-        result = self.check_search_results(cas)
+        try:
+            if not self.set_edit_field("Field: Chemicals::y_gSearchCAS", cas):
+                return {"status": 1, "result": f"Failed to set text in Field: Chemicals::y_gSearchCAS"}
+            self.click_button("Search") 
+            result = self.check_search_results(cas)
 
-        if result["status"] == 2 :
-            result = {}
-            logger.debug(f"cas:{cas}進入複數判定")
-            for i in range(1, 11):
-                control = self.main_window.child_window(title=f"Portal Row View {str(i)}", control_type="DataItem", found_index=0)
-                chemical_field=control.child_window(auto_id="Field: SearchResults::OfficialChemicalName", control_type="Edit", found_index=0)
-                if chemical_field.exists():
-                    chemical_name = chemical_field.legacy_properties()['Value']
-                    result[f"{cas}_{i}"] = chemical_name
-                else:
-                    logger.debug(f"{cas} 總共有 {i-1} 筆相同的資料")
-                    break
-            logger.info(f"cas 複數結果: {result}")
-            return {"status": 2, "result": result}
+            if result["status"] == 2 :
+                result = {}
+                logger.debug(f"cas:{cas}進入複數判定")
+                for i in range(1, 11):
+                    control = self.main_window.child_window(title=f"Portal Row View {str(i)}", control_type="DataItem", found_index=0)
+                    chemical_field=control.child_window(auto_id="Field: SearchResults::OfficialChemicalName", control_type="Edit", found_index=0)
+                    if chemical_field.exists():
+                        chemical_name = chemical_field.legacy_properties()['Value']
+                        result[f"{cas}_{i}"] = chemical_name
+                    else:
+                        logger.debug(f"{cas} 總共有 {i-1} 筆相同的資料")
+                        break
+                logger.info(f"cas 複數結果: {result}")
+                return {"status": 2, "result": result}
 
-        elif result["status"] != 0:
-            logger.warning(f"Search result: {result}")
-            return {"status": result["status"], "result": result["result"]}
-        
-        ##找到化學品視窗以點擊兩次
-        ##portal_view有複數個相同名稱的視窗，所以指定index=0，也就是找到的第一個。
-        portal_view = self.main_window.child_window(title="Portal View", control_type="Pane", found_index=0)
-        target_item = portal_view.child_window(title="Portal Row View 1", control_type="DataItem")
-        # target_item.window().set_focus() ## developing
-        target_item.click_input()
-        target_item.click_input()
-        
-        ##防呆機制
-        if not self.checked_mixture:
-            logger.debug("檢查是否選取化學品")
-            if self.main_window.child_window(title="No mixture selected", control_type="Window").exists(timeout=1):
-                logger.warning("No mixture selected")
-                return {"status": 3, "result": "使用者尚未選取化合物，請創建化合物後再選取化學品"}
-            self.checked_mixture = True
+            elif result["status"] != 0:
+                logger.warning(f"Search result: {result}")
+                return {"status": result["status"], "result": result["result"]}
+            
+            ##找到化學品視窗以點擊兩次
+            ##portal_view有複數個相同名稱的視窗，所以指定index=0，也就是找到的第一個。
+            portal_view = self.main_window.child_window(title="Portal View", control_type="Pane", found_index=0)
+            target_item = portal_view.child_window(title="Portal Row View 1", control_type="DataItem")
+            # target_item.window().set_focus() ## developing
+            time.sleep(0.2)
+            target_item.click_input()
+            target_item.click_input()
+            ##防呆機制
+            if not self.checked_mixture:
+                logger.debug("檢查是否選取化學品")
+                if self.main_window.child_window(title="No mixture selected", control_type="Window").exists(timeout=1):
+                    logger.warning("No mixture selected")
+                    return {"status": 3, "result": "使用者尚未選取化合物，請創建化合物後再選取化學品"}
+                self.checked_mixture = True
 
-        ##成功回傳化學品名稱及CAS
-        ## v0.0.15 本來想要新增根據選取化合物裡面是否有相對名稱來判斷確定新增成功，但是發現CRW4化合物資料會根據ABCD順序排序，太複雜故先不做此判斷
-        offical_name = self.main_window.child_window(auto_id="Field: SearchResults::OfficialChemicalName", control_type="Edit", found_index=0).legacy_properties()['Value']
-        # chemical_name = self.main_window.child_window(auto_id="Field: MixtureInfo::ChemName", control_type="Edit").legacy_properties()['Value']
-        # current_cas = self.main_window.child_window(auto_id="Field: MixtureInfo::CASNum", control_type="Edit").legacy_properties()['Value']
+            ##成功回傳化學品名稱及CAS
+            ## v0.0.15 本來想要新增根據選取化合物裡面是否有相對名稱來判斷確定新增成功，但是發現CRW4化合物資料會根據ABCD順序排序，太複雜故先不做此判斷
+            offical_name = self.main_window.child_window(auto_id="Field: SearchResults::OfficialChemicalName", control_type="Edit", found_index=0).legacy_properties()['Value']
+            # chemical_name = self.main_window.child_window(auto_id="Field: MixtureInfo::ChemName", control_type="Edit").legacy_properties()['Value']
+            # current_cas = self.main_window.child_window(auto_id="Field: MixtureInfo::CASNum", control_type="Edit").legacy_properties()['Value']
 
-        # if current_cas == cas:
-        logger.info("Selected item successfully")
-        return {"status": 0, "result": {"cas": cas, "chemical_name": offical_name}}
-
-        # logger.error(f"Failed to select item: {cas}")
-        # return {"status": 1, "result": f"檢查到選取化學品 {chemical_name} 新增失敗"}
+            # if current_cas == cas:
+            logger.info("Selected item successfully")
+            return {"status": 0, "result": {"cas": cas, "chemical_name": offical_name}}
+        except Exception as e:
+            logger.error(f"Failed to select item: {cas}")
+            return {"status": 1, "result": f"檢查到選取化學品 {chemical_name} 新增失敗"}
 
     def output_chart_to_csv(self):
         self.click_button("Compatibility\rChart")
@@ -183,8 +187,23 @@ class CRW4Automation:
             logger.warning("No mixture selected")
             return {"status":1, "result":"使用者尚未選取化合物，請創建化合物後再產生列表"}
         ###點選複數確認按鈕
-        header = self.main_window.child_window(title="Header", control_type="Pane")
-        self.click_button("Export Chart Data", window=header) 
+        # header = self.main_window.child_window(title="Header", control_type="Pane")
+        button = self.main_window.child_window(title="Export Chart Data", control_type="Button")
+
+        for attempt in range(3):
+            try:
+                button.wait("exists enabled visible ready", timeout=3)
+                logger.warning(f"Clicking Export Chart Data button (attempt {attempt + 1})")
+                button.set_focus()
+                button.click_input()
+                time.sleep(1)  # 等待 UI 反應
+                break
+            except Exception as e:
+                logger.warning(f"Retry clicking Export Chart Data button (attempt {attempt + 1}): {e}")
+                if attempt == 2:  # 最後一次改用座標點擊
+                    rect = button.rectangle()
+                    self.main_window.click_input(coords=(rect.left + 5, rect.top + 5))
+
         Export_window = self.main_window.child_window(title="Compatibility Chart Data Export", control_type="Window")
         self.click_button("Proceed", window=Export_window) 
         self.click_button("OK")  
@@ -267,29 +286,35 @@ class CRW4Automation:
             logger.error(f"Unexpected error: {e} in item: {item}")
         return formatted_result
     
-    def formate_check_output(self, id, results:dict) -> dict:
+    def formate_check_output(self, id, results: dict) -> dict:
         """
-        根據 results 裡面每筆 item 的 'status' 來計算
-        - 0: 成功
-        - 1: 失敗
-        - 2: 有複數筆結果
-        回傳一個 dict 方便後續寫入檔案或記錄 log。
+        根據 results 中每筆 item 的 'status' 來統計：
+        - 0: 成功 → 取出 chemical_name（成功時應為一筆準確資料）
+        - 1: 失敗 → 取出 chemical_name（通常為空字串）
+        - 2: 有多筆結果 → 取出 chemical_name 的列表
+        最終回傳格式如下：
+        {
+            "id": id,
+            "total": 總筆數,
+            "detail": {
+                "success": 成功筆數,
+                "miss": 失敗筆數,
+                "muiltiple": 多筆結果筆數
+            },
+            "success_item": [ {cas: chemical_name}, ... ],
+            "fail_item": [ {cas: chemical_name}, ... ],
+            "muiltiple_item": [ {cas: [chemical_name, ...]}, ... ]
+        }
         """
         if "result" not in results or not isinstance(results["result"], list):
-            # 保險起見，若 results 不符合預期的結構可以直接 return 或 raise
             return {
                 "id": id,
                 "total": 0,
-                "detail": {
-                    "success": 0,
-                    "miss": 0,
-                    "muiltiple": 0
-                },
+                "detail": {"success": 0, "miss": 0, "muiltiple": 0},
                 "success_item": [],
-                "failed_item": [],
-                "multiple_item": []
+                "fail_item": [],
+                "muiltiple_item": []
             }
-    
         
         total = len(results["result"])
         success_cnt = 0
@@ -301,16 +326,25 @@ class CRW4Automation:
         
         for item in results["result"]:
             status_val = item.get("status")
-            cas_val = item.get("cas")  # 從 item 裏面取得 CAS
+            cas_val = item.get("cas")
+            chemical_name = ""
+            # 取得 nested 結構中的 chemical_name
+            if "result" in item and isinstance(item["result"], dict):
+                nested = item["result"].get("result")
+                if isinstance(nested, dict):
+                    chemical_name = nested.get("chemical_name", "")
+                elif isinstance(nested, list):
+                    chemical_name = nested  # 若為列表則直接指定
+            
             if status_val == 0:
                 success_cnt += 1
-                success_list.append(cas_val)
+                success_list.append({cas_val: chemical_name})
             elif status_val == 1:
                 fail_cnt += 1
-                fail_list.append(cas_val)
+                fail_list.append({cas_val: chemical_name})
             elif status_val == 2:
                 multiple_cnt += 1
-                multiple_list.append(cas_val)
+                multiple_list.append({cas_val: chemical_name})
         
         return {
             "id": id,
@@ -321,9 +355,10 @@ class CRW4Automation:
                 "muiltiple": multiple_cnt
             },
             "success_item": success_list,
-            "failed_item": fail_list,
-            "multiple_item": multiple_list
+            "fail_item": fail_list,
+            "muiltiple_item": multiple_list
         }
+
 
     def clear_mixture(self):
         """在下一次使用之前將所有化學品全部刪除"""

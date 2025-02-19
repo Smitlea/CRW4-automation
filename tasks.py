@@ -1,7 +1,4 @@
-import time
-import os
 import json
-import datetime
 
 from dotenv import load_dotenv
 from logger import logger
@@ -17,7 +14,6 @@ OUTPUT_PATH = config["OUTPUT_PATH"]
 load_dotenv()
 
 # 全域變數
-crw4_automation = None
 
 def start_crw4_application():
     """
@@ -32,9 +28,11 @@ def start_crw4_application():
     # 交由自定義的 CRW4Automation 物件管理
     crw4_automation = CRW4Automation(app_instance)
     logger.info("CRW4 application started successfully")
+    return crw4_automation
 
-class CRW4Mechanization:
-    def __init__(self):
+class CRW4Mechanization(CRW4Automation):
+    def __init__(self, app_instance):
+        super().__init__(app_instance)
         self.output_path = OUTPUT_PATH
 
     def test(self, cas):
