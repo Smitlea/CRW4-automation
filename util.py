@@ -125,11 +125,11 @@ class CRW4Automation:
             "result": {"cas": "7440-23-5", "chemical_name": "soldium"},
             "error": ""
         }
-        status 0=成功 1=失敗 2=找到複數筆資料 3=使用者尚未選取化合物
+        status 0=成功 1=找不到資料 2=找到複數筆資料 3=使用者尚未選取化合物 4=異常錯誤
         """
         try:
             if not self.set_edit_field("Field: Chemicals::y_gSearchCAS", cas):
-                return {"status": 1, "result": f"Failed to set text in Field: Chemicals::y_gSearchCAS"}
+                return {"status": 4, "result": f"無法將文字寫入cas窗格Chemicals::y_gSearchCAS"}
             self.click_button("Search") 
             result = self.check_search_results(cas)
 
@@ -400,10 +400,10 @@ class CRW4Automation:
         results = []
         for i, cas in enumerate(tqdm(cas_list)):
             try:
-                self.set_edit_field("Field: Chemicals::y_gSearchCAS", cas)
+                if not self.set_edit_field("Field: Chemicals::y_gSearchCAS", cas):
+                    return logger.error(f"新增化學品 {cas}失敗 導致過程暫停,原因:{result['result']}")
                 self.click_button("Search") 
                 result = self.check_search_results(cas)
-
 
                 if not self.checked_mixture:
                     if self.main_window.child_window(title="No mixture selected", control_type="Window").exists(timeout=1):
@@ -431,6 +431,8 @@ class CRW4Automation:
         for i, cas in enumerate(tqdm(cas_list)):
             try:
                 result = self.add_chemical(cas)
+                if result["status"] == 4:
+                    return logger.error(f"新增化學品 {cas}失敗 導致過程暫停,原因:{result['result']}")
                 status = result.get("status", 1)
 
                 if status == 3:

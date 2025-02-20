@@ -7,7 +7,7 @@ import datetime
 from pywinauto import Application
 from flask import request
 from flask_restx import Resource
-from tqdm.tk import trange
+from tqdm import tqdm
 
 from logger import logger
 
@@ -89,7 +89,7 @@ class Generate_json(Resource):
         cas_list = list(set(cas_list))
         
         results = []
-        for i in trange(len(cas_list)):
+        for i in tqdm(len(cas_list)):
             cas = cas_list[i]
             logger.debug(f"Searching for CAS number: {cas}")
             try:
@@ -173,14 +173,15 @@ class Conclusion(Resource):
         try:
             crw4_automation.checked_mixture = False
             results = []
-            
-            for i in trange(len(cas_list)):
-                cas = cas_list[i]
+
+            for cas in tqdm(cas_list, desc="Processing CAS numbers"):
                 logger.debug(f"Searching for CAS number: {cas}")
                 try:
                     result = crw4_automation.add_chemical(cas)
+                    if result["status"] == 4:
+                        return logger.error(f"新增化學品 {cas}失敗 導致過程暫停,原因:{result['result']}")
                     if result["status"] == 3:
-                        return {"status": 1, "result":"使用者尚未選取化合物"}
+                        return {"status": 1, "result": "使用者尚未選取化合物"}
                     results.append({"cas": cas, "status": result["status"], "result": result['result']})
                 except Exception as e:
                     results.append({"cas": cas, "status": 1, "error": str(e)})
@@ -193,27 +194,24 @@ class Conclusion(Resource):
             if not os.path.exists(path):
                 logger.error(f"路徑:{path} csv創建文件失敗")
                 return {"status": 1, "result": "", "error": "csv創建文件失敗"}
-            
-            if not os.path.exists(OUTPUT_PATH) :
-                os.makedirs(OUTPUT_PATH) 
 
-            logger.debug(f"複製文件: {path}至 {OUTPUT_PATH}")
+            if not os.path.exists(OUTPUT_PATH):
+                os.makedirs(OUTPUT_PATH)
 
-            destination_path  = os.path.join(OUTPUT_PATH,  f"911052_{id}_{current_time}_CRW_Data_Export.xlsx")
-            
+            logger.debug(f"複製文件: {path} 至 {OUTPUT_PATH}")
+
+            destination_path = os.path.join(OUTPUT_PATH, f"911052_{id}_{current_time}_CRW_Data_Export.xlsx")
+
             if not os.path.isfile(path):
                 return {"status": 1, "result": "", "error": "文件不存在或不可讀"}
             shutil.copy2(path, destination_path)
             logger.info(f"文件成功複製到 {destination_path}")
 
-            
-            
-
-            
         except Exception as e:
-            return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
+            return {"status": 1, "result": str(e), "error": e.__class__.__name__}
 
         return result
+
 
 
 
@@ -263,6 +261,8 @@ class Add_chemical(Resource):
 
 
 if __name__ == "__main__":
+    # if  os.getenv("WERKZEUG_RUN_MAIN") == "true":
+    #     start_crw4_application()
     app.run(host="0.0.0.0", port="5000", debug=True)
 
 # logger.warning("Listing properties of the search results field")

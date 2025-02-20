@@ -14,8 +14,8 @@ OUTPUT_PATH = config["OUTPUT_PATH"]
 load_dotenv()
 
 # 全域變數
-base_json_path = r"D:\Systex\CRW4-automation\data\json\test1.json"
-daily_json_path = r"D:\Systex\CRW4-automation\data\json\daily.json"
+base_json_path = r"D:\Systex\CRW4-automation\data\algrthom\test1.json"
+daily_json_path = r"D:\Systex\CRW4-automation\data\algrthom\daily.json"
 output_base = r"D:\Systex\CRW4-automation\data\algrthom\\"
 
 
@@ -117,7 +117,7 @@ class CRW4Mechanization(CRW4Automation):
         }
 
 class CRW4Algorithm(CRW4Mechanization):
-    def __init__(self, mechanization:CRW4Mechanization, base_json_path, daily_json_path, output_base):
+    def __init__(self, mechanization:CRW4Mechanization):
         self.mechanization = mechanization
         self.base_json_path = base_json_path
         self.daily_json_path = daily_json_path
@@ -175,7 +175,7 @@ class CRW4Algorithm(CRW4Mechanization):
             return logger.error("每日新增資料超過 50 筆，請重新檢查。")
         return daily_data
 
-    def daily_algrthom(self, cas_list):
+    def daily_algrthom(self):
         """對基礎資料與日新增資料進行cross-pair處理"""
         self.process_base_data()
         daily_data = self.process_daily_data()
@@ -185,6 +185,6 @@ class CRW4Algorithm(CRW4Mechanization):
         for base_label, base_group in self.base_subgroups.items():
             batch = daily_data + base_group
             logger.highlight(f"處理組 {daily_label} 與組 {base_label} 的子組配對 (共 {len(batch)} 筆)")
-            result = self.mechanization.automate(batch, base_label)
+            result = self.mechanization.automate(batch, 'X'+base_label)
             logger.info(f'result:{result}')
 

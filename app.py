@@ -13,7 +13,7 @@ from util import handle_request_exception
 
 crw4_automation = CRW4Factory.get_crw4_automation()
 mechanization = CRW4Mechanization(crw4_automation)
-algorithm = CRW4Algorithm(mechanization)
+algorithom = CRW4Algorithm(mechanization)
 
 @api.route("/auto")
 class Auto(Resource):
@@ -30,12 +30,20 @@ class Auto(Resource):
         except Exception as e:
             return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
 
-# @api.route("/daily_append")
-# class DailyAppend(Resource):
-#     @handle_request_exception
-#     @api.expect(queue_list_payload)
-#     @api.marshal_with(general_output_payload)
-#     def post(self):
+@api.route("/daily_append")
+class DailyAppend(Resource):
+    @handle_request_exception
+    @api.expect(queue_list_payload)
+    @api.marshal_with(general_output_payload)
+    def post(self):
+        data = api.payload
+        cas_list = data.get("cas_list")
+        id = data.get("id")
+        try:
+            result = algorithom.daily_algrthom()
+            return {'status': 0, "result": result}
+        except Exception as e:
+            return {"status": 1, "result": e.args[0], "error": e.__class__.__name__}
         
 
 @api.route("/check")
