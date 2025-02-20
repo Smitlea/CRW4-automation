@@ -1,11 +1,6 @@
-import os
-import time
 import json
 from app import mechanization
 from logger import logger
-from itertools import combinations
-
-# mechization = CRW4Mechanization()
 
 def split_list(data, chunk_size):
     """將 data 切分成每個大小不超過 chunk_size 的子清單"""
@@ -29,7 +24,7 @@ def split_group_with_labels(group, label, sub_chunk_size):
 
 def process_base_data(base_json_path, max_batch_size=100):
     """
-    分組結果與標籤，例如：{'A': [...], "A'": [...], 'B': [...], "B'": [...], ...}
+    分組結果與標籤，將A拆分50比成'A': [前50], "A'": [後50], 'B': [前50], "B'": [後50], ...}
     """
     with open(base_json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -52,9 +47,9 @@ def process_base_data(base_json_path, max_batch_size=100):
         with open(file_name, 'w', encoding='utf-8') as f:
             json.dump(group, f, ensure_ascii=False, indent=4)
     
-    # 將每組拆分成兩個子組（上半部與下半部），假設每組數量約 100 筆，則子組大小為 50
+    # 將每組拆分成兩個子組（上半部與下半部），每組數量約 100 筆，則子組大小為 50
     base_subgroups = {}
-    sub_chunk_size = max_batch_size // 2 
+    sub_chunk_size = 50
     for label, group in zip(group_labels, groups):
         subgroups = split_group_with_labels(group, label, sub_chunk_size)
         base_subgroups.update(subgroups)
@@ -62,7 +57,7 @@ def process_base_data(base_json_path, max_batch_size=100):
 
 def process_daily_data(daily_json_path):
     """
-    讀取日新增資料 JSON（假設包含 10~30 筆資料），回傳該清單
+    讀取日新增資料 JSON
     """
     with open(daily_json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -94,9 +89,6 @@ def main():
     # 每次組合為 daily_data 與某一基礎子組合併，確保總數不超過 100 筆
     for base_label, base_group in base_subgroups.items():
         batch = daily_data + base_group
-        # 注意：這樣會同時計算 daily_data 間與 base_group 間的配對，
-        # 但如果 CRW4 只計算「組間」反應，可考慮使用組間演算法（只取 cross-pairs）
-        # 這裡假設 CRW4 的運算只關注不同來源的資料配對
         logger.highlight(f"處理組 {daily_label} 與組 {base_label} 的子組配對 (共 {len(batch)} 筆)")
         result = mechanization.automate(batch, base_label)
         logger.info(f'result:{result}')

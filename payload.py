@@ -56,13 +56,6 @@ queue_list_payload = api_ns.model(
     },
 )
 
-task_id_output = api_ns.model(
-    "Task Output",
-    {
-        'status': fields.String(required=True, default="1"),
-        "result": fields.String(required=True, default="1")
-    },
-)
 
 general_output_payload = api_ns.model(
     "general Output",

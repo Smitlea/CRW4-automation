@@ -359,7 +359,6 @@ class CRW4Automation:
             "muiltiple_item": multiple_list
         }
 
-
     def clear_mixture(self):
         """在下一次使用之前將所有化學品全部刪除"""
         try:
